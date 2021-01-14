@@ -1,12 +1,6 @@
 // Core
 import React from "react";
 
-// Constants
-import { LXLT_LinkItem, __DEBUG__ } from "../../constants/site/Settings";
-
-// Components
-import Link from "next/link";
-
 // Styles
 import { DuotoneImageClassName, DuotoneImageStyle } from "./styles.scss";
 import LazyImage from "../../utils/lazyImage";
@@ -15,7 +9,7 @@ import { CSSProperties } from "styled-components";
 // Begin Types
 // __________________________________________________________________________________________
 
-export type LXLT_DuotoneImage = {
+export type LMNTS_DuotoneImage = {
   addClass?: string;
   src: string;
   style?: CSSProperties;
@@ -33,7 +27,7 @@ export type LXLT_DuotoneImage = {
  *
  */
 
-export const DuotoneImage: React.FunctionComponent<LXLT_DuotoneImage> = ({
+export const DuotoneImage: React.FunctionComponent<LMNTS_DuotoneImage> = ({
   addClass,
   src,
   style,
