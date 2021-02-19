@@ -43,7 +43,7 @@ export const HeroColumn: React.FunctionComponent<LMNTS_Section_HeroColumn> = ({
       className={`${HeroColumnClassName} width--${width ? width : "default"}`}
     >
       <div className={`${HeroColumnClassName}__inner`}>
-        <div>
+        <div className={`${HeroColumnClassName}__header-container`}>
           <h1>{header}</h1>
           <p className={`${HeroColumnClassName}__sub-header`}>{subHeader}</p>
         </div>

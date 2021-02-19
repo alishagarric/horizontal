@@ -45,6 +45,7 @@ export const HorizontalScrollSectionStyle = styled.section<{
         margin-top: ${Root.Nav.Size};
         margin-bottom: ${BottomNavSize};
         height: var(--horizontalScrollSectionHeight);
+        max-height: var(--horizontalScrollSectionHeight);
       }
     }
   }

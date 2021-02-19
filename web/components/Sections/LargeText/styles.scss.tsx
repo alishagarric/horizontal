@@ -23,18 +23,19 @@ export const LargeTextClassName = `large-text`;
 
 export const LargeTextStyle = styled.section`
   &.${LargeTextClassName} {
-    width: 100vw;
+    width: 200vh;
+    overflow: auto;
 
     &.width--medium {
-      width: 75vw;
+      width: 150vh;
     }
 
     &.width--small {
-      width: 50vw;
+      width: 100vh;
     }
 
     p {
-      font-size: 10vw;
+      font-size: 16.5vh;
       line-height: 1;
     }
   }

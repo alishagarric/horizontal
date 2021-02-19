@@ -18,6 +18,7 @@ import Link from "next/link";
 import { Brandmark } from "../_svg/Brandmark/Brandmark";
 import { Logotype } from "../_svg/Logotype/Logotype";
 import { parseRouteToClassName } from "../../utils/parseRouteToClassName";
+import { LMNTS_SiteIndustry, SiteIndustries } from "../../constants/site/Settings";
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -100,7 +101,7 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
         {/* ____________________________________ */}
         {/* Center Column */}
         <div
-          className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--center`}
+          className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--center ${menuVisible ? "__expanded" : ""}`}
         >
           <button
             className={`${NavigationClassName}__menu-btn`}
@@ -108,8 +109,24 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
               menuVisible ? setMenuVisible(false) : setMenuVisible(true)
             }
           >
-            {menuVisible && "✅"} Industries
+            Industries
           </button>
+          <nav className={`${NavigationClassName}__menu-nav`}>
+            <ul className={`${NavigationClassName}__menu-nav__list`}>
+              {SiteIndustries && SiteIndustries.length > 0 &&
+                SiteIndustries.map((industry: LMNTS_SiteIndustry, idx: number) => {
+                  return (
+                    <li
+                      key={idx}
+                      className={`${NavigationClassName}__menu-nav__list__item`}
+                    >
+                      {industry.name}
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </nav>
         </div>
 
         {/* ____________________________________ */}

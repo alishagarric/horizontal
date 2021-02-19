@@ -44,7 +44,8 @@ export const NavigationStyle = styled.nav`
       // _________________________________
       // Menu Button
       .${NavigationClassName}__menu-btn {
-        transform: translateY(12%) scale(0.65);
+       // transform: translateY(12%) scale(0.65);
+       transform: translateY(0%) scale(0.65);
       }
 
       // _________________________________
@@ -191,6 +192,31 @@ export const NavigationStyle = styled.nav`
       &:after {
         top: 0;
       }
+
+      &__col--center {
+        position: fixed;
+        left: 0;
+        top: ${Root.Nav.Size};
+        height: calc(100vh - ${Root.Nav.Size});
+        transform: translateY( calc(calc(100vh - ${Root.Nav.Size}) - ${BottomNavSize}) );
+        width: 100vw;
+        text-align: center;
+        will-change: transform, overflow, background;
+        transition: transform 1s ease 0.25s, background 0.25s;
+
+        &.__expanded {
+          transform: translateY(0);
+          overflow: auto;
+          background: ${Theme.Color.Background};
+          
+
+          .${NavigationClassName}__menu-nav {
+            height: auto;
+            max-height: 100000000px;
+            
+          }
+        }
+      }
     }
 
     .${NavigationClassName}__menu-btn {
@@ -204,8 +230,10 @@ export const NavigationStyle = styled.nav`
       padding: 0;
       margin: 0;
 
-      transform: translateY(12%) scale(1);
-      transform-origin: bottom center;
+     // transform: translateY(12%) scale(1);
+     //  transform-origin: bottom center;
+      transform: translateY(0%) scale(1);
+      transform-origin: center center;
       transition: transform 2s ease;
       will-change: transform;
 
@@ -213,6 +241,23 @@ export const NavigationStyle = styled.nav`
 
       font-size: 4vw;
       text-transform: uppercase;
+    }
+
+    .${NavigationClassName}__menu-nav {
+      height: 0px;
+      max-height: 0px;
+      position: relative;
+      overflow: hidden;
+
+      &__list {   
+        padding-bottom: 25vh;    
+
+        li {
+          font-size: 10vw;
+          text-align: center;
+          
+        }
+      }
     }
 
     .${NavigationClassName}__link {

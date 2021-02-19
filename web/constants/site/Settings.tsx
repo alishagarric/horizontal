@@ -96,3 +96,75 @@ export const SiteVolumes: LMNTS_SiteVolume[] = [
     name: "Lorem ipsum",
   },
 ];
+
+
+/**
+ *
+ * @name LMNTS_SiteIndustry
+ * @description Industry type
+ *
+ */
+
+export type LMNTS_SiteIndustry = {
+  description: string;
+  name: string;
+  images: {
+    image: string;
+  }[]
+};
+
+/**
+ *
+ * @name SiteIndustries
+ * @description Misc site settings
+ *
+ */
+export const SiteIndustries: LMNTS_SiteIndustry[] = [
+  {
+    name: "Machining",
+    description: "Lorem ipsum",
+    images: [
+      { image: "https://source.unsplash.com/600x1200/?industrial" },
+      { image: "https://source.unsplash.com/600x1200/?city" },
+      { image: "https://source.unsplash.com/600x1200/?skyscraper" },
+    ],
+  },
+  {
+    name: "Metalwork",
+    description: "Lorem ipsum",
+    images: [
+      { image: "https://source.unsplash.com/600x1200/?industrial" },
+      { image: "https://source.unsplash.com/600x1200/?city" },
+      { image: "https://source.unsplash.com/600x1200/?skyscraper" },
+    ],
+  },
+  {
+    name: "Storefronts",
+    description: "Lorem ipsum",
+    images: [
+      { image: "https://source.unsplash.com/600x1200/?industrial" },
+      { image: "https://source.unsplash.com/600x1200/?city" },
+      { image: "https://source.unsplash.com/600x1200/?skyscraper" },
+    ],
+  },
+  {
+    name: "Large Format",
+    description: "Lorem ipsum",
+    images: [
+      { image: "https://source.unsplash.com/600x1200/?industrial" },
+      { image: "https://source.unsplash.com/600x1200/?city" },
+      { image: "https://source.unsplash.com/600x1200/?skyscraper" },
+    ],
+  },
+  {
+    name: "Woodworking",
+    description: "Lorem ipsum",
+    images: [
+      { image: "https://source.unsplash.com/600x1200/?industrial" },
+      { image: "https://source.unsplash.com/600x1200/?city" },
+      { image: "https://source.unsplash.com/600x1200/?skyscraper" },
+    ],
+  },
+];
+
+

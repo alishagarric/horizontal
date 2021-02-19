@@ -60,7 +60,7 @@ export const HeroColumnStyle = styled.section`
       padding-bottom: calc(${Theme.Base.Size.Lg} * 3);
     }
 
-    .${HeroColumnClassName}__inner > div > *:not(h1) {
+    .${HeroColumnClassName}__inner > .${HeroColumnClassName}__header-container > *:not(h1), .${HeroColumnClassName}__inner > *:not(.${HeroColumnClassName}__header-container) {
       padding-right: 20%;
     }
   }
