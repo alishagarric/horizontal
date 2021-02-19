@@ -76,12 +76,12 @@ html {
   /** Lazy Loading **/
   .lazy {
 
-  opacity: 0;
-  transition: opacity 1s ease;
+    opacity: 0;
+    transition: opacity 1s ease;
 
-  &.loaded {
-    opacity: 1;
-  }
+    &.loaded {
+      opacity: 1;
+    }
   }
 
 

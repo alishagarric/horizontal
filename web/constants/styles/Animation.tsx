@@ -19,6 +19,20 @@ export const FadeIn = keyframes`
   }
 `;
 
+
+export const rotating /* Safari and Chrome */ = keyframes`
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}`;
+
 export const UpAndRotate = keyframes`
   from {
     transform: translateY(100%) rotate(3deg);
@@ -61,6 +75,15 @@ export const OverlayFadeIn = keyframes`
   }
   to {
     opacity: .75;
+  }
+`;
+
+export const OpacityFadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 `;
 
