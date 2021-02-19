@@ -20,9 +20,12 @@ import {
 
 export type LMNTS_Section_ContactBlock = {
   header: string;
+  border?: boolean;
+  style?: any; //TODO: What is this
   contact: {
-    label: string;
-    href: string;
+    label?: string;
+    href?: string;
+    break?: boolean;
   }[];
 };
 
@@ -36,16 +39,18 @@ export type LMNTS_Section_ContactBlock = {
 export const ContactBlock: React.FunctionComponent<LMNTS_Section_ContactBlock> = ({
   header,
   contact,
+  border,
+  style,
   children
 }) => {
 
   return (
-    <ContactBlockStyle className={`${ContactBlockClassName}`}>
+    <ContactBlockStyle className={`${ContactBlockClassName}`} style={style}>
       <div>
         {children}
       </div>
       <div>
-        <h4>
+        <h4 className={`${border == false ? "__exclude-border" : ""}`}>
           {header}
         </h4>
         {contact && contact.length > 0 &&
@@ -53,8 +58,13 @@ export const ContactBlock: React.FunctionComponent<LMNTS_Section_ContactBlock> =
             {contact.map((item, idx: number) => {
               return (
                 <>
-                <a href={`${item.href}`}>{item.label}</a>
-                {idx != contact.length - 1 && <br/>}
+                  {item.href && item.label &&
+                    <a href={`${item.href}`}>{item.label}</a>
+                  }
+                  {!item.href && item.label &&
+                    <span>{item.label}</span>
+                  }
+                  {idx != contact.length - 1 && <br/>}
                 </>
               );
             })}

@@ -21,7 +21,7 @@ import {
 export type LMNTS_Section_HeroColumn = {
   header: string
   subHeader?: string;
-  width?: "large" | "medium" | "small";
+  width?: "large" | "medium" | "small" | "xl";
 };
 
 /**
@@ -40,7 +40,7 @@ export const HeroColumn: React.FunctionComponent<LMNTS_Section_HeroColumn> = ({
 
   return (
     <HeroColumnStyle
-      className={`${HeroColumnClassName} width--${width}`}
+      className={`${HeroColumnClassName} width--${width ? width : "default"}`}
     >
       <div className={`${HeroColumnClassName}__inner`}>
         <div>

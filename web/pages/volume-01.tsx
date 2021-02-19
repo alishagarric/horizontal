@@ -65,6 +65,7 @@ const Volume01: NextPage<LMNTS_Volume01> = () => {
           header={"Lorem ipsum"}
           content={"lorem ipsum dolor iset"}
           altText="Volume Industries"
+          reverse={true}
         />
         <GridColumn 
           image="https://source.unsplash.com/600x1200/?architecture"

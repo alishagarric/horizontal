@@ -13,6 +13,7 @@
 import styled, { keyframes } from "styled-components";
 import { rotating } from "../../../constants/styles/Animation";
 import { Theme } from "../../../constants/Theme";
+import { GridColumnClassName } from "../GridColumn/styles.scss";
 
 // Constants
 
@@ -43,7 +44,7 @@ export const CircleTextStyle = styled.section<{
       position: absolute;
       top: 50%;
       left: 0;
-      transform: translate(-50%, -50%);
+      transform: translate(calc(-50% +  var(--columnGutter)), -50%);
       overflow: visible;
       
 
@@ -55,5 +56,10 @@ export const CircleTextStyle = styled.section<{
         mix-blend-mode: difference;
       }
     }
+  }
+
+  //Section kerning
+  + section.${GridColumnClassName} {
+    margin-left: 0;
   }
 `;

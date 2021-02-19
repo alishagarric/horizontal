@@ -57,6 +57,23 @@ export const GridColumnStyle = styled.section`
       }
     }
 
+    &--reversed .${GridColumnClassName}__img, &--reversed .${GridColumnClassName}__text-container  {
+
+      //bottom item
+      &:first-child { 
+        grid-row: 2 / 3;
+        margin-top: var(--columnGutter); 
+        margin-bottom: 0;
+      }
+
+      //top item
+      &:last-child {
+        grid-row: 1 / 2;
+        margin-bottom: var(--columnGutter); 
+        margin-top: 0;
+      }
+    }
+
     .${GridColumnClassName}__img, .${GridColumnClassName}__text-container  {
       grid-row: 1 / 3;
       width: 100%;

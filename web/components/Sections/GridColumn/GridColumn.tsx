@@ -25,6 +25,7 @@ export type LMNTS_Section_GridColumn = {
   header?: string;
   content?: string;
   doubleWidth?: boolean;
+  reverse?: boolean;
 };
 
 /**
@@ -40,19 +41,20 @@ export const GridColumn: React.FunctionComponent<LMNTS_Section_GridColumn> = ({
   altText,
   header,
   content,
-  doubleWidth
+  doubleWidth,
+  reverse,
 }) => {
 
   let twoItems: boolean = secondaryImage != null ||  header != null || content != null;
 
   return (
     <GridColumnStyle
-      className={`${GridColumnClassName} ${doubleWidth ? GridColumnClassName + "--double-width" : ""} ${twoItems ? GridColumnClassName + "--two-items" : ""}`}
+      className={`${GridColumnClassName} ${doubleWidth ? GridColumnClassName + "--double-width" : ""} ${twoItems ? GridColumnClassName + "--two-items" : ""} ${twoItems && reverse ? GridColumnClassName + "--reversed" : ""}`}
     >
       <LazyImage
         addClass={`${GridColumnClassName}__img`}
         src={image}
-        alt={"Testing"}
+        alt={altText}
       />
       {twoItems &&
         <>
@@ -60,7 +62,7 @@ export const GridColumn: React.FunctionComponent<LMNTS_Section_GridColumn> = ({
           <LazyImage
             addClass={`${GridColumnClassName}__img`}
             src={secondaryImage}
-            alt={"Testing"}
+            alt={altText}
           />
         :
           <div className={`${GridColumnClassName}__text-container`}>

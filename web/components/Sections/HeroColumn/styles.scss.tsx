@@ -12,6 +12,7 @@
 // Core
 import styled, { keyframes } from "styled-components";
 import { Theme } from "../../../constants/Theme";
+import { ContactBlockClassName } from "../../ContactBlock/styles.scss";
 
 // Constants
 
@@ -31,6 +32,10 @@ export const HeroColumnStyle = styled.section`
     a {
       color: ${Theme.Color.Text};
     }
+
+    &.width--xl {
+      width: 600px;
+    }
     
     &.width--medium {
       width: 400px;
@@ -38,6 +43,10 @@ export const HeroColumnStyle = styled.section`
 
     &.width--small {
       width: 300px;
+    }
+
+    .${ContactBlockClassName} {
+      height: 100%;
     }
 
     .${HeroColumnClassName}__inner {

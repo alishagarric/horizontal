@@ -77,37 +77,22 @@ export type LMNTS_SiteVolume = {
 export const SiteVolumes: LMNTS_SiteVolume[] = [
   {
     number: "01",
-    link: "/sample-page",
+    link: "/volume-01",
     name: "Lorem ipsum",
   },
   {
     number: "02",
-    link: "/sample-page",
+    link: "/volume-02",
     name: "Lorem ipsum",
   },
   {
     number: "03",
-    link: "/sample-page",
+    link: "/volume-03",
     name: "Lorem ipsum",
   },
   {
     number: "04",
-    link: "/sample-page",
-    name: "Lorem ipsum",
-  },
-  {
-    number: "05",
-    link: "/sample-page",
-    name: "Lorem ipsum",
-  },
-  {
-    number: "06",
-    link: "/sample-page",
-    name: "Lorem ipsum",
-  },
-  {
-    number: "07",
-    link: "/sample-page",
+    link: "/volume-04",
     name: "Lorem ipsum",
   },
 ];

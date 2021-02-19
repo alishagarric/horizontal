@@ -49,7 +49,7 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
         <div
           className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--left`}
         >
-          <Link href="/sample-page">
+          <Link href="/about">
             <a className={`${NavigationClassName}__link`}>About</a>
           </Link>
         </div>
@@ -78,7 +78,7 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
         <div
           className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--right`}
         >
-          <Link href="/sample-page">
+          <Link href="/contact">
             <a className={`${NavigationClassName}__link`}>Contact</a>
           </Link>
         </div>
@@ -92,7 +92,7 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
         <div
           className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--left`}
         >
-          <Link href="/sample-page">
+          <Link href="/new-york-city">
             <a className={`${NavigationClassName}__link`}>New York City</a>
           </Link>
         </div>
@@ -117,7 +117,7 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
         <div
           className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--right`}
         >
-          <Link href="/sample-page">
+          <Link href="/los-angeles">
             <a className={`${NavigationClassName}__link`}>Los Angeles</a>
           </Link>
         </div>

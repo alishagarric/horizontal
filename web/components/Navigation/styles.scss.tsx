@@ -29,8 +29,7 @@ export const NavigationStyle = styled.nav`
     position: relative;
     z-index: 800;
 
-    // @TODO: Convert to if route is NOT home with &:not()
-    &.${NavigationClassName}--route-is-sample-page {
+    &:not(.${NavigationClassName}--route-is-home) {
       // _________________________________
       // Transition Navigation
       .${NavigationClassName}__top, .${NavigationClassName}__bottom {
