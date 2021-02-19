@@ -11,6 +11,7 @@
 
 // Core
 import styled, { keyframes } from "styled-components";
+import { Root } from "../../../constants/Root";
 import { rotating } from "../../../constants/styles/Animation";
 import { Theme } from "../../../constants/Theme";
 import { GridColumnClassName } from "../GridColumn/styles.scss";
@@ -44,7 +45,7 @@ export const CircleTextStyle = styled.section<{
       position: absolute;
       top: 50%;
       left: 0;
-      transform: translate(calc(-50% +  var(--columnGutter)), -50%);
+      transform: translate(calc(-50% +  ${Root.ColumnGutter}), -50%);
       overflow: visible;
       
 

@@ -19,6 +19,7 @@ import { Brandmark } from "../_svg/Brandmark/Brandmark";
 import { Logotype } from "../_svg/Logotype/Logotype";
 import { parseRouteToClassName } from "../../utils/parseRouteToClassName";
 import { LMNTS_SiteIndustry, SiteIndustries } from "../../constants/site/Settings";
+import LazyImage from "../../utils/lazyImage";
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -88,15 +89,6 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
       {/* ____________________________________ */}
       {/* Navigation Bottom */}
       <div className={`${NavigationClassName}__bottom`}>
-        {/* ____________________________________ */}
-        {/* Left Column */}
-        <div
-          className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--left`}
-        >
-          <Link href="/new-york-city">
-            <a className={`${NavigationClassName}__link`}>New York City</a>
-          </Link>
-        </div>
 
         {/* ____________________________________ */}
         {/* Center Column */}
@@ -120,13 +112,44 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
                       key={idx}
                       className={`${NavigationClassName}__menu-nav__list__item`}
                     >
-                      {industry.name}
+                      <label htmlFor={industry.name}>{industry.name}</label>
+                      <input type="checkbox" id={industry.name} />
+                      <div className={`${NavigationClassName}__accordion`}>
+
+                        <p className={`${NavigationClassName}__accordion__text-container`}>
+                          {industry.description}
+                        </p>
+
+                        {industry.images && industry.images.length > 0 &&
+                          industry.images.map((image, idxx: number) => {
+                            return (
+                              <div className={`${NavigationClassName}__accordion__image-container`}>
+                                <LazyImage
+                                  key={idxx}
+                                  src={image.image}
+                                  alt={"Volume Industries"}
+                                />
+                              </div>
+                            );
+                          })
+                        }
+                      </div>
                     </li>
                   );
                 })
               }
             </ul>
           </nav>
+        </div>
+
+        {/* ____________________________________ */}
+        {/* Left Column */}
+        <div
+          className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--left`}
+        >
+          <Link href="/new-york-city">
+            <a className={`${NavigationClassName}__link`}>New York City</a>
+          </Link>
         </div>
 
         {/* ____________________________________ */}

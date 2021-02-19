@@ -77,6 +77,8 @@ export const Root = {
 
   // Frame
   FrameSize: "var(--FrameSize)",
+
+  ColumnGutter: "calc(var(--GutterLeft) / 2)",
 };
 
 // Responsive Measurements:

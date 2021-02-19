@@ -11,6 +11,7 @@
 
 // Core
 import styled from "styled-components";
+import { Root } from "../../../constants/Root";
 
 // Constants
 
@@ -24,8 +25,8 @@ export const GridColumnClassName = `grid-column`;
 export const GridColumnStyle = styled.section`
   &.${GridColumnClassName} {
     height: 100%;
-    margin-left: calc(var(--columnGutter) * 2);
-    margin-right: calc(var(--columnGutter) * 2);
+    margin-left: calc(${Root.ColumnGutter} * 2);
+    margin-right: calc(${Root.ColumnGutter} * 2);
     width: calc(var(--horizontalScrollSectionHeight) / 2);
     display: grid;
     grid-template-rows: 50% 50%;
@@ -37,22 +38,22 @@ export const GridColumnStyle = styled.section`
     &--two-items {
 
       .${GridColumnClassName}__img, .${GridColumnClassName}__text-container  {
-        width: calc(100% - var(--columnGutter));
+        width: calc(100% - ${Root.ColumnGutter});
 
         //top item
         &:first-child {
-          height: calc(100% - var(--columnGutter));
-          margin-bottom: var(--columnGutter); 
-          margin-right: var(--columnGutter); 
+          height: calc(100% - ${Root.ColumnGutter});
+          margin-bottom: ${Root.ColumnGutter}; 
+          margin-right: ${Root.ColumnGutter}; 
           grid-row: 1 / 2;
         }
 
         //bottom item
         &:last-child {
           grid-row: 2 / 3;
-          height: calc(100% - var(--columnGutter));
-          margin-top: var(--columnGutter); 
-          margin-right: var(--columnGutter); 
+          height: calc(100% - ${Root.ColumnGutter});
+          margin-top: ${Root.ColumnGutter}; 
+          margin-right: ${Root.ColumnGutter}; 
         }
       }
     }
@@ -62,14 +63,14 @@ export const GridColumnStyle = styled.section`
       //bottom item
       &:first-child { 
         grid-row: 2 / 3;
-        margin-top: var(--columnGutter); 
+        margin-top: ${Root.ColumnGutter}; 
         margin-bottom: 0;
       }
 
       //top item
       &:last-child {
         grid-row: 1 / 2;
-        margin-bottom: var(--columnGutter); 
+        margin-bottom: ${Root.ColumnGutter}; 
         margin-top: 0;
       }
     }

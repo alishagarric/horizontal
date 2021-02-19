@@ -17,6 +17,7 @@ import { Theme } from "../../constants/Theme";
 import { Root } from "../../constants/Root";
 import { BrandmarkClassName } from "../_svg/Brandmark/Brandmark";
 import { LogotypeClassName } from "../_svg/Logotype/Logotype";
+import { CssUtils } from "../../constants/styles/CssUtils";
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -99,6 +100,7 @@ export const NavigationStyle = styled.nav`
         position: absolute;
 
         display: block;
+        z-index: 1;
 
         left: ${Root.Grid.Gutter.Left};
 
@@ -193,6 +195,13 @@ export const NavigationStyle = styled.nav`
         top: 0;
       }
 
+      &__col--left, &__col--right {
+        position: relative;
+        z-index: 3;
+        will-change: transform;
+        transition: transform .25s ease 1s;
+      }
+
       &__col--center {
         position: fixed;
         left: 0;
@@ -201,19 +210,32 @@ export const NavigationStyle = styled.nav`
         transform: translateY( calc(calc(100vh - ${Root.Nav.Size}) - ${BottomNavSize}) );
         width: 100vw;
         text-align: center;
+        z-index: 2;
         will-change: transform, overflow, background;
-        transition: transform 1s ease 0.25s, background 0.25s;
+        transition: transform 1s, background .25s ease 1s;
+        
 
         &.__expanded {
           transform: translateY(0);
           overflow: auto;
           background: ${Theme.Color.Background};
-          
+          transition: transform 1s ease 0.25s, background 0.25s;
 
           .${NavigationClassName}__menu-nav {
-            height: auto;
-            max-height: 100000000px;
-            
+            opacity: 1;
+            transition: opacity .25s;
+          }
+
+          ~ .${NavigationClassName}__bottom__col {
+            transition: transform .25s;
+          }
+
+          ~ .${NavigationClassName}__bottom__col--left {
+            transform: translateX(-150%);
+          }
+
+          ~ .${NavigationClassName}__bottom__col--right {
+            transform: translateX(150%);
           }
         }
       }
@@ -244,19 +266,66 @@ export const NavigationStyle = styled.nav`
     }
 
     .${NavigationClassName}__menu-nav {
-      height: 0px;
-      max-height: 0px;
       position: relative;
-      overflow: hidden;
+      opacity: 0;
+      will-change: opacity;
+      transition: opacity .25s ease 1s; 
 
       &__list {   
-        padding-bottom: 25vh;    
+        padding-bottom: 25vh; 
 
-        li {
+        &__item {
           font-size: 10vw;
           text-align: center;
-          
+
+          label:hover {
+            opacity: 0.4;
+            cursor: pointer;
+          }
+
+          input[type=checkbox] {
+            display: none;
+          }
+
+          input[type=checkbox]:checked + .${NavigationClassName}__accordion {
+            padding: calc(${Root.ColumnGutter} * 4) calc(${Root.ColumnGutter} * 4) calc(${Root.ColumnGutter} * 8) calc(${Root.ColumnGutter} * 4);
+            max-height: 100000000px;
+          }
+
+          //make the last image the biggest image in the accordion grid
+          &:nth-of-type(even) .${NavigationClassName}__accordion__image-container:nth-of-type(8) {
+            grid-row: 2 / 4;
+            grid-column: 2 / 4;
+          }
+
+          //make the last image the biggest image in the accordion grid
+          &:nth-of-type(odd) .${NavigationClassName}__accordion__image-container:nth-of-type(8) {
+            grid-row: 2 / 4;
+            grid-column: 3 / 5;
+          }
         }
+      }
+    }
+
+    .${NavigationClassName}__accordion {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: calc(${Root.ColumnGutter} * 2);
+      max-height: 0px;
+      overflow: hidden;
+
+      &__image-container {
+        padding-top: 100%;
+        position: relative;
+
+        img {
+          ${CssUtils.ObjectFit()};
+        }
+      }
+
+      &__text-container { 
+        text-align: left;
+        font-size: 1.5vw;
       }
     }
 

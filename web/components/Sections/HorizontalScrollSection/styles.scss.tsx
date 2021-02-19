@@ -35,7 +35,6 @@ export const HorizontalScrollSectionStyle = styled.section<{
 
   &.${HorizontalScrollSectionClassName} {
     --horizontalScrollSectionHeight: calc(100vh - (${Root.Nav.Size} + ${BottomNavSize}));
-    --columnGutter: calc(${Root.Grid.Gutter.Left} / 2);
 
     .${HorizontalScrollSectionClassName}__content-wrapper {
       padding-left: ${(props) =>

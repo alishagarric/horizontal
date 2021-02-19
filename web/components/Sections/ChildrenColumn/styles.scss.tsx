@@ -11,6 +11,7 @@
 
 // Core
 import styled, { keyframes } from "styled-components";
+import { Root } from "../../../constants/Root";
 import { Theme } from "../../../constants/Theme";
 
 // Constants
@@ -25,8 +26,8 @@ export const ChildrenColumnClassName = `children-column`;
 export const ChildrenColumnStyle = styled.section`
   &.${ChildrenColumnClassName} {
     width: 500px;
-    margin-left: calc(var(--columnGutter) * 2);
-    margin-right: calc(var(--columnGutter) * 2);
+    margin-left: calc(${Root.ColumnGutter} * 2);
+    margin-right: calc(${Root.ColumnGutter} * 2);
     display: flex;
     flex-direction: column;
 
