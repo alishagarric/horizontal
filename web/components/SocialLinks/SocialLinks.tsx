@@ -42,7 +42,7 @@ export const SocialLinks: React.FunctionComponent<LMNTS_Section_SocialLinks> = (
         {links && links.length > 0 &&         
           links.map((item, idx: number) => {
             return (
-              <li>
+              <li key={idx}>
               <a href={`${item.href}`}>{item.label}</a>
               </li>
             );

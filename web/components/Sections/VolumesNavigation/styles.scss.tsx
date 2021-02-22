@@ -54,6 +54,10 @@ export const VolumesNavigationStyle = styled.section`
           width: calc(100vw - (${Root.Grid.Gutter.Right} * 2));
           /* height: 30vh; */
           height: auto;
+
+          path {
+            fill: ${Theme.Color.varSecondary};
+          }
         }
       }
     }
@@ -81,7 +85,7 @@ export const VolumesNavigationStyle = styled.section`
         .${VolumesNavigationClassName}__volumes__listings__item {
           &--is-active {
             .${VolumesNavigationClassName}__volumes__listings__item__el {
-              color: ${Theme.Color.varForeground};
+              color: ${Theme.Color.varSecondary};
             }
           }
         }
@@ -90,7 +94,7 @@ export const VolumesNavigationStyle = styled.section`
           color: ${Theme.Color.varBackground};
 
           &:hover {
-            color: ${Theme.Color.varForeground};
+            color: ${Theme.Color.varSecondary};
           }
         }
       }
@@ -101,7 +105,7 @@ export const VolumesNavigationStyle = styled.section`
 
         .${VolumesNavigationClassName}__volumes__listings__item__el {
           -webkit-text-stroke-width: 3px;
-          -webkit-text-stroke-color: ${Theme.Color.varForeground};
+          -webkit-text-stroke-color: ${Theme.Color.varSecondary};
         }
       }
 

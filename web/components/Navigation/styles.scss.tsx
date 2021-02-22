@@ -243,6 +243,7 @@ export const NavigationStyle = styled.nav`
 
     .${NavigationClassName}__menu-btn {
       appearance: none;
+      color: ${Theme.Color.varForeground};
 
       border: 0;
       outline: 0;

@@ -57,15 +57,15 @@ export const ContactBlock: React.FunctionComponent<LMNTS_Section_ContactBlock> =
           <p>
             {contact.map((item, idx: number) => {
               return (
-                <>
+                <span key={idx}>
                   {item.href && item.label &&
                     <a href={`${item.href}`}>{item.label}</a>
                   }
                   {!item.href && item.label &&
                     <span>{item.label}</span>
                   }
-                  {idx != contact.length - 1 && <br/>}
-                </>
+                  {idx != contact.length - 1 && <br />}
+                </span>
               );
             })}
           </p>

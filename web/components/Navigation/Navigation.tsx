@@ -124,9 +124,8 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
                         {industry.images && industry.images.length > 0 &&
                           industry.images.map((image, idxx: number) => {
                             return (
-                              <div className={`${NavigationClassName}__accordion__image-container`}>
+                              <div className={`${NavigationClassName}__accordion__image-container`} key={idxx}>
                                 <LazyImage
-                                  key={idxx}
                                   src={image.image}
                                   alt={"Volume Industries"}
                                 />

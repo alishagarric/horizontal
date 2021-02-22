@@ -18,9 +18,6 @@ import { NextRouter, useRouter } from "next/router";
 import { Footer } from "../Footer";
 import { Navigation } from "../Navigation";
 import { parseRouteToClassName } from "../../utils/parseRouteToClassName";
-import { ColorContext } from "../../constants/styles/Color";
-import { createGlobalStyle } from "styled-components";
-import { CssUtils } from "../../constants/styles/CssUtils";
 
 // Begin Interface
 //////////////////////////////////////////////////////////////////////
@@ -37,7 +34,7 @@ export const LayoutClassName = "wrapper";
 
 export const Layout: React.FunctionComponent = ({ children }: Layout) => {
   const router: NextRouter = useRouter();
-
+  /*
   const contextualTheme = useContext(ColorContext);
 
   const SetGlobalTheme = createGlobalStyle`
@@ -52,11 +49,12 @@ export const Layout: React.FunctionComponent = ({ children }: Layout) => {
       : ""
   }
 `;
+*/
 
   return (
     <>
       <GlobalStyle />
-      <SetGlobalTheme />
+      {/*<SetGlobalTheme />*/}
       <SiteHead title="VOLUME INDUSTRIES" />
       <Navigation router={router} />
       <main className={`${LayoutClassName} ${LayoutClassName}--route-is-${parseRouteToClassName(router.pathname)}`}>{children}</main>

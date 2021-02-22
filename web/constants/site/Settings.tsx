@@ -58,6 +58,53 @@ export const Settings = {
 
 /**
  *
+ * @name LMNTS_Themes
+ * @description themes
+ *
+ */
+
+export const DefaultTheme: LXLT_ColorTheme = {
+  name: "default",
+  primary: Color.Primary,
+  secondary: Color.Primary,
+  background: Color.Background,
+  foreground: Color.Text,
+}
+
+export const FigTheme: LXLT_ColorTheme = {
+  name: "fig",
+  primary: "#FFFDEB",
+  secondary: "#FFFDEB",
+  background: "#000000",
+  foreground: "#FFFDEB",
+}
+
+export const LemonTheme: LXLT_ColorTheme = {
+  name: "lemon",
+  primary: "#000000",
+  secondary: "#FFFDEB",
+  background: "#e9d470",
+  foreground: "#000000",
+}
+
+export const OysterTheme: LXLT_ColorTheme = {
+  name: "oyster",
+  primary: "#000000",
+  secondary: "#FFFDEB",
+  background: "#959595",
+  foreground: "#000000",
+}
+
+export const SalmonTheme: LXLT_ColorTheme = {
+  name: "salmon",
+  primary: "#000000",
+  secondary: "#FFFDEB",
+  background: "#f4b7a6",
+  foreground: "#000000",
+}
+
+/**
+ *
  * @name LMNTS_SiteVolume
  * @description Volume type
  *
@@ -70,13 +117,6 @@ export type LMNTS_SiteVolume = {
   theme: LXLT_ColorTheme;
 };
 
-export const DefaultTheme: LXLT_ColorTheme = {
-  name: "default",
-  primary: Color.Primary,
-  secondary: Color.Secondary,
-  background: Color.Background,
-  foreground: Color.Text,
-}
 
 /**
  *
@@ -89,49 +129,68 @@ export const SiteVolumes: LMNTS_SiteVolume[] = [
     number: "01",
     link: "/volume-01",
     name: "Lorem ipsum",
-    theme: {
-      name: "salmon",
-      primary: "#000000",
-      secondary: "#FFFDEB",
-      background: "#f4b7a6",
-      foreground: "#000000",
-    }
+    theme: SalmonTheme
   },
   {
     number: "02",
     link: "/volume-02",
     name: "Lorem ipsum",
-    theme: {
-      name: "lemon",
-      primary: "#000000",
-      secondary: "#FFFDEB",
-      background: "#e9d470",
-      foreground: "#000000",
-    }
+    theme: LemonTheme
   },
   {
     number: "03",
     link: "/volume-03",
     name: "Lorem ipsum",
-    theme: {
-      name: "fig",
-      primary: "#FFFDEB",
-      secondary: "#FFFDEB",
-      background: "#000000",
-      foreground: "#FFFDEB",
-    }
+    theme: FigTheme
   },
   {
     number: "04",
     link: "/volume-04",
     name: "Lorem ipsum",
-    theme: {
-      name: "oyster",
-      primary: "#000000",
-      secondary: "#FFFDEB",
-      background: "#959595",
-      foreground: "#000000",
-    }
+    theme: OysterTheme
+  },
+];
+
+/**
+ *
+ * @name LMNTS_SitePage
+ * @description General Page (all pages except volumes)
+ *
+ */
+
+export type LMNTS_SitePage = {
+  link: string;
+  name: string;
+  theme: LXLT_ColorTheme;
+};
+
+
+/**
+ *
+ * @name SitePages
+ * @description General site pages
+ *
+ */
+export const SitePages: LMNTS_SitePage[] = [
+  {
+    link: "/about",
+    name: "About",
+    theme: DefaultTheme
+  },
+  {
+    link: "/contact",
+    name: "Contact",
+    theme: FigTheme
+  },
+  {
+    link: "/new-york-city",
+    name: "New York City",
+    theme: DefaultTheme
+  },
+  {
+    link: "/los-angeles",
+    name: "Los Angeles",
+    theme: DefaultTheme
   },
 ];
 

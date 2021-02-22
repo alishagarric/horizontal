@@ -29,25 +29,6 @@ export const ThemeChangerClassName = "theme-changer";
  */
 export const ThemeChangerStyle = styled.div`
   &.${ThemeChangerClassName} {
-    /*
 
-    .${ThemeChangerClassName}__option {
-      border: 2px solid ${Theme.Color.varBackground};
-
-      box-shadow: 0px 0px 0px 1px ${Theme.Color.varForeground};
-
-      &:hover {
-        box-shadow: 0px 0px 0px 2px ${Theme.Color.varForeground};
-      }
-
-      &--active {
-        box-shadow: 0px 0px 0px 2px ${Theme.Color.varForeground};
-
-        &:hover {
-          box-shadow: 0px 0px 0px 2px ${Theme.Color.varForeground};
-        }
-      }
-    }
-    */
   }
 `;

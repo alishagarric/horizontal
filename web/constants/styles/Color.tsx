@@ -5,7 +5,7 @@
 // _______________________________________________________
 
 import React from "react";
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, css } from "styled-components";
 
 // Begin Component
 // _______________________________________________________
@@ -76,6 +76,7 @@ export const Color = {
  * @description Defaults for our theming context
  *
  */
+/*
 export const ColorContext_Defaults: LXLT_ColorTheme = {
   primary: Color.Primary,
   secondary: Color.Secondary,
@@ -83,6 +84,7 @@ export const ColorContext_Defaults: LXLT_ColorTheme = {
   background: Color.Background,
   setTheme: () => {},
 };
+*/
 
 /**
  *
@@ -91,11 +93,25 @@ export const ColorContext_Defaults: LXLT_ColorTheme = {
  * @see https://medium.com/@0n3z3r0n3/react-usecontext-how-to-update-context-from-child-component-8fa2894eee3d
  *
  */
-export const useColorContext = (): LXLT_ColorTheme => {
-  const [colorTheme, setColorTheme] = React.useState(ColorContext_Defaults);
+/*
+export const useColorContext = (theme?: LXLT_ColorTheme): LXLT_ColorTheme => {
+  let ColorContext = ColorContext_Defaults;
+  if (theme ){
+    ColorContext = {
+      primary: theme.primary,
+      secondary: theme.secondary,
+      foreground: theme.foreground,
+      background: theme.background,
+      setTheme: () => {},
+    }
+  } 
+
+  const [colorTheme, setColorTheme] = React.useState(ColorContext);
 
   const setTheme = React.useCallback(
+    
     (currentColorTheme: LXLT_ColorTheme): void => {
+      console.log("This?");
       setColorTheme(currentColorTheme);
     },
     []
@@ -106,6 +122,7 @@ export const useColorContext = (): LXLT_ColorTheme => {
     setTheme,
   };
 };
+*/
 
 /**
  *
@@ -114,9 +131,11 @@ export const useColorContext = (): LXLT_ColorTheme => {
  * @see https://medium.com/@0n3z3r0n3/react-usecontext-how-to-update-context-from-child-component-8fa2894eee3d
  *
  */
+/*
 export const ColorContext = React.createContext<LXLT_ColorTheme>(
   ColorContext_Defaults
 );
+*/
 
 /**
  *
@@ -138,3 +157,18 @@ export const Palette = createGlobalStyle`
 
 //////////////////////////////////////////////////////////////////////
 // End Component
+
+
+export class ColorUtils {
+
+  static SetThemeFromServer = (serverTheme: LXLT_ColorTheme) => {
+    return createGlobalStyle`      
+      :root {
+        --clrPrimary: ${serverTheme.primary};
+        --clrSecondary: ${serverTheme.secondary};
+        --clrBackground: ${serverTheme.background};
+        --clrForeground: ${serverTheme.foreground};
+      }
+    `;
+  }
+}

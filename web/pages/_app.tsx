@@ -2,7 +2,8 @@
 import React from "react";
 import { AppProps } from "next/app";
 import { Layout } from "../components/Layout";
-import { ColorContext, useColorContext } from "../constants/styles/Color";
+import { ColorUtils } from "../constants/styles/Color";
+import { DefaultTheme, SitePages, SiteVolumes } from "../constants/site/Settings";
 
 // Begin Component
 // __________________________________________________________________________________________
@@ -19,16 +20,24 @@ type LMNTS_CustomAppData = AppProps & {};
  *
  */
 
-const MyApp = ({ Component, pageProps }: LMNTS_CustomAppData) => {
-  const colorTheme = useColorContext();
+const MyApp = ({ Component, pageProps, router }: LMNTS_CustomAppData) => {
+  let PageTheme = ColorUtils.SetThemeFromServer(DefaultTheme);
+  let thisPage = SitePages.concat(SiteVolumes).filter( (page, index) =>
+    page.link == router.asPath
+  ); 
+
+  if (router && router.asPath && thisPage.length > 0 ){
+    PageTheme = ColorUtils.SetThemeFromServer(thisPage[0].theme);
+  }
 
   // Render our App
   return (
-    <ColorContext.Provider value={colorTheme}>
+    <>
+      <PageTheme /> 
       <Layout {...pageProps}>
         <Component {...pageProps} />
       </Layout>
-    </ColorContext.Provider>
+    </>
   );
 };
 
