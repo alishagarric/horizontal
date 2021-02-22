@@ -30,7 +30,7 @@ export const SocialLinksStyle = styled.div`
     height: 100%;
 
     ul {
-      border-top: 1px solid ${Theme.Color.Text};
+      border-top: 1px solid ${Theme.Color.varForeground};
       padding-top: 10px;
 
       li {

@@ -90,7 +90,7 @@ export const VolumesNavigationStyle = styled.section`
           color: ${Theme.Color.varBackground};
 
           &:hover {
-            color: ${Theme.Color.Secondary};
+            color: ${Theme.Color.varForeground};
           }
         }
       }
@@ -116,7 +116,7 @@ export const VolumesNavigationStyle = styled.section`
           margin-right: 0.25em;
 
           &__el {
-            color: ${Theme.Color.Background};
+            color: ${Theme.Color.varBackground};
 
             &:hover {
               text-decoration: none;

@@ -5,6 +5,7 @@ import {
   LMNTS_SiteVolume,
   SiteVolumes,
 } from "../../../constants/site/Settings";
+import { ThemeChanger } from "../../ThemeChanger";
 import { Brandmark } from "../../_svg/Brandmark/Brandmark";
 import { Logotype } from "../../_svg/Logotype/Logotype";
 
@@ -73,13 +74,15 @@ export const VolumesNavigation: React.FunctionComponent<LMNTS_Section_VolumesNav
                   key={idx}
                   className={`${VolumesNavigationClassName}__volumes__listings__item`}
                 >
-                  <Link href={volume.link}>
-                    <a
-                      className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
-                    >
-                      {volume.number}
-                    </a>
-                  </Link>
+                  <ThemeChanger theme={volume.theme}>
+                    <Link href={volume.link}>
+                      <a
+                        className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
+                      >
+                        {volume.number}
+                      </a>
+                    </Link>
+                  </ThemeChanger>
                 </li>
               );
             })}
@@ -98,13 +101,15 @@ export const VolumesNavigation: React.FunctionComponent<LMNTS_Section_VolumesNav
                     idx + 1 === SiteVolumes.length ? "is-active" : "is-inactive"
                   } `}
                 >
-                  <Link href={volume.link}>
-                    <a
-                      className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
-                    >
-                      {volume.number}
-                    </a>
-                  </Link>
+                  <ThemeChanger theme={volume.theme}>
+                    <Link href={volume.link}>
+                      <a
+                        className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
+                      >
+                        {volume.number}
+                      </a>
+                    </Link>
+                  </ThemeChanger>
                 </li>
               );
             })}

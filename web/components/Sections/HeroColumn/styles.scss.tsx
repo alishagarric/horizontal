@@ -31,7 +31,7 @@ export const HeroColumnStyle = styled.section`
     margin-right: calc(${Root.ColumnGutter} * 2);
 
     a {
-      color: ${Theme.Color.Text};
+      color: ${Theme.Color.varForeground};
     }
 
     &.width--xl {

@@ -30,7 +30,7 @@ export const ContactBlockStyle = styled.div`
    // height: 100%;
 
     h4:not(.__exclude-border) {
-      border-top: 1px solid ${Theme.Color.Text};
+      border-top: 1px solid ${Theme.Color.varForeground};
       padding-top: 10px;
       
     }

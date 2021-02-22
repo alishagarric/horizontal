@@ -50,7 +50,7 @@ export const CircleTextStyle = styled.section<{
       
 
       text {
-        fill: ${Theme.Color.Text};
+        fill: ${Theme.Color.varForeground};
         font-size: 30px;
         text-transform: uppercase;
         font-weight: 600;

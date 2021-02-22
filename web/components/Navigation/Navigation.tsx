@@ -18,8 +18,9 @@ import Link from "next/link";
 import { Brandmark } from "../_svg/Brandmark/Brandmark";
 import { Logotype } from "../_svg/Logotype/Logotype";
 import { parseRouteToClassName } from "../../utils/parseRouteToClassName";
-import { LMNTS_SiteIndustry, SiteIndustries } from "../../constants/site/Settings";
+import { DefaultTheme, LMNTS_SiteIndustry, Settings, SiteIndustries } from "../../constants/site/Settings";
 import LazyImage from "../../utils/lazyImage";
+import { ThemeChanger } from "../ThemeChanger";
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -51,9 +52,9 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
         <div
           className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--left`}
         >
-          <Link href="/about">
-            <a className={`${NavigationClassName}__link`}>About</a>
-          </Link>
+            <Link href="/about">
+              <a className={`${NavigationClassName}__link`}>About</a>
+            </Link>
         </div>
 
         {/* ____________________________________ */}
@@ -61,18 +62,18 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
         <div
           className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--center`}
         >
-          <Link href="/">
-            <a
-              className={`${NavigationClassName}__link ${NavigationClassName}__link--branding`}
-            >
-              <span className={`${NavigationClassName}__brandmark`}>
-                <Brandmark />
-              </span>
-              <span className={`${NavigationClassName}__logotype`}>
-                <Logotype />
-              </span>
-            </a>
-          </Link>
+            <Link href="/">
+              <a
+                className={`${NavigationClassName}__link ${NavigationClassName}__link--branding`}
+              >
+                <span className={`${NavigationClassName}__brandmark`}>
+                  <Brandmark />
+                </span>
+                <span className={`${NavigationClassName}__logotype`}>
+                  <Logotype />
+                </span>
+              </a>
+            </Link>
         </div>
 
         {/* ____________________________________ */}
@@ -80,9 +81,9 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
         <div
           className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--right`}
         >
-          <Link href="/contact">
-            <a className={`${NavigationClassName}__link`}>Contact</a>
-          </Link>
+            <Link href="/contact">
+              <a className={`${NavigationClassName}__link`}>Contact</a>
+            </Link>
         </div>
       </div>
 
@@ -147,9 +148,9 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
         <div
           className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--left`}
         >
-          <Link href="/new-york-city">
-            <a className={`${NavigationClassName}__link`}>New York City</a>
-          </Link>
+            <Link href="/new-york-city">
+              <a className={`${NavigationClassName}__link`}>New York City</a>
+            </Link>
         </div>
 
         {/* ____________________________________ */}
@@ -157,9 +158,9 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
         <div
           className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--right`}
         >
-          <Link href="/los-angeles">
-            <a className={`${NavigationClassName}__link`}>Los Angeles</a>
-          </Link>
+            <Link href="/los-angeles">
+              <a className={`${NavigationClassName}__link`}>Los Angeles</a>
+            </Link>
         </div>
       </div>
     </NavigationStyle>

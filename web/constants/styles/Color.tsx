@@ -13,12 +13,10 @@ import { createGlobalStyle } from "styled-components";
 export type LXLT_ColorTheme = {
   name?:
     | "default"
-    | "goldenrod"
-    | "cadetblue"
-    | "orangered"
-    | "galaxy"
+    | "salmon"
     | "lemon"
-    | "salmon";
+    | "fig"
+    | "oyster";
   primary: string;
   secondary: string;
   background: string;

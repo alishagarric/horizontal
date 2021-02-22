@@ -218,7 +218,7 @@ export const NavigationStyle = styled.nav`
         &.__expanded {
           transform: translateY(0);
           overflow: auto;
-          background: ${Theme.Color.Background};
+          background: ${Theme.Color.varBackground};
           transition: transform 1s ease 0.25s, background 0.25s;
 
           .${NavigationClassName}__menu-nav {

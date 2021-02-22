@@ -32,7 +32,7 @@ export const ChildrenColumnStyle = styled.section`
     flex-direction: column;
 
     a {
-      color: ${Theme.Color.Text};
+      color: ${Theme.Color.varForeground};
     }
 
     &.width--xl {

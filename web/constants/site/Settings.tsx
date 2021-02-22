@@ -11,7 +11,8 @@
 // Imports
 //////////////////////////////////////////////////////////////////////
 
-import { Color } from "../styles/Color";
+import { Color, LXLT_ColorTheme } from "../styles/Color";
+import { Theme } from "../Theme";
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -66,7 +67,16 @@ export type LMNTS_SiteVolume = {
   number: string;
   link: string;
   name: string;
+  theme: LXLT_ColorTheme;
 };
+
+export const DefaultTheme: LXLT_ColorTheme = {
+  name: "default",
+  primary: Color.Primary,
+  secondary: Color.Secondary,
+  background: Color.Background,
+  foreground: Color.Text,
+}
 
 /**
  *
@@ -79,21 +89,49 @@ export const SiteVolumes: LMNTS_SiteVolume[] = [
     number: "01",
     link: "/volume-01",
     name: "Lorem ipsum",
+    theme: {
+      name: "salmon",
+      primary: "#000000",
+      secondary: "#FFFDEB",
+      background: "#f4b7a6",
+      foreground: "#000000",
+    }
   },
   {
     number: "02",
     link: "/volume-02",
     name: "Lorem ipsum",
+    theme: {
+      name: "lemon",
+      primary: "#000000",
+      secondary: "#FFFDEB",
+      background: "#e9d470",
+      foreground: "#000000",
+    }
   },
   {
     number: "03",
     link: "/volume-03",
     name: "Lorem ipsum",
+    theme: {
+      name: "fig",
+      primary: "#FFFDEB",
+      secondary: "#FFFDEB",
+      background: "#000000",
+      foreground: "#FFFDEB",
+    }
   },
   {
     number: "04",
     link: "/volume-04",
     name: "Lorem ipsum",
+    theme: {
+      name: "oyster",
+      primary: "#000000",
+      secondary: "#FFFDEB",
+      background: "#959595",
+      foreground: "#000000",
+    }
   },
 ];
 
