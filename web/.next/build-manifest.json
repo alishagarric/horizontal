@@ -44,6 +44,11 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/los-angeles.js"
     ],
+    "/new-york-city": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/new-york-city.js"
+    ],
     "/next/dist/pages/_error": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
@@ -58,6 +63,11 @@
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/volume-02.js"
+    ],
+    "/volume-03": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/volume-03.js"
     ],
     "/volume-04": [
       "static/chunks/main.js",

@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { Root } from "../../../constants/Root";
+import { Base } from "../../../constants/styles/Base";
 import { Theme } from "../../../constants/Theme";
 import { BottomNavMargin, BottomNavSize } from "../../Navigation/styles.scss";
 
@@ -27,20 +28,26 @@ const TallOuterContainer = styled.div.attrs(({ dynamicHeight }) => ({
 `;
 
 
+
 const Scrollbar = styled.span.attrs(({ dynamicBarWidth, translateX }) => ({
-  style: { width: `${dynamicBarWidth}px`, transform: `translateX(${translateX}px) scaleX( .85)` },
+  style: { width: `${dynamicBarWidth}px`, transform: `translateX(${translateX}px)` },
 }))`
   --scrollBarHeight: 4px;
   height: var(--scrollBarHeight);
   background: ${Theme.Color.varSecondary};
-  position: fixed;
   transform-origin: left bottom;
-  bottom: calc(${BottomNavMargin } + ${BottomNavSize});
-  margin-left: ${Root.Grid.Gutter.Left};
-  margin-right: ${Root.Grid.Gutter.Right};
-  left: 0;
+  display: block;
+`;
+
+const ScrollbarContainer = styled.span.attrs(({ dynamicBarContainerWidth }) => ({
+  style: { transform: `scaleX(${dynamicBarContainerWidth })` },
+}))`
+  transform-origin: left center;
+  left: ${Root.Grid.Gutter.Left};
+  position: fixed;
   right: 0;
   z-index: 999;
+  bottom: calc(${BottomNavMargin } + ${BottomNavSize});
 `;
 
 const StickyInnerContainer = styled.div`
@@ -105,6 +112,13 @@ const handleDynamicBarWidth = (ref, setDynamicBarWidth) => {
   setDynamicBarWidth(dynamicBarWidth);
 };
 
+const handleDynamicBarContainerWidth = (ref, setDynamicBarContainerWidth) => {
+  const vw = window.innerWidth;
+  const gutterSpace = Base.Grid.Gutter.Lg.Left + Base.Grid.Gutter.Lg.Right
+  const dynamicBarWidth = (vw - gutterSpace) / vw;
+  setDynamicBarContainerWidth(dynamicBarWidth);
+};
+
 const applyScrollListener = (ref, setTranslateX, setBarTranslateX) => {
   window.addEventListener("scroll", () => {
     const offsetTop = ref && ref.current ? -ref.current.offsetTop : 0;
@@ -123,6 +137,7 @@ export const HorizontalScrollSection = ({
 }) => {
   const [dynamicHeight, setDynamicHeight] = useState(null);
   const [dynamicBarWidth, setDynamicBarWidth] = useState(null);
+  const [dynamicBarContainerWidth, setDynamicBarContainerWidth] = useState(null);
   const [translateX, setTranslateX] = useState(0);
   const [translateBarX, setBarTranslateX] = useState(0);
 
@@ -132,11 +147,13 @@ export const HorizontalScrollSection = ({
   const resizeHandler = () => {
     handleDynamicHeight(objectRef, setDynamicHeight);
     handleDynamicBarWidth(objectRef, setDynamicBarWidth);
+    handleDynamicBarContainerWidth(objectRef, setDynamicBarContainerWidth);
   };
 
   useEffect(() => {
     handleDynamicHeight(objectRef, setDynamicHeight);
     handleDynamicBarWidth(objectRef, setDynamicBarWidth);
+    handleDynamicBarContainerWidth(objectRef, setDynamicBarContainerWidth);
     window.addEventListener("resize", resizeHandler);
     applyScrollListener(containerRef, setTranslateX, setBarTranslateX);
   }, []);
@@ -162,7 +179,9 @@ export const HorizontalScrollSection = ({
           </HorizontalTranslateContainer>
         </StickyInnerContainer>
       </TallOuterContainer>
-      <Scrollbar dynamicBarWidth={dynamicBarWidth} translateX={translateBarX}></Scrollbar>
+      <ScrollbarContainer dynamicBarContainerWidth={dynamicBarContainerWidth}>
+        <Scrollbar dynamicBarWidth={dynamicBarWidth} translateX={translateBarX}></Scrollbar>
+      </ScrollbarContainer>
     </HorizontalScrollSectionStyle>
   );
 };
