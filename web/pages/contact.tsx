@@ -37,7 +37,7 @@ export const ContactPageClassName = "route__contact-page";
 const ContactPage: NextPage<LMNTS_ContactPage> = () => {
   return (
     <div className={`${ContactPageClassName}`}>
-      <HorizontalScrollSection hasSidebar={true}>
+      <HorizontalScrollSection>
         <HeroColumn 
           header="Let's Connect"
           subHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."

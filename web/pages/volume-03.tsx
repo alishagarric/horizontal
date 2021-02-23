@@ -15,6 +15,7 @@ import { GridColumn } from "../components/Sections/GridColumn";
 import { HeroColumn } from "../components/Sections/HeroColumn";
 import { HorizontalScrollSection } from "../components/Sections/HorizontalScrollSection";
 import { LargeText } from "../components/Sections/LargeText";
+import { VolumesArrowsNavigation } from "../components/Sections/VolumesArrowsNavigation/VolumesArrowsNavigation";
 import { Root } from "../constants/Root";
 import { Theme } from "../constants/Theme";
 
@@ -34,7 +35,8 @@ export const Volume03ClassName = "route__volume-03";
 const Volume03: NextPage<LMNTS_Volume03> = () => {
   return (
     <div className={`${Volume03ClassName}`}>
-      <HorizontalScrollSection hasSidebar={true}>
+      <VolumesArrowsNavigation />
+      <HorizontalScrollSection hasTopbar={true}>
         <HeroColumn 
           header="New Beginnings"
           subHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."

@@ -36,7 +36,7 @@ export const NewYorkCityClassName = "route__new-york-city";
 const NewYorkCity: NextPage<LMNTS_NewYorkCity> = () => {
   return (
     <div className={`${NewYorkCityClassName}`}>
-      <HorizontalScrollSection hasSidebar={true}>
+      <HorizontalScrollSection>
         <HeroColumn 
           header="New York City"
           subHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."

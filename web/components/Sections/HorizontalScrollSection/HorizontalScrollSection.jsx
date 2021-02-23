@@ -78,7 +78,7 @@ const applyScrollListener = (ref, setTranslateX) => {
 export const HorizontalScrollSection = ({
   addClass = "",
   children,
-  hasSidebar = false,
+  hasTopbar = false,
   forceFullWidth = false,
   style = {},
 }) => {
@@ -103,7 +103,7 @@ export const HorizontalScrollSection = ({
       style={style}
       forceFullWidth={forceFullWidth}
       className={`${HorizontalScrollSectionClassName} ${HorizontalScrollSectionClassName}--${
-        hasSidebar ? "has-sidebar" : ""
+        hasTopbar ? "has-topbar" : ""
       } ${addClass && addClass}`}
     >
       <TallOuterContainer dynamicHeight={dynamicHeight}>

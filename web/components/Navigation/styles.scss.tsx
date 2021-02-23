@@ -23,7 +23,8 @@ import { CssUtils } from "../../constants/styles/CssUtils";
 //////////////////////////////////////////////////////////////////////
 
 export const NavigationClassName = `nav`;
-export const BottomNavSize = `calc(${Root.Nav.Size} * 1.15)`;
+export const BottomNavSize = Root.Nav.Size;
+export const BottomNavMargin = Theme.Base.Size.Sm;
 
 export const NavigationStyle = styled.nav`
   &.${NavigationClassName} {
@@ -47,6 +48,7 @@ export const NavigationStyle = styled.nav`
       .${NavigationClassName}__menu-btn {
        // transform: translateY(12%) scale(0.65);
        transform: translateY(0%) scale(0.65);
+       height: ${BottomNavSize};
       }
 
       // _________________________________
@@ -177,10 +179,9 @@ export const NavigationStyle = styled.nav`
       bottom: 0;
 
       height: ${BottomNavSize};
+      margin-bottom: ${BottomNavMargin};
 
-      padding-bottom: calc(${Root.Size} * 1.75);
-
-      align-items: flex-end;
+      align-items: center;
 
       &:before,
       &:after {
@@ -188,7 +189,7 @@ export const NavigationStyle = styled.nav`
       }
 
       &:before {
-        bottom: ${Root.Size};
+        bottom: 0;
       }
 
       &:after {
@@ -207,7 +208,7 @@ export const NavigationStyle = styled.nav`
         left: 0;
         top: ${Root.Nav.Size};
         height: calc(100vh - ${Root.Nav.Size});
-        transform: translateY( calc(calc(100vh - ${Root.Nav.Size}) - ${BottomNavSize}) );
+        transform: translateY( calc(calc(100vh - ${Root.Nav.Size}) - ${BottomNavSize} - ${BottomNavMargin}) );
         width: 100vw;
         text-align: center;
         z-index: 2;

@@ -34,7 +34,7 @@ export const AboutPageClassName = "route__about-page";
 const AboutPage: NextPage<LMNTS_AboutPage> = () => {
   return (
     <div className={`${AboutPageClassName}`}>
-      <HorizontalScrollSection hasSidebar={true}>
+      <HorizontalScrollSection>
         <HeroColumn 
           header="Volume Industries is a full service shop bringing ideas from conception to reality"
           subHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation."
