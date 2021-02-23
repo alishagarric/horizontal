@@ -48,7 +48,7 @@ export const CircleText: React.FunctionComponent<LMNTS_Section_CircleText> = ({
               a ${diameter / 2},${diameter / 2} 0 1,1 -${diameter},0
               `}/>
         <text width={diameter}>
-          <textPath alignment-baseline="bottom" xlinkHref="#curve">
+          <textPath alignmentBaseline="baseline" xlinkHref="#curve">
             {text}
           </textPath>
         </text>

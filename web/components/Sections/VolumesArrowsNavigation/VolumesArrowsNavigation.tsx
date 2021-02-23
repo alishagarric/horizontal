@@ -54,19 +54,23 @@ export const VolumesArrowsNavigation: React.FunctionComponent<LMNTS_Section_Volu
         className={`${VolumesArrowsNavigationClassName}`}
       >
         <div className={`${VolumesArrowsNavigationClassName}__inner`}>
-          <Link href={prevLink} >
-            <a className={`${VolumesArrowsNavigationClassName}__col ${VolumesArrowsNavigationClassName}__col--left`}>
-              Volume {prevNumber}
-            </a>
-          </Link>
-          <div className={`${VolumesArrowsNavigationClassName}__col ${VolumesArrowsNavigationClassName}__col--center`}>
+          <p className={`${VolumesArrowsNavigationClassName}__col ${VolumesArrowsNavigationClassName}__col--left`}>
+            <Link href={prevLink} >
+              <a>
+                Volume {prevNumber}
+              </a>
+            </Link>
+          </p>
+          <p className={`${VolumesArrowsNavigationClassName}__col ${VolumesArrowsNavigationClassName}__col--center`}>
             {number}: <strong>{title}</strong>
-          </div>
-          <Link href={nextLink} >
-            <a className={`${VolumesArrowsNavigationClassName}__col ${VolumesArrowsNavigationClassName}__col--right`}>
-              Volume {nextNumber}
-            </a>
-          </Link>
+          </p>
+          <p className={`${VolumesArrowsNavigationClassName}__col ${VolumesArrowsNavigationClassName}__col--right`}>
+            <Link href={nextLink}>
+              <a>
+                Volume {nextNumber}
+              </a>
+            </Link>
+          </p>
         </div>
       </VolumesArrowsNavigationStyle>
     );

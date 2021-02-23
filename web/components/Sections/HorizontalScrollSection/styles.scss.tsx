@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 // Constants
 import { Root } from "../../../constants/Root";
+import { Base } from "../../../constants/styles/Base";
 
 import { CssUtils } from "../../../constants/styles/CssUtils";
 import { Theme } from "../../../constants/Theme";
@@ -37,7 +38,7 @@ export const HorizontalScrollSectionStyle = styled.section<{
   &.${HorizontalScrollSectionClassName} {
     --horizontalScrollSectionSpace: ${Theme.Base.Size.Sm};
     --horizontalScrollSectionHeight: calc(100vh - (${Root.Nav.Size} + ${BottomNavSize} + ${BottomNavMargin} + var(--horizontalScrollSectionSpace) + var(--horizontalScrollSectionSpace)));
-    --horizontalScrollSectionTopBarHeight: calc(${Root.Nav.Size} * 0.75);
+    --horizontalScrollSectionTopBarHeight: calc(${Root.Nav.Size} * 0.5);
 
     &.${HorizontalScrollSectionClassName}--has-topbar {
       --horizontalScrollSectionHeight: calc(100vh - (${Root.Nav.Size} + ${BottomNavSize} + ${BottomNavMargin} + var(--horizontalScrollSectionSpace) + var(--horizontalScrollSectionSpace) + var(--horizontalScrollSectionTopBarHeight)));
@@ -59,6 +60,10 @@ export const HorizontalScrollSectionStyle = styled.section<{
         margin-bottom: calc(${BottomNavSize} + ${BottomNavMargin} + var(--horizontalScrollSectionSpace));
         height: var(--horizontalScrollSectionHeight);
         max-height: var(--horizontalScrollSectionHeight);
+
+        &:last-of-type {
+          margin-right: 150px;
+        }
       }
     }
   }

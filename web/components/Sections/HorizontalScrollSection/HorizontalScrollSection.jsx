@@ -1,6 +1,9 @@
 // Core
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { Root } from "../../../constants/Root";
+import { Theme } from "../../../constants/Theme";
+import { BottomNavMargin, BottomNavSize } from "../../Navigation/styles.scss";
 
 // Components
 
@@ -21,6 +24,23 @@ const TallOuterContainer = styled.div.attrs(({ dynamicHeight }) => ({
 }))`
   position: relative;
   width: 100%;
+`;
+
+
+const Scrollbar = styled.span.attrs(({ dynamicBarWidth, translateX }) => ({
+  style: { width: `${dynamicBarWidth}px`, transform: `translateX(${translateX}px) scaleX( .85)` },
+}))`
+  --scrollBarHeight: 4px;
+  height: var(--scrollBarHeight);
+  background: ${Theme.Color.varSecondary};
+  position: fixed;
+  transform-origin: left bottom;
+  bottom: calc(${BottomNavMargin } + ${BottomNavSize});
+  margin-left: ${Root.Grid.Gutter.Left};
+  margin-right: ${Root.Grid.Gutter.Right};
+  left: 0;
+  right: 0;
+  z-index: 999;
 `;
 
 const StickyInnerContainer = styled.div`
@@ -59,7 +79,18 @@ const HorizontalSection = styled.section`
 const calcDynamicHeight = (objectWidth) => {
   const vw = window.innerWidth;
   const vh = window.innerHeight;
-  return objectWidth - vw + vh + 150;
+  return objectWidth - vw + vh ;//+ 150;
+};
+
+const calcWidthRatio = (objectWidth) => {
+  const vw = window.innerWidth;
+  const ratio = (objectWidth / vw);
+  return ratio;
+};
+
+const calcDynamicBarWidth = (objectWidth) => {
+  const ratio = calcWidthRatio(objectWidth);
+  return window.innerWidth / ratio;
 };
 
 const handleDynamicHeight = (ref, setDynamicHeight) => {
@@ -68,10 +99,18 @@ const handleDynamicHeight = (ref, setDynamicHeight) => {
   setDynamicHeight(dynamicHeight);
 };
 
-const applyScrollListener = (ref, setTranslateX) => {
+const handleDynamicBarWidth = (ref, setDynamicBarWidth) => {
+  const objectWidth = ref.current.scrollWidth;
+  const dynamicBarWidth = calcDynamicBarWidth(objectWidth);
+  setDynamicBarWidth(dynamicBarWidth);
+};
+
+const applyScrollListener = (ref, setTranslateX, setBarTranslateX) => {
   window.addEventListener("scroll", () => {
     const offsetTop = ref && ref.current ? -ref.current.offsetTop : 0;
+    const barOffset = ref && ref.current ? (offsetTop * -1) / (ref.current.firstChild.clientWidth / window.innerWidth) : 0;
     setTranslateX(offsetTop);
+    setBarTranslateX(barOffset);
   });
 };
 
@@ -83,19 +122,23 @@ export const HorizontalScrollSection = ({
   style = {},
 }) => {
   const [dynamicHeight, setDynamicHeight] = useState(null);
+  const [dynamicBarWidth, setDynamicBarWidth] = useState(null);
   const [translateX, setTranslateX] = useState(0);
+  const [translateBarX, setBarTranslateX] = useState(0);
 
   const containerRef = useRef(null);
   const objectRef = useRef(null);
 
   const resizeHandler = () => {
     handleDynamicHeight(objectRef, setDynamicHeight);
+    handleDynamicBarWidth(objectRef, setDynamicBarWidth);
   };
 
   useEffect(() => {
     handleDynamicHeight(objectRef, setDynamicHeight);
+    handleDynamicBarWidth(objectRef, setDynamicBarWidth);
     window.addEventListener("resize", resizeHandler);
-    applyScrollListener(containerRef, setTranslateX);
+    applyScrollListener(containerRef, setTranslateX, setBarTranslateX);
   }, []);
 
   return (
@@ -119,6 +162,7 @@ export const HorizontalScrollSection = ({
           </HorizontalTranslateContainer>
         </StickyInnerContainer>
       </TallOuterContainer>
+      <Scrollbar dynamicBarWidth={dynamicBarWidth} translateX={translateBarX}></Scrollbar>
     </HorizontalScrollSectionStyle>
   );
 };
