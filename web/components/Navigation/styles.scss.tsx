@@ -98,6 +98,7 @@ export const NavigationStyle = styled.nav`
       &:before,
       &:after {
         content: "";
+        opacity: 0.4;
 
         position: absolute;
 
@@ -281,7 +282,7 @@ export const NavigationStyle = styled.nav`
           text-align: center;
 
           label:hover {
-            opacity: 0.4;
+            opacity: 0.2;
             cursor: pointer;
           }
 

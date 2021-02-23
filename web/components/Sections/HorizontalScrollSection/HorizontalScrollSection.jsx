@@ -30,24 +30,24 @@ const TallOuterContainer = styled.div.attrs(({ dynamicHeight }) => ({
 
 
 const Scrollbar = styled.span.attrs(({ dynamicBarWidth, translateX }) => ({
-  style: { width: `${dynamicBarWidth}px`, transform: `translateX(${translateX}px)` },
+  style: { width: `${dynamicBarWidth}px`, transform: `translateX(${translateX}px) scaleY(1.5)` },
 }))`
-  --scrollBarHeight: 4px;
-  height: var(--scrollBarHeight);
-  background: ${Theme.Color.varSecondary};
-  transform-origin: left bottom;
+  height: var(--scrollBarHeight);;
+  background: ${Theme.Color.varForeground};
+  transform-origin: left center;
   display: block;
 `;
 
 const ScrollbarContainer = styled.span.attrs(({ dynamicBarContainerWidth }) => ({
   style: { transform: `scaleX(${dynamicBarContainerWidth })` },
 }))`
+  --scrollBarHeight: 2px;
   transform-origin: left center;
   left: ${Root.Grid.Gutter.Left};
   position: fixed;
   right: 0;
   z-index: 999;
-  bottom: calc(${BottomNavMargin } + ${BottomNavSize});
+  bottom: calc(${BottomNavMargin } + ${BottomNavSize} - var(--scrollBarHeight));
 `;
 
 const StickyInnerContainer = styled.div`
@@ -101,13 +101,13 @@ const calcDynamicBarWidth = (objectWidth) => {
 };
 
 const handleDynamicHeight = (ref, setDynamicHeight) => {
-  const objectWidth = ref.current.scrollWidth;
+  const objectWidth = ref && ref.current ? ref.current.scrollWidth : 0;
   const dynamicHeight = calcDynamicHeight(objectWidth);
   setDynamicHeight(dynamicHeight);
 };
 
 const handleDynamicBarWidth = (ref, setDynamicBarWidth) => {
-  const objectWidth = ref.current.scrollWidth;
+  const objectWidth = ref && ref.current ? ref.current.scrollWidth: 0;
   const dynamicBarWidth = calcDynamicBarWidth(objectWidth);
   setDynamicBarWidth(dynamicBarWidth);
 };
@@ -116,7 +116,7 @@ const handleDynamicBarContainerWidth = (ref, setDynamicBarContainerWidth) => {
   const vw = window.innerWidth;
   const gutterSpace = Base.Grid.Gutter.Lg.Left + Base.Grid.Gutter.Lg.Right
   const dynamicBarWidth = (vw - gutterSpace) / vw;
-  setDynamicBarContainerWidth(dynamicBarWidth);
+  setDynamicBarContainerWidth(dynamicBarWidth < 1 ? dynamicBarWidth : 1);
 };
 
 const applyScrollListener = (ref, setTranslateX, setBarTranslateX) => {
