@@ -336,6 +336,22 @@ export const NavigationStyle = styled.nav`
       color: ${Theme.Color.varForeground};
       text-transform: uppercase;
 
+      &.__active {
+        position: relative;
+
+        &:after {
+          --circleSize: ${Theme.Base.Size.Sm};
+          content: "";
+          width: calc(100% + var(--circleSize));
+          height: calc(100% + var(--circleSize));
+          border-radius: 50%;
+          border: 1px solid ${Theme.Color.varForeground};
+          left: calc(var(--circleSize) / -2);
+          top: calc(var(--circleSize) / -2);
+          position: absolute;
+        }
+      }
+
       &:hover {
         text-decoration: none;
       }

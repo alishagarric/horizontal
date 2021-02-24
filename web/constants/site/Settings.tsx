@@ -128,7 +128,7 @@ export const SiteVolumes: LMNTS_SiteVolume[] = [
   {
     number: "01",
     link: "/volume-01",
-    name: "Lorem ipsum",
+    name: "New Beginnings",
     theme: SalmonTheme
   },
   {
@@ -140,13 +140,13 @@ export const SiteVolumes: LMNTS_SiteVolume[] = [
   {
     number: "03",
     link: "/volume-03",
-    name: "Lorem ipsum",
+    name: "Wondering Moments",
     theme: FigTheme
   },
   {
     number: "04",
     link: "/volume-04",
-    name: "Lorem ipsum",
+    name: "Free Thoughts",
     theme: OysterTheme
   },
 ];

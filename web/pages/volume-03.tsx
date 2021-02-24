@@ -38,7 +38,7 @@ const Volume03: NextPage<LMNTS_Volume03> = () => {
       <VolumesArrowsNavigation />
       <HorizontalScrollSection hasTopbar={true}>
         <HeroColumn 
-          header="New Beginnings"
+          header="Wondering Moments"
           subHeader="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         >
           <h3>Lorem ipsum dolor</h3>

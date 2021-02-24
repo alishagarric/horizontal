@@ -18,9 +18,8 @@ import Link from "next/link";
 import { Brandmark } from "../_svg/Brandmark/Brandmark";
 import { Logotype } from "../_svg/Logotype/Logotype";
 import { parseRouteToClassName } from "../../utils/parseRouteToClassName";
-import { DefaultTheme, LMNTS_SiteIndustry, Settings, SiteIndustries } from "../../constants/site/Settings";
+import { LMNTS_SiteIndustry, SiteIndustries, SitePages } from "../../constants/site/Settings";
 import LazyImage from "../../utils/lazyImage";
-import { ThemeChanger } from "../ThemeChanger";
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -32,7 +31,18 @@ export type LMNTS_Navigation = {
 export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
   router,
 }) => {
-  console.log(router);
+
+  let aboutPageIndex = SitePages.findIndex(page => page.name == "About");
+  let aboutPage = aboutPageIndex != -1 ? SitePages[aboutPageIndex] : false;
+
+  let contactPageIndex = SitePages.findIndex(page => page.name == "Contact");
+  let contactPage = contactPageIndex != -1 ? SitePages[contactPageIndex] : false;
+
+  let nycPageIndex = SitePages.findIndex(page => page.name == "New York City");
+  let nycPage = nycPageIndex != -1 ? SitePages[nycPageIndex] : false;
+
+  let laPageIndex = SitePages.findIndex(page => page.name == "Los Angeles");
+  let laPage = laPageIndex != -1 ? SitePages[laPageIndex] : false;
 
   const [menuVisible, setMenuVisible] = useState(false);
 
@@ -49,13 +59,15 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
       <div className={`${NavigationClassName}__top`}>
         {/* ____________________________________ */}
         {/* Left Column */}
-        <div
-          className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--left`}
-        >
-            <Link href="/about">
-              <a className={`${NavigationClassName}__link`}>About</a>
-            </Link>
-        </div>
+        {aboutPage && 
+          <div
+            className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--left`}
+          >
+              <Link href={aboutPage.link}>
+                <a className={`${NavigationClassName}__link ${router.asPath == aboutPage.link ? "__active": ""}`}>{aboutPage.name}</a>
+              </Link>
+          </div>
+        }
 
         {/* ____________________________________ */}
         {/* Center Column */}
@@ -78,13 +90,15 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
 
         {/* ____________________________________ */}
         {/* Right Column */}
-        <div
-          className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--right`}
-        >
-            <Link href="/contact">
-              <a className={`${NavigationClassName}__link`}>Contact</a>
-            </Link>
-        </div>
+        {contactPage && 
+          <div
+            className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--right`}
+          >
+              <Link href={contactPage.link}>
+                <a className={`${NavigationClassName}__link ${router.asPath == contactPage.link ? "__active": ""}`}>{contactPage.name}</a>
+              </Link>
+          </div>
+        }
       </div>
 
       {/* ____________________________________ */}
@@ -144,23 +158,27 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
 
         {/* ____________________________________ */}
         {/* Left Column */}
-        <div
-          className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--left`}
-        >
-            <Link href="/new-york-city">
-              <a className={`${NavigationClassName}__link`}>New York City</a>
+        {nycPage &&
+          <div
+            className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--left`}
+          >
+            <Link href={nycPage.link}>
+              <a className={`${NavigationClassName}__link ${router.asPath == nycPage.link ? "__active": ""}`}>{nycPage.name}</a>
             </Link>
-        </div>
+          </div>
+        }
 
         {/* ____________________________________ */}
         {/* Right Column */}
-        <div
-          className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--right`}
-        >
-            <Link href="/los-angeles">
-              <a className={`${NavigationClassName}__link`}>Los Angeles</a>
-            </Link>
-        </div>
+        { laPage &&
+          <div
+            className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--right`}
+          >
+              <Link href={laPage.link}>
+                <a className={`${NavigationClassName}__link ${router.asPath == laPage.link ? "__active": ""}`}>{laPage.name}</a>
+              </Link>
+          </div>
+        }
       </div>
     </NavigationStyle>
   );

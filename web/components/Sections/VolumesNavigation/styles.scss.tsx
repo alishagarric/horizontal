@@ -17,6 +17,7 @@ import { Root } from "../../../constants/Root";
 import { Theme } from "../../../constants/Theme";
 import { hexToRGB } from "../../../utils/hexToRGB";
 import { LogotypeClassName } from "../../_svg/Logotype/Logotype";
+import { MarqueeRowClassName, MarqueeRowStyle } from "../MarqueeRow/styles.scss";
 
 // Helpers
 
@@ -47,8 +48,21 @@ export const VolumesNavigationStyle = styled.section`
         display: none; // temporary
       }
 
-      &__logotype {
+      &__logotype-marquee {
         width: calc(100vw - (${Root.Grid.Gutter.Right} * 2));
+        position: relative;
+
+        .${MarqueeRowClassName} {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+
+          ~ .${LogotypeClassName} {
+            opacity: 0;
+          }
+        }
 
         .${LogotypeClassName} {
           width: calc(100vw - (${Root.Grid.Gutter.Right} * 2));
@@ -117,7 +131,16 @@ export const VolumesNavigationStyle = styled.section`
           font-size: 25vw;
           line-height: 0.8;
 
-          margin-right: 0.25em;
+          padding: 0.125em;
+
+          &:first-of-type {
+            padding-left: 0;
+          }
+
+          &:last-of-type {
+            padding-left: 0;
+          }
+
 
           &__el {
             color: ${Theme.Color.varBackground};
