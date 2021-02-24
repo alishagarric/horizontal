@@ -41,7 +41,7 @@ export const Base = {
       Size: {
         Lg: 80, // px
         Md: 80, // px
-        Sm: 80, // px
+        Sm: 50, // px
       },
     },
 

@@ -40,6 +40,11 @@ const Scrollbar = styled.span.attrs(({ dynamicBarWidth, translateX }) => ({
   background: ${Theme.Color.varForeground};
   transform-origin: left center;
   display: block;
+
+  @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    width: auto;
+    transform: none;
+  }
 `;
 
 const ScrollbarContainer = styled.span.attrs(({ dynamicBarContainerWidth }) => ({
@@ -52,6 +57,11 @@ const ScrollbarContainer = styled.span.attrs(({ dynamicBarContainerWidth }) => (
   right: 0;
   z-index: 999;
   bottom: calc(${BottomNavMargin } + ${BottomNavSize} - var(--scrollBarHeight));
+
+  @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    display: none;
+    transform: none;
+  }
 `;
 
 const StickyInnerContainer = styled.div`

@@ -87,9 +87,12 @@ export const VolumesArrowsNavigationStyle = styled.section`
         right: calc(${Theme.Base.Size.Sm} / -4);
         transform: rotate(135deg) scale(.5);
       }
-
-
     }
 
+    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+      .${VolumesArrowsNavigationClassName}__col--center {
+        display: none;
+      }
+    }
   }
 `;

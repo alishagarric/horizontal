@@ -18,6 +18,7 @@ import { Root } from "../../constants/Root";
 import { BrandmarkClassName } from "../_svg/Brandmark/Brandmark";
 import { LogotypeClassName } from "../_svg/Logotype/Logotype";
 import { CssUtils } from "../../constants/styles/CssUtils";
+import { Base } from "../../constants/styles/Base";
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -363,6 +364,41 @@ export const NavigationStyle = styled.nav`
 
       &:hover {
         text-decoration: none;
+      }
+    }
+
+    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+      .${NavigationClassName}__bottom, .${NavigationClassName}__top__col--left, .${NavigationClassName}__top__col--right {
+        display: none;
+      }
+
+      .${NavigationClassName}__top {
+        .${NavigationClassName}__top__col--center {
+          height: 100%;
+
+          .${NavigationClassName}__link--branding {
+            height: 100%;
+            width: auto;
+
+            .${NavigationClassName}__logotype, .${NavigationClassName}__brandmark {
+              height: 100%;
+
+              .${LogotypeClassName}, .${BrandmarkClassName}  {
+                height: calc(${Root.Nav.Size} * .6);
+              }
+            }
+          }
+        }
+      }
+
+      &:not(.${NavigationClassName}--route-is-home) {
+        .${NavigationClassName}__top {
+          .${NavigationClassName}__link--branding {
+            .${NavigationClassName}__logotype {
+              transform: translateY(-100%);
+            }
+          }
+        }
       }
     }
   }

@@ -29,30 +29,20 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/_error.js"
     ],
-    "/about": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/about.js"
-    ],
     "/contact": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/contact.js"
     ],
-    "/los-angeles": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/los-angeles.js"
-    ],
-    "/new-york-city": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/new-york-city.js"
-    ],
     "/volume-02": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
       "static/chunks/pages/volume-02.js"
+    ],
+    "/volume-03": [
+      "static/chunks/main.js",
+      "static/chunks/webpack.js",
+      "static/chunks/pages/volume-03.js"
     ]
   },
   "ampFirstPages": []
