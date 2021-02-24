@@ -50,9 +50,9 @@ export const ContactBlock: React.FunctionComponent<LMNTS_Section_ContactBlock> =
         {children}
       </div>
       <div>
-        <h4 className={`${border == false ? "__exclude-border" : ""}`}>
+        <h2 className={`${border == false ? "__exclude-border" : ""} h4`}>
           {header}
-        </h4>
+        </h2>
         {contact && contact.length > 0 &&
           <p>
             {contact.map((item, idx: number) => {

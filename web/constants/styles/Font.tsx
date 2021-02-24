@@ -107,13 +107,13 @@ export const Typography = createGlobalStyle`
   h1, .h1 {
     font-size: 4rem;
     @media (max-width: ${Base.Media.Width.Md + "px"}) {
-      font-size: 2rem;
+      font-size: 2.4rem;
     }
   }
   h2, .h2 {
     font-size: 3rem;
     @media (max-width: ${Base.Media.Width.Md + "px"}) {
-      font-size: 2rem;
+      font-size: 2.1rem;
     }
   }
   h3, .h3 {
@@ -124,11 +124,14 @@ export const Typography = createGlobalStyle`
   }
   h4, .h4 {
     font-size: 2rem;
+    @media (max-width: ${Base.Media.Width.Md + "px"}) {
+      font-size: 1.8rem;
+    }
   }
   h5, .h5 {
     font-size: 1.75rem;
     @media (max-width: ${Base.Media.Width.Md + "px"}) {
-      font-size: 1rem;
+      font-size: 1.6rem;
     }
   }
   h6, .h6 {

@@ -127,7 +127,7 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
                       key={idx}
                       className={`${NavigationClassName}__menu-nav__list__item`}
                     >
-                      <label htmlFor={industry.name}>{industry.name}</label>
+                      <label htmlFor={industry.name}><h2>{industry.name}</h2></label>
                       <input type="checkbox" id={industry.name} />
                       <div className={`${NavigationClassName}__accordion`}>
 

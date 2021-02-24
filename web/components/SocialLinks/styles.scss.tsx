@@ -11,6 +11,7 @@
 
 // Core
 import styled, { keyframes } from "styled-components";
+import { Base } from "../../constants/styles/Base";
 import { Theme } from "../../constants/Theme";
 
 // Constants
@@ -38,9 +39,15 @@ export const SocialLinksStyle = styled.div`
         a {
           font-size: 4rem;
           line-height: 1.2;
+
         }
       }
+    }
 
+    @media (max-width: ${Base.Media.Width.Md + "px"}) {
+      ul li a {
+        font-size: 2.6rem;
+      }
     }
   }
 `;

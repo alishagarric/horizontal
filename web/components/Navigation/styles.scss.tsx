@@ -282,8 +282,13 @@ export const NavigationStyle = styled.nav`
         padding-bottom: 25vh; 
 
         &__item {
-          font-size: 10vw;
           text-align: center;
+
+          label h2 {
+            font-size: 10vw;
+            font-weight: 400;
+            padding-bottom: 0;
+          }
 
           label:hover {
             opacity: 0.2;
