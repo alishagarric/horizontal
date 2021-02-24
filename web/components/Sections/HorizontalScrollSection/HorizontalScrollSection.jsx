@@ -97,7 +97,7 @@ const calcWidthRatio = (objectWidth) => {
 
 const calcDynamicBarWidth = (objectWidth) => {
   const ratio = calcWidthRatio(objectWidth);
-  return window.innerWidth / ratio;
+  return objectWidth < window.innerWidth ? 0 : window.innerWidth / ratio;
 };
 
 const handleDynamicHeight = (ref, setDynamicHeight) => {
@@ -107,8 +107,9 @@ const handleDynamicHeight = (ref, setDynamicHeight) => {
 };
 
 const handleDynamicBarWidth = (ref, setDynamicBarWidth) => {
-  const objectWidth = ref && ref.current ? ref.current.scrollWidth: 0;
+  const objectWidth = ref && ref.current ? ref.current.scrollWidth : 0;
   const dynamicBarWidth = calcDynamicBarWidth(objectWidth);
+ // console.log("ratio", dynamicBarWidth, ref);
   setDynamicBarWidth(dynamicBarWidth);
 };
 

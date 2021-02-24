@@ -2,11 +2,14 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/volume-02": "pages/volume-02.js",
-  "/volume-04": "pages/volume-04.js",
-  "/volume-03": "pages/volume-03.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
-  "/about": "pages/about.js",
   "/contact": "pages/contact.js",
-  "/new-york-city": "pages/new-york-city.js"
+  "/new-york-city": "pages/new-york-city.js",
+  "/": "pages/index.js",
+  "/volume-02": "pages/volume-02.js",
+  "/volume-03": "pages/volume-03.js",
+  "/about": "pages/about.js",
+  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
+  "/volume-04": "pages/volume-04.js",
+  "/volume-01": "pages/volume-01.js",
+  "/los-angeles": "pages/los-angeles.js"
 }
