@@ -13,6 +13,7 @@
 import styled from "styled-components";
 import { Root } from "../../../constants/Root";
 import { Theme } from "../../../constants/Theme";
+import { hexToRGB } from "../../../utils/hexToRGB";
 
 // Constants
 
@@ -87,6 +88,21 @@ export const GridColumnStyle = styled.section`
       object-fit: cover;
       height: 100%;
       width: 100%;
+    }
+
+    .${GridColumnClassName}__img-container {
+      position: relative;
+      &:after {
+        background: ${Theme.Color.varForeground};
+        opacity: 0.1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+      }
+      
     }
 
   }
