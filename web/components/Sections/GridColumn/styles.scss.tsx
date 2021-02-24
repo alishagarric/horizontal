@@ -12,6 +12,7 @@
 // Core
 import styled from "styled-components";
 import { Root } from "../../../constants/Root";
+import { Theme } from "../../../constants/Theme";
 
 // Constants
 
@@ -30,6 +31,8 @@ export const GridColumnStyle = styled.section`
     width: calc(var(--horizontalScrollSectionHeight) / 2);
     display: grid;
     grid-template-rows: 50% 50%;
+    position: relative;
+    background: ${Theme.Color.varBackground};
 
     &--double-width {
       width: var(--horizontalScrollSectionHeight);
@@ -37,11 +40,11 @@ export const GridColumnStyle = styled.section`
 
     &--two-items {
 
-      .${GridColumnClassName}__img, .${GridColumnClassName}__text-container  {
+      .${GridColumnClassName}__block  {
         width: calc(100% - ${Root.ColumnGutter});
 
         //top item
-        &:first-child {
+        &:first-of-type {
           height: calc(100% - ${Root.ColumnGutter});
           margin-bottom: ${Root.ColumnGutter}; 
           margin-right: ${Root.ColumnGutter}; 
@@ -49,7 +52,7 @@ export const GridColumnStyle = styled.section`
         }
 
         //bottom item
-        &:last-child {
+        &:last-of-type {
           grid-row: 2 / 3;
           height: calc(100% - ${Root.ColumnGutter});
           margin-top: ${Root.ColumnGutter}; 
@@ -58,24 +61,24 @@ export const GridColumnStyle = styled.section`
       }
     }
 
-    &--reversed .${GridColumnClassName}__img, &--reversed .${GridColumnClassName}__text-container  {
+    &--reversed .${GridColumnClassName}__block {
 
       //bottom item
-      &:first-child { 
+      &:first-of-type { 
         grid-row: 2 / 3;
         margin-top: ${Root.ColumnGutter}; 
         margin-bottom: 0;
       }
 
       //top item
-      &:last-child {
+      &:last-of-type {
         grid-row: 1 / 2;
         margin-bottom: ${Root.ColumnGutter}; 
         margin-top: 0;
       }
     }
 
-    .${GridColumnClassName}__img, .${GridColumnClassName}__text-container  {
+    .${GridColumnClassName}__block  {
       grid-row: 1 / 3;
       width: 100%;
     }
@@ -83,6 +86,7 @@ export const GridColumnStyle = styled.section`
     .${GridColumnClassName}__img {
       object-fit: cover;
       height: 100%;
+      width: 100%;
     }
 
   }

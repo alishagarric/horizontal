@@ -39,8 +39,9 @@ export const CircleText: React.FunctionComponent<LMNTS_Section_CircleText> = ({
     <CircleTextStyle
       className={`${CircleTextClassName}`}
       diameter={`${diameter}px`}
+      viewBox={`0 0 ${diameter} ${diameter}`}
     >
-      <svg viewBox={`0 0 ${diameter} ${diameter}`}>
+
           <path id="curve"
             d={`
               M 0, ${diameter / 2}
@@ -52,8 +53,6 @@ export const CircleText: React.FunctionComponent<LMNTS_Section_CircleText> = ({
             {text}
           </textPath>
         </text>
-
-      </svg>
     </CircleTextStyle>
   );
 };

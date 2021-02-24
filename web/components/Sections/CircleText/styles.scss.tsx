@@ -25,39 +25,32 @@ import { GridColumnClassName } from "../GridColumn/styles.scss";
 
 export const CircleTextClassName = `circle-text`;
 
-export const CircleTextStyle = styled.section<{
+export const CircleTextStyle = styled.svg<{
   diameter: string;
 }>`
   &.${CircleTextClassName} {
-    z-index: 2;
-    max-width: 0px;
-    position: relative;
-    -webkit-animation: ${rotating} 15s linear infinite;
-    -moz-animation: ${rotating} 15s linear infinite;
-    -ms-animation: ${rotating} 15s linear infinite;
-    -o-animation: ${rotating} 15s linear infinite;
-    animation: ${rotating} 15s linear infinite;
-
-    svg {
       height: ${(props) => props.diameter};
       width: ${(props) => props.diameter};
       fill: transparent;
       position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translate(calc(-50% +  ${Root.ColumnGutter}), -50%);
+      top: calc(50% + calc(${(props) => props.diameter} / -2));
+      left: calc(${(props) => props.diameter} / -2);
       overflow: visible;
+      -webkit-animation: ${rotating} 15s linear infinite;
+      -moz-animation: ${rotating} 15s linear infinite;
+      -ms-animation: ${rotating} 15s linear infinite;
+      -o-animation: ${rotating} 15s linear infinite;
+      animation: ${rotating} 15s linear infinite;
+      mix-blend-mode: overlay;
       
-
       text {
         fill: ${Theme.Color.varForeground};
         font-size: 30px;
         text-transform: uppercase;
         font-weight: 600;
-        mix-blend-mode: difference;
       }
     }
-  }
+
 
   //Section kerning
   + section.${GridColumnClassName} {

@@ -223,6 +223,10 @@ export const NavigationStyle = styled.nav`
           background: ${Theme.Color.varBackground};
           transition: transform 1s ease 0.25s, background 0.25s;
 
+          .${NavigationClassName}__menu-btn {
+            transform: translateY(0%) scale(0.55);
+          }
+
           .${NavigationClassName}__menu-nav {
             opacity: 1;
             transition: opacity .25s;
