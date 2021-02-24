@@ -12,6 +12,7 @@
 // Core
 import styled, { keyframes } from "styled-components";
 import { Root } from "../../../constants/Root";
+import { Base } from "../../../constants/styles/Base";
 import { Theme } from "../../../constants/Theme";
 
 // Constants
@@ -57,6 +58,15 @@ export const ChildrenColumnStyle = styled.section`
 
     &.justify--space-between {
       justify-content: space-between;
+    }
+
+    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+      padding-top: calc(${Root.ColumnGutter} * 3);
+      padding-bottom: calc(${Root.ColumnGutter} * 3);
+
+      &.width--xl, &.width--medium, &.width--small {
+        width: auto;
+      }
     }
   }
 `;

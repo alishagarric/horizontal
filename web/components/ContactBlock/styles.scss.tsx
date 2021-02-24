@@ -11,6 +11,8 @@
 
 // Core
 import styled, { keyframes } from "styled-components";
+import { Root } from "../../constants/Root";
+import { Base } from "../../constants/styles/Base";
 import { Theme } from "../../constants/Theme";
 
 // Constants
@@ -27,12 +29,17 @@ export const ContactBlockStyle = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-   // height: 100%;
 
     .h4:not(.__exclude-border) {
       border-top: 1px solid ${Theme.Color.varForeground};
       padding-top: 10px;
       
+    }
+
+    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+      > .__mobile-space {
+        padding-bottom: calc(${Root.ColumnGutter} * 4);
+      }
     }
   }
 `;

@@ -66,5 +66,44 @@ export const HorizontalScrollSectionStyle = styled.section<{
         }
       }
     }
+
+    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+
+      &.${HorizontalScrollSectionClassName}--has-topbar {
+        --horizontalScrollSectionHeight: calc(100vh - (${Root.Nav.Size} + ${BottomNavSize} + ${BottomNavMargin} + var(--horizontalScrollSectionSpace) + var(--horizontalScrollSectionSpace) + var(--horizontalScrollSectionTopBarHeight)));
+  
+        .${HorizontalScrollSectionClassName}__content-wrapper {
+          > section {
+            margin-top: 0;
+
+            &:first-of-type {
+              margin-top: calc(calc(${Root.Nav.Size} + var(--horizontalScrollSectionSpace)) + var(--horizontalScrollSectionTopBarHeight));
+            }
+          }
+        }
+      }
+
+      .${HorizontalScrollSectionClassName}__content-wrapper {
+
+        > section {
+          height: auto;
+          max-height: none;
+          margin-top: calc(${Root.ColumnGutter} * 2);
+          margin-bottom: calc(${Root.ColumnGutter} * 2);
+          margin-left: ${Root.Grid.Gutter.Left};
+          margin-right: ${Root.Grid.Gutter.Right};
+          width: auto;
+
+          &:first-of-type {
+            margin-top: calc(${Root.Nav.Size} + var(--horizontalScrollSectionSpace));
+          }
+
+          &:last-of-type {
+            margin-right: ${Root.Grid.Gutter.Right};
+          }
+        }
+
+      }
+    }
   }
 `;

@@ -12,6 +12,7 @@
 // Core
 import styled, { keyframes } from "styled-components";
 import { Root } from "../../../constants/Root";
+import { Base } from "../../../constants/styles/Base";
 import { Theme } from "../../../constants/Theme";
 import { ContactBlockClassName } from "../../ContactBlock/styles.scss";
 
@@ -57,12 +58,27 @@ export const HeroColumnStyle = styled.section`
     }
 
     .${HeroColumnClassName}__sub-header {
-      font-size: 20px;
       padding-bottom: calc(${Theme.Base.Size.Lg} * 3);
     }
 
     .${HeroColumnClassName}__inner > .${HeroColumnClassName}__header-container > *:not(h1), .${HeroColumnClassName}__inner > *:not(.${HeroColumnClassName}__header-container) {
       padding-right: 20%;
+    }
+
+    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+      padding-bottom: calc(${Theme.Base.Size.Lg} * 2);
+
+      .${HeroColumnClassName}__sub-header {
+        padding-bottom: calc(${Theme.Base.Size.Lg} * 2);
+      }
+
+      &.width--xl, &.width--medium, &.width--small {
+        width: auto;
+      }
+
+      .${HeroColumnClassName}__inner > .${HeroColumnClassName}__header-container > *:not(h1), .${HeroColumnClassName}__inner > *:not(.${HeroColumnClassName}__header-container) {
+        padding-right: 0;
+      }
     }
   }
 `;

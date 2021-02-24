@@ -129,9 +129,9 @@ export const Typography = createGlobalStyle`
     }
   }
   h5, .h5 {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     @media (max-width: ${Base.Media.Width.Md + "px"}) {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
   }
   h6, .h6 {

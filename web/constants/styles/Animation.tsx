@@ -33,6 +33,19 @@ export const rotating /* Safari and Chrome */ = keyframes`
   }
 }`;
 
+export const rotatingAndShrink /* Safari and Chrome */ = keyframes`
+  from {
+    -webkit-transform: rotate(0deg) scale(.75);
+    -o-transform: rotate(0deg) scale(.75);
+    transform: rotate(0deg) scale(.75);
+  }
+  to {
+    -webkit-transform: rotate(360deg) scale(.75);
+    -o-transform: rotate(360deg) scale(.75);
+    transform: rotate(360deg) scale(.75);
+  }
+}`;
+
 export const UpAndRotate = keyframes`
   from {
     transform: translateY(100%) rotate(3deg);

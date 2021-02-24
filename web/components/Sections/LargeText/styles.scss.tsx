@@ -11,6 +11,7 @@
 
 // Core
 import styled, { keyframes } from "styled-components";
+import { Base } from "../../../constants/styles/Base";
 
 // Constants
 
@@ -37,6 +38,17 @@ export const LargeTextStyle = styled.section`
     p {
       font-size: 16.5vh;
       line-height: 1;
+    }
+
+    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+
+      &.width--medium, &.width--small {
+        width: auto;
+      }
+
+      p {
+        font-size: 9vw;
+      }
     }
   }
 `;

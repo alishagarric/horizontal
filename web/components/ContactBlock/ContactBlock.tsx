@@ -46,7 +46,7 @@ export const ContactBlock: React.FunctionComponent<LMNTS_Section_ContactBlock> =
 
   return (
     <ContactBlockStyle className={`${ContactBlockClassName}`} style={style}>
-      <div>
+      <div className={children ? "__mobile-space" : ""}>
         {children}
       </div>
       <div>

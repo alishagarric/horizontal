@@ -25,6 +25,10 @@ const TallOuterContainer = styled.div.attrs(({ dynamicHeight }) => ({
 }))`
   position: relative;
   width: 100%;
+
+  @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    height: auto;
+  }
 `;
 
 
@@ -56,6 +60,12 @@ const StickyInnerContainer = styled.div`
   height: 100vh;
   width: 100%;
   overflow-x: hidden;
+
+  @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    position: relative;
+    height: auto;
+    overflow-x: auto;
+  }
 `;
 
 const HorizontalTranslateContainer = styled.div.attrs(({ translateX }) => ({
@@ -65,6 +75,14 @@ const HorizontalTranslateContainer = styled.div.attrs(({ translateX }) => ({
   height: 100%;
   transition: transform 0.5s ease-out;
   will-change: transform;
+
+  @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    position: relative;
+    height: auto;
+    will-change: none;
+    transform: none;
+    transition: none;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -75,12 +93,21 @@ const ContentWrapper = styled.div`
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
+
+  @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    height: auto;
+    display: block;
+  }
 `;
 
 const HorizontalSection = styled.section`
   position: relative;
   width: 100%;
   min-height: 100vh;
+
+  @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    min-height: none;
+  }
 `;
 
 const calcDynamicHeight = (objectWidth) => {
@@ -180,9 +207,11 @@ export const HorizontalScrollSection = ({
           </HorizontalTranslateContainer>
         </StickyInnerContainer>
       </TallOuterContainer>
+
       <ScrollbarContainer dynamicBarContainerWidth={dynamicBarContainerWidth}>
         <Scrollbar dynamicBarWidth={dynamicBarWidth} translateX={translateBarX}></Scrollbar>
       </ScrollbarContainer>
+
     </HorizontalScrollSectionStyle>
   );
 };
