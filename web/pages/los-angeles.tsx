@@ -76,10 +76,13 @@ const LosAngeles: NextPage<LMNTS_LosAngeles> = () => {
           secondaryImage="https://source.unsplash.com/600x1200/?ocean"
           altText="Volume Industries"
         />
-        <CircleText text="New Beginnings • New Beginnings • New Beginnings • " diameter={270} />
         <GridColumn 
           image="https://source.unsplash.com/600x1200/?shore"
           altText="Volume Industries"
+          circleText={{
+            text: "New Beginnings • New Beginnings • New Beginnings • ",
+            diameter: 270
+          }}
         />  
         <GridColumn 
           image="https://source.unsplash.com/600x1200/?palmtree"
