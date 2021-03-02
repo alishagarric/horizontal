@@ -31,7 +31,8 @@ export const NavigationStyle = styled.nav`
   &.${NavigationClassName} {
     position: relative;
     z-index: 800;
-
+    
+    //Special homepage navigation changes
     &:not(.${NavigationClassName}--route-is-home) {
       // _________________________________
       // Transition Navigation
@@ -85,10 +86,12 @@ export const NavigationStyle = styled.nav`
       }
     }
 
+    //Hide menu overy on desktop
     .${NavigationClassName}__menu-overlay {
       display: none;
     }
 
+    //Top and bottom shared styles
     .${NavigationClassName}__top, .${NavigationClassName}__bottom {
       position: fixed;
       left: 0;
@@ -124,6 +127,7 @@ export const NavigationStyle = styled.nav`
       }
     }
 
+    //Top nav styles
     .${NavigationClassName}__top {
       top: 0;
 
@@ -185,6 +189,7 @@ export const NavigationStyle = styled.nav`
       }
     }
 
+    //Bottom nav styles
     .${NavigationClassName}__bottom {
       bottom: 0;
 
@@ -209,8 +214,6 @@ export const NavigationStyle = styled.nav`
       &__col--left, &__col--right {
         position: relative;
         z-index: 3;
-        will-change: transform;
-        transition: transform .25s ease 1s;
       }
 
       &__col--center {
@@ -224,38 +227,10 @@ export const NavigationStyle = styled.nav`
         z-index: 2;
         will-change: transform, overflow, background;
         transition: transform 1s, background .25s ease 1s;
-        
-
-        &.__expanded {
-          transform: translateY(0);
-          overflow: auto;
-          background: ${Theme.Color.varBackground};
-          transition: transform 1s ease 0.25s, background 0.25s;
-
-          .${NavigationClassName}__menu-btn {
-            transform: translateY(0%) scale(0.55);
-          }
-
-          .${NavigationClassName}__menu-nav {
-            opacity: 1;
-            transition: opacity .25s;
-          }
-
-          ~ .${NavigationClassName}__bottom__col {
-            transition: transform .25s;
-          }
-
-          ~ .${NavigationClassName}__bottom__col--left {
-            transform: translateX(-150%);
-          }
-
-          ~ .${NavigationClassName}__bottom__col--right {
-            transform: translateX(150%);
-          }
-        }
       }
     }
 
+    //Industries menu button styles
     .${NavigationClassName}__menu-btn {
       appearance: none;
       color: ${Theme.Color.varForeground};
@@ -281,6 +256,7 @@ export const NavigationStyle = styled.nav`
       text-transform: uppercase;
     }
 
+    //Industries menu itself styles
     .${NavigationClassName}__menu-nav {
       position: relative;
       opacity: 0;
@@ -328,6 +304,7 @@ export const NavigationStyle = styled.nav`
       }
     }
 
+    //Industries menu accordion styles
     .${NavigationClassName}__accordion {
       display: grid;
       grid-template-columns: repeat(4,1fr);
@@ -361,9 +338,13 @@ export const NavigationStyle = styled.nav`
       }
     }
 
+    //Nav link global styles
     .${NavigationClassName}__link {
       color: ${Theme.Color.varForeground};
       text-transform: uppercase;
+      display: block;
+      will-change: transform, opacity;
+      transition: transform .25s ease 1s, opacity .25s ease 1s;
 
       &.__active {
         position: relative;
@@ -386,8 +367,55 @@ export const NavigationStyle = styled.nav`
       }
     }
 
+    //Styles changes when the industries menu is expanded
+    &.__industries-expanded {
+
+      .${NavigationClassName}__link {
+        transition: transform .25s ease, opacity .25s ease;
+      }
+
+      .${NavigationClassName}__top__col--left, .${NavigationClassName}__bottom__col--left {
+        .${NavigationClassName}__link {
+          transform: translateX(-150%);
+          opacity: 0;          
+        }
+      }
+
+      .${NavigationClassName}__top__col--right, .${NavigationClassName}__bottom__col--right {
+        .${NavigationClassName}__link {
+          transform: translateX(150%);
+          opacity: 0;          
+        }
+      }
+
+      .${NavigationClassName}__bottom {
+        &__col--center {
+          transform: translateY(0);
+          overflow: auto;
+          background: ${Theme.Color.varBackground};
+          transition: transform 1s ease 0.25s, background 0.25s;
+
+          .${NavigationClassName}__menu-btn {
+            transform: translateY(0%) scale(0.55);
+          }
+
+          .${NavigationClassName}__menu-nav {
+            opacity: 1;
+            transition: opacity .25s;
+          }
+
+          ~ .${NavigationClassName}__bottom__col {
+            transition: transform .25s;
+          }
+        }
+      }
+    }
+
+
+    //Screens smaller than small screen
     @media (max-width: ${Base.Media.Width.Sm + "px"}) {
 
+      //hide a bunch of desktop specific stuff
       .${NavigationClassName}__bottom__col--left,
       .${NavigationClassName}__bottom__col--right, 
       .${NavigationClassName}__menu-btn,
@@ -396,15 +424,19 @@ export const NavigationStyle = styled.nav`
         display: none;
       }
 
-      .${NavigationClassName}__top__col--left .__mobile-link, .${NavigationClassName}__top__col--right .__mobile-link {
-        display: block;
-      }
-
+      //hide a bunch of desktop specific stuff
       .${NavigationClassName}__bottom:before,
       .${NavigationClassName}__bottom:after {
         content: none;
       }
 
+      //show a bunch of mobile specific stuff
+      .${NavigationClassName}__top__col--left .__mobile-link, 
+      .${NavigationClassName}__top__col--right .__mobile-link {
+        display: block;
+      }
+
+      //Top nav styles
       .${NavigationClassName}__top {
         background-color: ${Theme.Color.varBackground};
 
@@ -433,10 +465,16 @@ export const NavigationStyle = styled.nav`
         }
       }
 
+      //Bottom nav styles
       .${NavigationClassName}__bottom {
         &__col--center {
           transform: translateY( calc(100vh - ${Root.Nav.Size}));
           text-align: left;
+          transition: none;
+
+          &.__industries-expanded {
+            transition: none;
+          }
         }
 
         .${NavigationClassName}__menu-nav {
@@ -499,6 +537,7 @@ export const NavigationStyle = styled.nav`
         }
       }
 
+      //Menu overlay styles
       .${NavigationClassName}__menu-overlay {
         display: block;
         left: 0;
@@ -511,13 +550,17 @@ export const NavigationStyle = styled.nav`
         padding: ${Root.Grid.Gutter.Left} 0 ${Root.Grid.Gutter.Left}  ${Root.Grid.Gutter.Left};
         transform: translateY(calc(100vh - ${Root.Nav.Size}));
 
-        &.__expanded {
+        &.__menu-expanded {
           transform: none;
         }
 
         a {
           color: ${Theme.Color.varForeground};
           display: block;
+
+          &:hover, &:active {
+            text-decoration: none;
+          }
         }
 
         .h1 {
