@@ -18,7 +18,7 @@ import Link from "next/link";
 import { Brandmark } from "../_svg/Brandmark/Brandmark";
 import { Logotype } from "../_svg/Logotype/Logotype";
 import { parseRouteToClassName } from "../../utils/parseRouteToClassName";
-import { LMNTS_SiteIndustry, SiteIndustries, SitePages } from "../../constants/site/Settings";
+import { LMNTS_SiteIndustry, SiteIndustries, SitePages, SiteVolumes } from "../../constants/site/Settings";
 import LazyImage from "../../utils/lazyImage";
 
 // Begin Component
@@ -45,6 +45,7 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
   let laPage = laPageIndex != -1 ? SitePages[laPageIndex] : false;
 
   const [menuVisible, setMenuVisible] = useState(false);
+  const [overlayMenuVisible, setOverlayMenuVisible] = useState(false);
 
   return (
     <NavigationStyle
@@ -59,15 +60,27 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
       <div className={`${NavigationClassName}__top`}>
         {/* ____________________________________ */}
         {/* Left Column */}
-        {aboutPage && 
+        
           <div
             className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--left`}
           >
+            {aboutPage && 
               <Link href={aboutPage.link}>
-                <a className={`${NavigationClassName}__link ${router.asPath == aboutPage.link ? "__active": ""}`}>{aboutPage.name}</a>
+                <a className={`${NavigationClassName}__link ${router.asPath == aboutPage.link ? "__active": ""} __desktop-link`}>
+                  {aboutPage.name}
+                </a>
               </Link>
+            }
+ 
+            <button 
+              className={`${NavigationClassName}__menu-btn __mobile-link`}
+              onClick={() =>
+                menuVisible ? setMenuVisible(false) : setMenuVisible(true)
+              }  
+            >
+              Industries
+            </button>
           </div>
-        }
 
         {/* ____________________________________ */}
         {/* Center Column */}
@@ -90,15 +103,24 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
 
         {/* ____________________________________ */}
         {/* Right Column */}
-        {contactPage && 
           <div
             className={`${NavigationClassName}__top__col ${NavigationClassName}__top__col--right`}
           >
+            {contactPage && 
               <Link href={contactPage.link}>
-                <a className={`${NavigationClassName}__link ${router.asPath == contactPage.link ? "__active": ""}`}>{contactPage.name}</a>
+                <a className={`${NavigationClassName}__link ${router.asPath == contactPage.link ? "__active": ""} __desktop-link`}>{contactPage.name}</a>
               </Link>
+            }
+
+            <button 
+              className={`${NavigationClassName}__menu-btn __mobile-link`}
+              onClick={() =>
+                overlayMenuVisible ? setOverlayMenuVisible(false) : setOverlayMenuVisible(true)
+              }
+            >
+              Menu
+            </button>
           </div>
-        }
       </div>
 
       {/* ____________________________________ */}
@@ -179,6 +201,36 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
               </Link>
           </div>
         }
+      </div>
+
+      <div className={`${NavigationClassName}__menu-overlay ${overlayMenuVisible ? "__expanded" : ""}`}>
+        <p className="h1">Information</p>
+        <ul className={`${NavigationClassName}__menu-overlay__site-pages`}>
+          {SitePages.map((page, idx: number) => {
+            return (
+              <li key={idx}>
+                <Link href={page.link}>
+                  <a>{page.name}</a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+        <p className="h1">Volumes</p>
+        <ul className={`${NavigationClassName}__menu-overlay__site-volumes`}>
+          {SiteVolumes.map((page, idx: number) => {
+            return (
+              <li key={idx}>
+                <Link href={page.link}>
+                  <a>
+                    <span className={`${NavigationClassName}__menu-overlay__site-volumes__number`}>{page.number}</span>
+                    <span className={`${NavigationClassName}__menu-overlay__site-volumes__name`}>{page.name}</span>
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </NavigationStyle>
   );

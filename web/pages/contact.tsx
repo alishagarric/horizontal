@@ -20,6 +20,8 @@ import { LargeText } from "../components/Sections/LargeText";
 import { SocialLinks } from "../components/SocialLinks";
 import { Root } from "../constants/Root";
 import { Theme } from "../constants/Theme";
+import { Settings, SitePages } from "../constants/site/Settings";
+import { MobileFooter } from "../components/Sections/MobileFooter";
 
 // Begin Component
 // __________________________________________________________________________________________
@@ -127,6 +129,11 @@ const ContactPage: NextPage<LMNTS_ContactPage> = () => {
             ]}
           />
         </ChildrenColumn>
+        <MobileFooter 
+          caption="Our Story"
+          header="Learn About Us"
+          link={SitePages[SitePages.findIndex(page => page.name == "About")].link}
+        />
       </HorizontalScrollSection>
     </div>
   );

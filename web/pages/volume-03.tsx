@@ -8,6 +8,7 @@
 
 // Core
 import { NextPage } from "next";
+import { NextRouter, useRouter } from "next/router";
 import React from "react";
 import { BottomNavSize } from "../components/Navigation/styles.scss";
 import { CircleText } from "../components/Sections/CircleText";
@@ -15,9 +16,11 @@ import { GridColumn } from "../components/Sections/GridColumn";
 import { HeroColumn } from "../components/Sections/HeroColumn";
 import { HorizontalScrollSection } from "../components/Sections/HorizontalScrollSection";
 import { LargeText } from "../components/Sections/LargeText";
+import { MobileFooter } from "../components/Sections/MobileFooter";
 import { VolumesArrowsNavigation } from "../components/Sections/VolumesArrowsNavigation/VolumesArrowsNavigation";
 import { Root } from "../constants/Root";
 import { Theme } from "../constants/Theme";
+import { getVolumeNav, volumeNav } from "../utils/getVolumeNav";
 
 // Begin Component
 // __________________________________________________________________________________________
@@ -33,6 +36,9 @@ export const Volume03ClassName = "route__volume-03";
  *
  */
 const Volume03: NextPage<LMNTS_Volume03> = () => {
+  const router: NextRouter = useRouter();
+  let nav: volumeNav = getVolumeNav(router); 
+  
   return (
     <div className={`${Volume03ClassName}`}>
       <VolumesArrowsNavigation />
@@ -79,6 +85,13 @@ const Volume03: NextPage<LMNTS_Volume03> = () => {
           width={"medium"} 
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor"
         />
+        { nav &&
+          <MobileFooter 
+            caption="Next Volume"
+            header={nav.nextTitle}
+            link={nav.nextLink}
+          />
+        }
       </HorizontalScrollSection>
     </div>
   );

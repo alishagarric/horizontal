@@ -85,6 +85,10 @@ export const NavigationStyle = styled.nav`
       }
     }
 
+    .${NavigationClassName}__menu-overlay {
+      display: none;
+    }
+
     .${NavigationClassName}__top, .${NavigationClassName}__bottom {
       position: fixed;
       left: 0;
@@ -131,6 +135,10 @@ export const NavigationStyle = styled.nav`
         bottom: 0;
 
         width: calc(100% - (${Root.Grid.Gutter.Left} * 2));
+      }
+
+      .__mobile-link {
+        display: none;
       }
 
       .${NavigationClassName}__link--branding {
@@ -331,6 +339,17 @@ export const NavigationStyle = styled.nav`
         padding-top: 100%;
         position: relative;
 
+        &:after {
+          background: ${Theme.Color.varForeground};
+          opacity: 0.1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          content: "";
+        }
+
         img {
           ${CssUtils.ObjectFit()};
         }
@@ -368,11 +387,34 @@ export const NavigationStyle = styled.nav`
     }
 
     @media (max-width: ${Base.Media.Width.Sm + "px"}) {
-      .${NavigationClassName}__bottom, .${NavigationClassName}__top__col--left, .${NavigationClassName}__top__col--right {
+
+      .${NavigationClassName}__bottom__col--left,
+      .${NavigationClassName}__bottom__col--right, 
+      .${NavigationClassName}__menu-btn,
+      .${NavigationClassName}__top__col--left .__desktop-link, 
+      .${NavigationClassName}__top__col--right .__desktop-link {
         display: none;
       }
 
+      .${NavigationClassName}__top__col--left .__mobile-link, .${NavigationClassName}__top__col--right .__mobile-link {
+        display: block;
+      }
+
+      .${NavigationClassName}__bottom:before,
+      .${NavigationClassName}__bottom:after {
+        content: none;
+      }
+
       .${NavigationClassName}__top {
+        background-color: ${Theme.Color.varBackground};
+
+
+        //industry and menu buttons
+        .${NavigationClassName}__menu-btn {
+          transform: none;
+          font-size: 0.7rem;
+        }
+
         .${NavigationClassName}__top__col--center {
           height: 100%;
 
@@ -387,6 +429,155 @@ export const NavigationStyle = styled.nav`
                 height: calc(${Root.Nav.Size} * .6);
               }
             }
+          }
+        }
+      }
+
+      .${NavigationClassName}__bottom {
+        &__col--center {
+          transform: translateY( calc(100vh - ${Root.Nav.Size}));
+          text-align: left;
+        }
+
+        .${NavigationClassName}__menu-nav {
+          &__list {
+            padding-top: ${Root.Size};
+
+            label h2 {
+              font-size: 14vw;
+            }
+
+            &__item {
+              //make the last image the biggest image in the accordion grid
+              &:nth-of-type(even) .${NavigationClassName}__accordion__image-container:nth-of-type(8) {
+                grid-row: 2 / 4;
+                grid-column: 1 / 3;
+              }
+
+              //make the last image the biggest image in the accordion grid
+              &:nth-of-type(odd) .${NavigationClassName}__accordion__image-container:nth-of-type(8) {
+                grid-row: 2 / 4;
+                grid-column: 2 / 4;
+              }
+
+              //make another image the biggest image in the accordion grid
+              &:nth-of-type(even) .${NavigationClassName}__accordion__image-container:nth-of-type(5) {
+                grid-row: 5 / 7;
+                grid-column: 1 / 3;
+              }
+
+              //make another image the biggest image in the accordion grid
+              &:nth-of-type(odd) .${NavigationClassName}__accordion__image-container:nth-of-type(5) {
+                grid-row: 5 / 7;
+                grid-column: 1 / 3;
+              }
+
+              //make an image tall
+              &:nth-of-type(even) .${NavigationClassName}__accordion__image-container:nth-of-type(4) {
+                grid-row: 3 / 5;
+                grid-column: 3 / 4;
+              }
+
+              //make an image tall
+              &:nth-of-type(odd) .${NavigationClassName}__accordion__image-container:nth-of-type(4) {
+                grid-row: 3 / 5;
+                grid-column: 1 / 2;
+              }
+
+            }
+          }
+        }
+
+        .${NavigationClassName}__accordion {
+          gap: calc(${Root.ColumnGutter} * 1);
+          grid-template-columns: repeat(3,1fr);
+
+          &__text-container { 
+            font-size: 1rem;
+            grid-column: 1 / 4;
+          }
+        }
+      }
+
+      .${NavigationClassName}__menu-overlay {
+        display: block;
+        left: 0;
+        right: 0;
+        position: fixed;
+        top: ${Root.Nav.Size};
+        height: calc(100vh - ${Root.Nav.Size});
+        background: ${Theme.Color.varBackground};
+        color: ${Theme.Color.varForeground};
+        padding: ${Root.Grid.Gutter.Left} 0 ${Root.Grid.Gutter.Left}  ${Root.Grid.Gutter.Left};
+        transform: translateY(calc(100vh - ${Root.Nav.Size}));
+
+        &.__expanded {
+          transform: none;
+        }
+
+        a {
+          color: ${Theme.Color.varForeground};
+          display: block;
+        }
+
+        .h1 {
+          opacity: 0.4;
+          padding-top: ${Root.Size};
+        }
+
+        &__site-pages {
+          a {
+            padding: calc(${Root.Size} / 3) 0;
+            text-transform: uppercase;
+            font-size: 6vw;
+          }
+        }
+
+        &__site-volumes {
+          display: flex;
+          overflow-x: auto;
+
+          a {
+            margin-right: ${Root.Size};
+            font-size: 5vw;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+
+
+            &:after {
+              content: "";
+              background: ${Theme.Color.varForeground};
+              opacity: 0.4;
+              position: absolute;
+              top: 0;
+              width: 1px;
+              right: calc(${Root.Size} / -2);
+              bottom: 0;
+            }
+          }
+
+          li:last-of-type a:after {
+            content: none;
+          }
+
+          &__number {
+            font-size: 40vw;
+            font-weight: 600;
+            display: block;
+          }
+
+          &__name {
+            flex-grow: 1;
+            display: block;
+            width: 100%;
+            padding: calc(${Root.Size} / 3);
+            display: grid;
+            place-content: center;
+            text-align: center;
+            position: relative;
           }
         }
       }

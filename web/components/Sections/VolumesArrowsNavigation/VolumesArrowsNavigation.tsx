@@ -6,6 +6,7 @@ import {
   LMNTS_SiteVolume,
   SiteVolumes,
 } from "../../../constants/site/Settings";
+import { getVolumeNav, volumeNav } from "../../../utils/getVolumeNav";
 import { ThemeChanger } from "../../ThemeChanger";
 import { Brandmark } from "../../_svg/Brandmark/Brandmark";
 import { Logotype } from "../../_svg/Logotype/Logotype";
@@ -32,42 +33,28 @@ export type LMNTS_Section_VolumesArrowsNavigation = {
  */
 export const VolumesArrowsNavigation: React.FunctionComponent<LMNTS_Section_VolumesArrowsNavigation> = () => {
   const router: NextRouter = useRouter();
-  let volumeIndex = -1;
+  let nav: volumeNav = getVolumeNav(router); 
 
-  SiteVolumes.forEach((volume, index) => {
-    if ( volume.link == router.asPath) {
-      volumeIndex = index;
-    }
-  });
-
-  if ( volumeIndex != -1 ){
-    let number = SiteVolumes[volumeIndex].number;
-    let title = SiteVolumes[volumeIndex].name;
-    let prevNumber = SiteVolumes[volumeIndex - 1] ? SiteVolumes[volumeIndex - 1].number : SiteVolumes[SiteVolumes.length - 1].number;
-    let nextNumber = SiteVolumes[volumeIndex + 1] ? SiteVolumes[volumeIndex + 1].number : SiteVolumes[0].number;
-    let prevLink = SiteVolumes[volumeIndex - 1] ? SiteVolumes[volumeIndex - 1].link : SiteVolumes[SiteVolumes.length - 1].link;
-    let nextLink = SiteVolumes[volumeIndex + 1] ? SiteVolumes[volumeIndex + 1].link : SiteVolumes[0].link;
-
-  
+  if (nav ){
     return (
       <VolumesArrowsNavigationStyle
         className={`${VolumesArrowsNavigationClassName}`}
       >
         <div className={`${VolumesArrowsNavigationClassName}__inner`}>
           <p className={`${VolumesArrowsNavigationClassName}__col ${VolumesArrowsNavigationClassName}__col--left`}>
-            <Link href={prevLink} >
+            <Link href={nav.prevLink} >
               <a>
-                Volume {prevNumber}
+                <span>Volume {nav.prevNumber}</span>
               </a>
             </Link>
           </p>
           <p className={`${VolumesArrowsNavigationClassName}__col ${VolumesArrowsNavigationClassName}__col--center`}>
-            {number}: <strong>{title}</strong>
+            {nav.number}: <strong>{nav.title}</strong>
           </p>
           <p className={`${VolumesArrowsNavigationClassName}__col ${VolumesArrowsNavigationClassName}__col--right`}>
-            <Link href={nextLink}>
+            <Link href={nav.nextLink}>
               <a>
-                Volume {nextNumber}
+                <span>Volume {nav.nextNumber}</span>
               </a>
             </Link>
           </p>

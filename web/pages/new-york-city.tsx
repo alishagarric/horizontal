@@ -17,7 +17,9 @@ import { GridColumn } from "../components/Sections/GridColumn";
 import { HeroColumn } from "../components/Sections/HeroColumn";
 import { HorizontalScrollSection } from "../components/Sections/HorizontalScrollSection";
 import { LargeText } from "../components/Sections/LargeText";
+import { MobileFooter } from "../components/Sections/MobileFooter";
 import { Root } from "../constants/Root";
+import { SitePages } from "../constants/site/Settings";
 import { Theme } from "../constants/Theme";
 
 // Begin Component
@@ -92,6 +94,11 @@ const NewYorkCity: NextPage<LMNTS_NewYorkCity> = () => {
         <LargeText 
           width={"medium"} 
           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor"
+        />
+        <MobileFooter 
+          caption="West Coast"
+          header="Our LA Location"
+          link={SitePages[SitePages.findIndex(page => page.name == "Los Angeles")].link}
         />
       </HorizontalScrollSection>
     </div>

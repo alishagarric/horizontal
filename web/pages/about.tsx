@@ -15,7 +15,9 @@ import { GridColumn } from "../components/Sections/GridColumn";
 import { HeroColumn } from "../components/Sections/HeroColumn";
 import { HorizontalScrollSection } from "../components/Sections/HorizontalScrollSection";
 import { LargeText } from "../components/Sections/LargeText";
+import { MobileFooter } from "../components/Sections/MobileFooter";
 import { Root } from "../constants/Root";
+import { SitePages } from "../constants/site/Settings";
 import { Theme } from "../constants/Theme";
 
 // Begin Component
@@ -64,6 +66,11 @@ const AboutPage: NextPage<LMNTS_AboutPage> = () => {
           image="https://source.unsplash.com/600x1200/?architecture"
           altText="Volume Industries"
         /> 
+        <MobileFooter 
+          caption="East Coast"
+          header="Our NYC Location"
+          link={SitePages[SitePages.findIndex(page => page.name == "New York City")].link}
+        />
       </HorizontalScrollSection>
     </div>
   );

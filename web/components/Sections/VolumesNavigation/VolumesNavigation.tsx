@@ -50,7 +50,6 @@ export class VolumesNavigation extends React.PureComponent<
   }
 
   updateMarquee(text?: string) {
-    console.log("here");
     this.setState({
       marquee: text ? text : false,
     });

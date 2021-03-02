@@ -68,6 +68,7 @@ export const HorizontalScrollSectionStyle = styled.section<{
     }
 
     @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+      --horizontalScrollSectionTopBarHeight: calc(${Root.Nav.Size} * 0.75);
 
       &.${HorizontalScrollSectionClassName}--has-topbar {
         --horizontalScrollSectionHeight: calc(100vh - (${Root.Nav.Size} + ${BottomNavSize} + ${BottomNavMargin} + var(--horizontalScrollSectionSpace) + var(--horizontalScrollSectionSpace) + var(--horizontalScrollSectionTopBarHeight)));
