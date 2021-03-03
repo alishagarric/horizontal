@@ -2,7 +2,6 @@
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
   "/_error": "pages/_error.js",
-  "/volume-01": "pages/volume-01.js",
-  "/contact": "pages/contact.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js"
+  "/volume-02": "pages/volume-02.js",
+  "/volume-01": "pages/volume-01.js"
 }

@@ -58,6 +58,10 @@ export const VolumesArrowsNavigationStyle = styled.section`
         }
       }
 
+      &--center {
+        white-space: nowrap;
+      }
+
       //arrow line
       &--left::before, &--right::after {
         content: "";
@@ -103,11 +107,11 @@ export const VolumesArrowsNavigationStyle = styled.section`
         &:after {
           position: absolute;
           content: "";
-          height: 20px;
-          bottom: -20px;
-          background: linear-gradient(${Theme.Color.varBackground}, rgba(255, 255, 255, 0));
-          left: 0;
-          right: 0;
+          bottom: 0;
+          border-bottom: 2px solid ${Theme.Color.varForeground};
+          left: ${Root.Grid.Gutter.Left};
+          right: ${Root.Grid.Gutter.Right};
+          opacity: 0.4;
         }
       }
 

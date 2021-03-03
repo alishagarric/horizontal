@@ -625,7 +625,7 @@ export const NavigationStyle = styled.nav`
         background: ${Theme.Color.varBackground};
         color: ${Theme.Color.varForeground};
         padding: ${Root.Grid.Gutter.Left};
-        transform: translateY(calc(100vh - ${Root.Nav.Size}));
+        transform: translateY(100vh);
         overflow: auto;
 
         a {
