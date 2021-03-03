@@ -97,8 +97,8 @@ export const VolumesNavigationStyle = styled.section`
     .${VolumesNavigationClassName}__volumes {
       position: relative;
       z-index: 1;
-      overflow-x: auto;
       max-width: 100vw;
+      // overflow-x: auto;
 
 
       &__listings--solid {

@@ -9,6 +9,7 @@ import { ThemeChanger } from "../../ThemeChanger";
 import { Brandmark } from "../../_svg/Brandmark/Brandmark";
 import { Logotype } from "../../_svg/Logotype/Logotype";
 import { MarqueeRow } from "../MarqueeRow";
+import Draggable from 'react-draggable';
 
 // Styles
 import {
@@ -90,64 +91,71 @@ export class VolumesNavigation extends React.PureComponent<
 
             {/* ______________________________________ */}
             {/* Volume Listings */}
-            <div
-              ref={/*volumesRef*/""}
-              className={`${VolumesNavigationClassName}__volumes`}
+            <Draggable 
+              axis="x" 
+              defaultPosition={{x: 0, y: 0}}
+              bounds={{right: 0}}
             >
-              {/* ________________________________________ */}
-              {/* Outlined text (the font has a weird apex) */}
-              <ul
-                className={`${VolumesNavigationClassName}__volumes__listings ${VolumesNavigationClassName}__volumes__listings--outline`}
+              <div
+                ref={/*volumesRef*/""}
+                className={`${VolumesNavigationClassName}__volumes`}
               >
-                {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
-                  return (
-                    <ThemeChanger theme={volume.theme} key={idx}>
-                      <li
-                        className={`${VolumesNavigationClassName}__volumes__listings__item`}
-                      >
-                      
-                        <Link href={volume.link}>
-                          <a
-                            className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
-                          >
-                            {volume.number}
-                          </a>
-                        </Link>
-                      </li>
-                    </ThemeChanger>
-                  );
-                })}
-              </ul>
+              
+                {/* ________________________________________ */}
+                {/* Outlined text (the font has a weird apex) */}
+                <ul
+                  className={`${VolumesNavigationClassName}__volumes__listings ${VolumesNavigationClassName}__volumes__listings--outline`}
+                >
+                  {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
+                    return (
+                      <ThemeChanger theme={volume.theme} key={idx}>
+                        <li
+                          className={`${VolumesNavigationClassName}__volumes__listings__item`}
+                        >
+                        
+                          <Link href={volume.link}>
+                            <a
+                              className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
+                            >
+                              {volume.number}
+                            </a>
+                          </Link>
+                        </li>
+                      </ThemeChanger>
+                    );
+                  })}
+                </ul>
 
-              {/* ________________________________________ */}
-              {/* Solid Text */}
-              <ul
-                className={`${VolumesNavigationClassName}__volumes__listings ${VolumesNavigationClassName}__volumes__listings--solid`}
-              >
-                {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
-                  return (
-                    <ThemeChanger theme={volume.theme} key={idx}>
-                      <li
-                        onMouseOver={() => this.updateMarquee(volume.name)} 
-                        onMouseLeave={() => this.updateMarquee()} 
-                        className={`${VolumesNavigationClassName}__volumes__listings__item ${VolumesNavigationClassName}__volumes__listings__item--${
-                          idx + 1 === SiteVolumes.length ? "is-active" : "is-inactive"
-                        } `}
-                      >
-                      
-                        <Link href={volume.link}>
-                          <a
-                            className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
-                          >
-                            {volume.number}
-                          </a>
-                        </Link>
-                      </li>
-                    </ThemeChanger>
-                  );
-                })}
-              </ul>
-            </div>
+                {/* ________________________________________ */}
+                {/* Solid Text */}
+                <ul
+                  className={`${VolumesNavigationClassName}__volumes__listings ${VolumesNavigationClassName}__volumes__listings--solid`}
+                >
+                  {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
+                    return (
+                      <ThemeChanger theme={volume.theme} key={idx}>
+                        <li
+                          onMouseOver={() => this.updateMarquee(volume.name)} 
+                          onMouseLeave={() => this.updateMarquee()} 
+                          className={`${VolumesNavigationClassName}__volumes__listings__item ${VolumesNavigationClassName}__volumes__listings__item--${
+                            idx + 1 === SiteVolumes.length ? "is-active" : "is-inactive"
+                          } `}
+                        >
+                        
+                          <Link href={volume.link}>
+                            <a
+                              className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
+                            >
+                              {volume.number}
+                            </a>
+                          </Link>
+                        </li>
+                      </ThemeChanger>
+                    );
+                  })}
+                </ul>
+              </div>
+            </Draggable>
 
             {/* ______________________________________ */}
             {/* Bottom Text */}

@@ -823,7 +823,7 @@ export const NavigationStyle = styled.nav`
           height: 0;
           opacity: 0;
           max-height: 0;
-          overflow: visible;
+        //  overflow: visible;
 
           -webkit-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
           -moz-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
