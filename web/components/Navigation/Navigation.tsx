@@ -239,7 +239,6 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
             );
           })}
         </ul>
-        <div className={`${NavigationClassName}__spacer`}></div>
         <ul className={`${NavigationClassName}__menu-overlay__site-pages`}>
           {SitePages.map((page, idx: number) => {
             return (

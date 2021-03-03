@@ -14,11 +14,6 @@
     "static/development/_ssgManifest.js"
   ],
   "pages": {
-    "/": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/index.js"
-    ],
     "/_app": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
@@ -39,20 +34,10 @@
       "static/chunks/webpack.js",
       "static/chunks/pages/next/dist/pages/_error.js"
     ],
-    "/volume-02": [
+    "/volume-01": [
       "static/chunks/main.js",
       "static/chunks/webpack.js",
-      "static/chunks/pages/volume-02.js"
-    ],
-    "/volume-03": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/volume-03.js"
-    ],
-    "/volume-04": [
-      "static/chunks/main.js",
-      "static/chunks/webpack.js",
-      "static/chunks/pages/volume-04.js"
+      "static/chunks/pages/volume-01.js"
     ]
   },
   "ampFirstPages": []

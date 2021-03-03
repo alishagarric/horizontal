@@ -105,7 +105,7 @@ export const VolumesArrowsNavigationStyle = styled.section`
           content: "";
           height: 20px;
           bottom: -20px;
-          background: linear-gradient(${Theme.Color.varBackground}, transparent);
+          background: linear-gradient(${Theme.Color.varBackground}, rgba(255, 255, 255, 0));
           left: 0;
           right: 0;
         }

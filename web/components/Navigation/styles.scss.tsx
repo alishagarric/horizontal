@@ -533,7 +533,7 @@ export const NavigationStyle = styled.nav`
 
           .${NavigationClassName}__link--branding {
             width: 50vw;
-            
+
             .${NavigationClassName}__logotype {
               .${LogotypeClassName} {
                 height: calc(${Root.Nav.Size} * .5);
@@ -628,10 +628,6 @@ export const NavigationStyle = styled.nav`
         transform: translateY(calc(100vh - ${Root.Nav.Size}));
         overflow: auto;
 
-        .${NavigationClassName}__spacer {
-          flex-grow: 1;
-        }
-
         a {
           color: ${Theme.Color.varForeground};
           display: block;
@@ -658,6 +654,7 @@ export const NavigationStyle = styled.nav`
         &__site-pages {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
+          margin-bottom: calc(${Root.Size} * 3);
 
           a {
             padding: calc(${Root.Size} / 3) 0;
