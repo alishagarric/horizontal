@@ -46,8 +46,8 @@ export const NavigationStyle = styled.nav`
       }
 
       // _________________________________
-      // Menu Button
-      .${NavigationClassName}__menu-btn {
+      // Industries Button
+      .${NavigationClassName}__industries-btn {
        // transform: translateY(12%) scale(0.65);
        transform: translateY(0%) scale(0.65);
        height: ${BottomNavSize};
@@ -230,8 +230,8 @@ export const NavigationStyle = styled.nav`
       }
     }
 
-    //Industries menu button styles
-    .${NavigationClassName}__menu-btn {
+    //Industries and mobile menu button styles
+    .${NavigationClassName}__menu-btn, .${NavigationClassName}__industries-btn {
       appearance: none;
       color: ${Theme.Color.varForeground};
 
@@ -367,6 +367,66 @@ export const NavigationStyle = styled.nav`
       }
     }
 
+    .${NavigationClassName}__menu-exit {
+      height: ${Root.Nav.Size};
+      width: ${Root.Nav.Size};
+      position: fixed;
+      top: 0;
+      right: ${Root.Grid.Gutter.Left};
+      transform: translateX(calc(${Root.Nav.Size} * 1.5)) scale(0.8);
+      transform-origin: center right;
+      will-change: transform, opacity;
+      transition: transform .25s ease, opacity .25s ease;
+
+      &:hover {
+        cursor: pointer;
+        
+        span {
+          opacity: 0.2;
+        }
+
+        &:before {
+          transform: rotate(-45deg) scale(0.8);
+        }
+
+        &:after {
+          transform: rotate(45deg) scale(0.8);
+        }
+      }
+      
+      span {
+        width: 100%;
+        height: 100%;
+        background: ${Theme.Color.varForeground};
+        opacity: 0.1;
+        display: block;
+        will-change: opacity;
+        transition: opacity .25s ease;
+      }
+      
+      &:before, &:after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        display: block;
+        background: ${Theme.Color.varForeground};
+        top: 0;
+        bottom: 0;
+        will-change: transform;
+        transition: transform .25s ease;
+      }
+
+      &:before {
+        left: 50%;
+        transform: rotate(-45deg);
+      }
+
+      &:after {
+        right: 50%;
+        transform: rotate(45deg);
+      }
+    }
+
     //Styles changes when the industries menu is expanded
     &.__industries-expanded {
 
@@ -395,7 +455,7 @@ export const NavigationStyle = styled.nav`
           background: ${Theme.Color.varBackground};
           transition: transform 1s ease 0.25s, background 0.25s;
 
-          .${NavigationClassName}__menu-btn {
+          .${NavigationClassName}__industries-btn {
             transform: translateY(0%) scale(0.55);
           }
 
@@ -411,6 +471,17 @@ export const NavigationStyle = styled.nav`
       }
     }
 
+    //Styles changes when either industries or overlay menu is expanded
+    &.__industries-expanded, &.__menu-expanded {
+      .${NavigationClassName}__menu-btn {
+        opacity: 0;  
+      }
+
+      .${NavigationClassName}__menu-exit {
+        transform: scale(0.8);
+      }
+    }
+
 
     //Screens smaller than small screen
     @media (max-width: ${Base.Media.Width.Sm + "px"}) {
@@ -418,7 +489,7 @@ export const NavigationStyle = styled.nav`
       //hide a bunch of desktop specific stuff
       .${NavigationClassName}__bottom__col--left,
       .${NavigationClassName}__bottom__col--right, 
-      .${NavigationClassName}__menu-btn,
+      .${NavigationClassName}__industries-btn,
       .${NavigationClassName}__top__col--left .__desktop-link, 
       .${NavigationClassName}__top__col--right .__desktop-link {
         display: none;
@@ -445,6 +516,7 @@ export const NavigationStyle = styled.nav`
         .${NavigationClassName}__menu-btn {
           transform: none;
           font-size: 0.7rem;
+          transition: opacity .25s ease;
         }
 
         .${NavigationClassName}__top__col--center {
@@ -471,10 +543,6 @@ export const NavigationStyle = styled.nav`
           transform: translateY( calc(100vh - ${Root.Nav.Size}));
           text-align: left;
           transition: none;
-
-          &.__industries-expanded {
-            transition: none;
-          }
         }
 
         .${NavigationClassName}__menu-nav {
@@ -539,7 +607,8 @@ export const NavigationStyle = styled.nav`
 
       //Menu overlay styles
       .${NavigationClassName}__menu-overlay {
-        display: block;
+        display: flex;
+        flex-direction: column;
         left: 0;
         right: 0;
         position: fixed;
@@ -547,11 +616,12 @@ export const NavigationStyle = styled.nav`
         height: calc(100vh - ${Root.Nav.Size});
         background: ${Theme.Color.varBackground};
         color: ${Theme.Color.varForeground};
-        padding: ${Root.Grid.Gutter.Left} 0 ${Root.Grid.Gutter.Left}  ${Root.Grid.Gutter.Left};
+        padding: ${Root.Grid.Gutter.Left};
         transform: translateY(calc(100vh - ${Root.Nav.Size}));
+        overflow: auto;
 
-        &.__menu-expanded {
-          transform: none;
+        .${NavigationClassName}__spacer {
+          flex-grow: 1;
         }
 
         a {
@@ -563,25 +633,36 @@ export const NavigationStyle = styled.nav`
           }
         }
 
-        .h1 {
+        &__site-pages:before, .h1 {
           opacity: 0.4;
-          padding-top: ${Root.Size};
+        }
+
+        &__site-pages:before {
+          content: "";
+          height: 1vw;
+          width: 100px;
+          background: ${Theme.Color.varForeground};
+          grid-column: 1 / 3;
+          margin-top: calc(${Root.Size} * 3);
+          margin-bottom: calc(${Root.Size} / 2);
         }
 
         &__site-pages {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+
           a {
             padding: calc(${Root.Size} / 3) 0;
-            text-transform: uppercase;
-            font-size: 6vw;
+            font-size: 5vw;
           }
         }
 
         &__site-volumes {
-          display: flex;
-          overflow-x: auto;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: ${Root.Grid.Gutter.Left};
 
           a {
-            margin-right: ${Root.Size};
             font-size: 5vw;
             font-weight: 600;
             display: flex;
@@ -590,33 +671,48 @@ export const NavigationStyle = styled.nav`
             position: relative;
 
 
-            &:after {
+            &:after, &:before {
               content: "";
               background: ${Theme.Color.varForeground};
               opacity: 0.4;
-              position: absolute;
-              top: 0;
-              width: 1px;
-              right: calc(${Root.Size} / -2);
+              position: absolute; 
+            }
+
+            &:after {
               bottom: 0;
+              width: 1px;
+              right: calc(${Root.Grid.Gutter.Left} / -2);
+              top: 0;
+            }
+
+            &:before {
+              right: 0;
+              width: 100%;
+              height: 1px;
+              top: calc(${Root.Grid.Gutter.Left} / -2);
             }
           }
 
-          li:last-of-type a:after {
+          li:nth-of-type(even) a:after {
+            content: none;
+          }
+
+          li:nth-of-type(1) a:before, li:nth-of-type(2) a:before {
             content: none;
           }
 
           &__number {
-            font-size: 40vw;
+            font-size: 30vw;
             font-weight: 600;
             display: block;
+            text-align: center;
           }
 
           &__name {
             flex-grow: 1;
             display: block;
             width: 100%;
-            padding: calc(${Root.Size} / 3);
+            padding: calc(${Root.Size} / 3) 0 calc(${Root.Size}) 0;
             display: grid;
             place-content: center;
             text-align: center;
@@ -632,6 +728,20 @@ export const NavigationStyle = styled.nav`
               transform: translateY(-100%);
             }
           }
+        }
+      }
+
+      //Styles changes when the industries menu is expanded
+      &.__industries-expanded {
+        .${NavigationClassName}__bottom__col--center {
+          transition: none;
+        }
+      }
+
+      //Styles changes when the overlay menu is expanded
+      &.__menu-expanded {
+        .${NavigationClassName}__menu-overlay {
+          transform: none;
         }
       }
     }

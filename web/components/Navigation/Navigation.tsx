@@ -78,9 +78,10 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
  
             <button 
               className={`${NavigationClassName}__menu-btn __mobile-link`}
-              onClick={() =>
-                industriesVisible ? setIndustriesVisible(false) : setIndustriesVisible(true)
-              }  
+              onClick={() => {
+                industriesVisible ? setIndustriesVisible(false) : setIndustriesVisible(true);
+                setMenuVisible(false);;
+              }}  
             >
               Industries
             </button>
@@ -122,9 +123,10 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
 
             <button 
               className={`${NavigationClassName}__menu-btn __mobile-link`}
-              onClick={() =>
-                menuVisible ? setMenuVisible(false) : setMenuVisible(true)
-              }
+              onClick={() => {
+                menuVisible ? setMenuVisible(false) : setMenuVisible(true);
+                setIndustriesVisible(false);
+              }}
             >
               Menu
             </button>
@@ -141,7 +143,7 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
           className={`${NavigationClassName}__bottom__col ${NavigationClassName}__bottom__col--center`}
         >
           <button
-            className={`${NavigationClassName}__menu-btn`}
+            className={`${NavigationClassName}__industries-btn`}
             onClick={() =>
               industriesVisible ? setIndustriesVisible(false) : setIndustriesVisible(true)
             }
@@ -222,18 +224,6 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
       </div>
 
       <div className={`${NavigationClassName}__menu-overlay`}>
-        <p className="h1">Information</p>
-        <ul className={`${NavigationClassName}__menu-overlay__site-pages`}>
-          {SitePages.map((page, idx: number) => {
-            return (
-              <li key={idx}>
-                <Link href={page.link}>
-                  <a onClick={() => setMenuVisible(false)}>{page.name}</a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
         <p className="h1">Volumes</p>
         <ul className={`${NavigationClassName}__menu-overlay__site-volumes`}>
           {SiteVolumes.map((page, idx: number) => {
@@ -249,6 +239,28 @@ export const Navigation: React.FunctionComponent<LMNTS_Navigation> = ({
             );
           })}
         </ul>
+        <div className={`${NavigationClassName}__spacer`}></div>
+        <ul className={`${NavigationClassName}__menu-overlay__site-pages`}>
+          {SitePages.map((page, idx: number) => {
+            return (
+              <li key={idx}>
+                <Link href={page.link}>
+                  <a onClick={() => setMenuVisible(false)}>{page.name}</a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <div 
+        className={`${NavigationClassName}__menu-exit`}
+        onClick={() => { 
+          setMenuVisible(false)
+          setIndustriesVisible(false)
+        }}
+      >
+        <span></span>
       </div>
     </NavigationStyle>
   );
