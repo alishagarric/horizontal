@@ -14,12 +14,12 @@ import styled, { keyframes } from "styled-components";
 
 // Constants
 import { Root } from "../../../constants/Root";
+import { dissapear, reveal, rotating } from "../../../constants/styles/Animation";
 import { Theme } from "../../../constants/Theme";
 import { hexToRGB } from "../../../utils/hexToRGB";
+import { BrandmarkClassName } from "../../_svg/Brandmark/Brandmark";
 import { LogotypeClassName } from "../../_svg/Logotype/Logotype";
 import { MarqueeRowClassName, MarqueeRowStyle } from "../MarqueeRow/styles.scss";
-
-// Helpers
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -28,28 +28,32 @@ export const VolumesNavigationClassName = `volumes-nav`;
 
 export const VolumesNavigationStyle = styled.section`
   &.${VolumesNavigationClassName} {
-    .${VolumesNavigationClassName}__inner {
-      height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 
+    .${VolumesNavigationClassName}__inner {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      justify-content: center;
-
-      overflow: hidden; // temporary;
+      justify-content: flex-start;
     }
 
     .${VolumesNavigationClassName}__branding {
       display: flex;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
       width: 100%;
 
       &__brandmark {
-        display: none; // temporary
+        display: none;
       }
 
       &__logotype-marquee {
-        width: calc(100vw - (${Root.Grid.Gutter.Right} * 2));
+        width: 100vw;
+        height: 18.8vw;
         position: relative;
 
         .${MarqueeRowClassName} {
@@ -65,9 +69,9 @@ export const VolumesNavigationStyle = styled.section`
         }
 
         .${LogotypeClassName} {
-          width: calc(100vw - (${Root.Grid.Gutter.Right} * 2));
-          /* height: 30vh; */
-          height: auto;
+          width: 100%;
+          height: 100%;
+          transform: scale(0.95);
 
           path {
             fill: ${Theme.Color.varSecondary};
@@ -77,17 +81,25 @@ export const VolumesNavigationStyle = styled.section`
     }
 
     .${VolumesNavigationClassName}__bottom-text {
-      display: none; // temporary
+      //TODO: Make a global style to apply to both instances of "Industries"
+      width: 100%;
+      height: 15vw;
+      font-weight: 400;
+      text-transform: uppercase;
+      padding-bottom: 0;
+      letter-spacing: normal;
+      font-size: 12vw;
+      text-align: center;
+      line-height: 1.15;   
+      display: none;     
     }
 
     .${VolumesNavigationClassName}__volumes {
       position: relative;
       z-index: 1;
-
       overflow-x: auto;
-      overflow-y: hidden;
-
       max-width: 100vw;
+
 
       &__listings--solid {
         position: absolute;

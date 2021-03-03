@@ -104,6 +104,24 @@ html {
 
     cursor: crosshair;
 
+    --homeInitialHeight: 25vw;
+
+    --homeInitialDelay: 1s;
+    --homeSlideUpDuration: 1.5s;
+
+    --homeExpandDuration: 1.5s;
+    --homeExpandDelay: calc(var(--homeInitialDelay) + calc(var(--homeSlideUpDuration) / 2));
+
+    --homeIndustriesShrinkDuration: .5s;
+    --homeIndustriesDissapearDuration: 1.5s;
+    --homeIndustriesShrinkDelay: calc(var(--homeExpandDelay) + var(--homeExpandDuration));
+
+    --homeRevealDuration: 1.5s;
+    --homeRevealDelay: calc(var(--homeIndustriesShrinkDelay) + calc(var(--homeIndustriesShrinkDuration) / 2));
+
+    --homeMarkDissapearDuration: 0s;
+    --homeIndustriesDissapearDelay: calc(var(--homeIndustriesShrinkDelay) + var(--homeIndustriesShrinkDuration));
+
     /* overflow: hidden; */
   }
 

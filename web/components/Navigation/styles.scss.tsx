@@ -19,6 +19,8 @@ import { BrandmarkClassName } from "../_svg/Brandmark/Brandmark";
 import { LogotypeClassName } from "../_svg/Logotype/Logotype";
 import { CssUtils } from "../../constants/styles/CssUtils";
 import { Base } from "../../constants/styles/Base";
+import { dissapear, homepageExpand, homepageShrink, homepageSlideUp, reveal } from "../../constants/styles/Animation";
+import { VolumesNavigationClassName } from "../Sections/VolumesNavigation/styles.scss";
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -625,7 +627,7 @@ export const NavigationStyle = styled.nav`
         background: ${Theme.Color.varBackground};
         color: ${Theme.Color.varForeground};
         padding: ${Root.Grid.Gutter.Left};
-        transform: translateY(100vh);
+        transform: translateY(150vh);
         overflow: auto;
 
         a {
@@ -753,6 +755,81 @@ export const NavigationStyle = styled.nav`
       &.__menu-expanded {
         .${NavigationClassName}__menu-overlay {
           transform: none;
+        }
+      }
+    }
+
+    //homepage initial landing animation
+    &.__homepage-animation.${NavigationClassName}--route-is-home {
+
+      opacity: 0;
+
+      -webkit-animation: ${reveal} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+      -moz-animation: ${reveal} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+      -ms-animation: ${reveal} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+      -o-animation: ${reveal} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+      animation: ${reveal} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+
+      ~ main .${VolumesNavigationClassName} {
+
+        .${VolumesNavigationClassName}__inner {
+          overflow: hidden;
+
+          height: var(--homeInitialHeight);
+
+          -webkit-animation: ${homepageExpand} var(--homeExpandDuration) forwards 1 var(--homeExpandDelay);
+          -moz-animation: ${homepageExpand} var(--homeExpandDuration) forwards 1 var(--homeExpandDelay);
+          -ms-animation: ${homepageExpand} var(--homeExpandDuration) forwards 1 var(--homeExpandDelay);
+          -o-animation: ${homepageExpand} var(--homeExpandDuration) forwards 1 var(--homeExpandDelay);
+          animation: ${homepageExpand} var(--homeExpandDuration) forwards 1 var(--homeExpandDelay);
+        }
+
+        .${VolumesNavigationClassName}__animated-items-container {
+          -webkit-animation: ${homepageSlideUp} var(--homeSlideUpDuration) forwards 1 var(--homeInitialDelay);
+          -moz-animation: ${homepageSlideUp} var(--homeSlideUpDuration) forwards 1 var(--homeInitialDelay);
+          -ms-animation: ${homepageSlideUp} var(--homeSlideUpDuration) forwards 1 var(--homeInitialDelay);
+          -o-animation: ${homepageSlideUp} var(--homeSlideUpDuration) forwards 1 var(--homeInitialDelay);
+          animation: ${homepageSlideUp} var(--homeSlideUpDuration) forwards 1 var(--homeInitialDelay);
+        }
+
+        .${VolumesNavigationClassName}__branding {
+          &__brandmark {
+            display: block;
+            padding-bottom: 4vw;
+
+            -webkit-animation: ${dissapear} var(--homeMarkDissapearDuration) forwards 1 var(--homeExpandDelay);
+            -moz-animation: ${dissapear} var(--homeMarkDissapearDuration) forwards 1 var(--homeExpandDelay);
+            -ms-animation: ${dissapear} var(--homeMarkDissapearDuration) forwards 1 var(--homeExpandDelay);
+            -o-animation: ${dissapear} var(--homeMarkDissapearDuration) forwards 1 var(--homeExpandDelay);
+            animation: ${dissapear} var(--homeMarkDissapearDuration) forwards 1 var(--homeExpandDelay);
+
+            .${BrandmarkClassName} {
+              height: var(--homeInitialHeight);
+              width: auto;
+            }
+          }
+        }
+
+        .${VolumesNavigationClassName}__bottom-text {
+          display: block;
+          -webkit-animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+          -moz-animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+          -ms-animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+          -o-animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+          animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+        }
+
+        .${VolumesNavigationClassName}__volumes {
+          height: 0;
+          opacity: 0;
+          max-height: 0;
+          overflow: visible;
+
+          -webkit-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
+          -moz-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
+          -ms-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
+          -o-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
+          animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
         }
       }
     }

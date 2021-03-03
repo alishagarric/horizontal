@@ -1,1 +1,1 @@
-self.__BUILD_MANIFEST = {__rewrites:[],"/_error":["static\u002Fchunks\u002Fpages\u002F_error.js"],"/volume-01":["static\u002Fchunks\u002Fpages\u002Fvolume-01.js"],"/volume-02":["static\u002Fchunks\u002Fpages\u002Fvolume-02.js"],sortedPages:["\u002F_app","\u002F_error","\u002Fvolume-01","\u002Fvolume-02"]};self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()
+self.__BUILD_MANIFEST = {__rewrites:[],"/_error":["static\u002Fchunks\u002Fpages\u002F_error.js"],sortedPages:["\u002F_app","\u002F_error"]};self.__BUILD_MANIFEST_CB && self.__BUILD_MANIFEST_CB()

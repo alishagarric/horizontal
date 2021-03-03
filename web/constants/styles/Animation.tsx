@@ -1,5 +1,8 @@
 // Core
 import { keyframes } from "styled-components";
+import { Root } from "../Root";
+import { Theme } from "../Theme";
+import { Base } from "./Base";
 
 // Begin Component
 // __________________________________________________________________________________________
@@ -18,6 +21,25 @@ export const FadeIn = keyframes`
     opacity: 1;
   }
 `;
+
+export const dissapear /* Safari and Chrome */ = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    pointer-events: none;
+  }
+}`;
+
+export const reveal /* Safari and Chrome */ = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}`;
 
 
 export const rotating /* Safari and Chrome */ = keyframes`
@@ -186,3 +208,64 @@ export const LoaderDot = keyframes`
     background: #f7fafc;
   }
 `;
+
+
+//Homepage specific animations
+
+export const homepageSlideUp /* Safari and Chrome */ = keyframes`
+  from {
+    -webkit-transform: translateY(50vh - 33.8vh);
+    -o-transform: translateY(0);
+    transform: translateY(0);
+  }
+  to {
+    -webkit-transform: translateY(-29vw);
+    -o-transform: translateY(-29vw);
+    transform: translateY(-29vw);
+  }
+}`;
+
+export const homepageExpand /* Safari and Chrome */ = keyframes`
+  from {
+    height: 25vw;
+    overflow: hidden;
+  }
+  to {
+    height: 33.8vw;
+    overflow: visible;
+  }
+}`;
+
+export const homepageShrink /* Safari and Chrome */ = keyframes`
+  from {
+    font-size: 12vw;
+    height: 15vw;
+    -webkit-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0deg);
+  }
+  to {
+    font-size: 4vw;
+    height: ${Root.Nav.Size};
+    -webkit-transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));
+    -o-transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));
+    transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));
+  }
+
+  @media (min-width: ${Base.Grid.SiteWidth + "px"}) {
+    from {
+      font-size: 12vw;
+      height: 15vw;
+      -webkit-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0deg);
+    }
+    to {
+      font-size: 4rem;
+      height: ${Root.Nav.Size};
+      -webkit-transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));
+      -o-transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));
+      transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));
+    }
+  }
+}`;

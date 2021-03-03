@@ -59,7 +59,6 @@ export class VolumesNavigation extends React.PureComponent<
 
 
   render() {
-    let { children } = this.props;
     let { marquee  } = this.state;
     /*const volumesRef = useRef<HTMLDivElement>();
 
@@ -73,86 +72,88 @@ export class VolumesNavigation extends React.PureComponent<
       >
         <div className={`${VolumesNavigationClassName}__inner`}>
           <h1 className="__visually-hidden">Volume Industries</h1>
-          {/* ______________________________________ */}
-          {/* Branding */}
-          <div className={`${VolumesNavigationClassName}__branding`}>
 
-            <div className={`${VolumesNavigationClassName}__branding__brandmark`}>
-              <Brandmark />
+          <div className={`${VolumesNavigationClassName}__animated-items-container`}>
+
+            {/* ______________________________________ */}
+            {/* Branding */}
+            <div className={`${VolumesNavigationClassName}__branding`}>
+
+              <div className={`${VolumesNavigationClassName}__branding__brandmark`}>
+                <Brandmark />
+              </div>
+              <div className={`${VolumesNavigationClassName}__branding__logotype-marquee`}>
+                { marquee && <MarqueeRow strings={[marquee]} />}
+                <Logotype />
+              </div>
             </div>
-            <div className={`${VolumesNavigationClassName}__branding__logotype-marquee`}>
-              { marquee && <MarqueeRow strings={[marquee]} />}
-              <Logotype />
+
+            {/* ______________________________________ */}
+            {/* Volume Listings */}
+            <div
+              ref={/*volumesRef*/""}
+              className={`${VolumesNavigationClassName}__volumes`}
+            >
+              {/* ________________________________________ */}
+              {/* Outlined text (the font has a weird apex) */}
+              <ul
+                className={`${VolumesNavigationClassName}__volumes__listings ${VolumesNavigationClassName}__volumes__listings--outline`}
+              >
+                {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
+                  return (
+                    <ThemeChanger theme={volume.theme} key={idx}>
+                      <li
+                        className={`${VolumesNavigationClassName}__volumes__listings__item`}
+                      >
+                      
+                        <Link href={volume.link}>
+                          <a
+                            className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
+                          >
+                            {volume.number}
+                          </a>
+                        </Link>
+                      </li>
+                    </ThemeChanger>
+                  );
+                })}
+              </ul>
+
+              {/* ________________________________________ */}
+              {/* Solid Text */}
+              <ul
+                className={`${VolumesNavigationClassName}__volumes__listings ${VolumesNavigationClassName}__volumes__listings--solid`}
+              >
+                {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
+                  return (
+                    <ThemeChanger theme={volume.theme} key={idx}>
+                      <li
+                        onMouseOver={() => this.updateMarquee(volume.name)} 
+                        onMouseLeave={() => this.updateMarquee()} 
+                        className={`${VolumesNavigationClassName}__volumes__listings__item ${VolumesNavigationClassName}__volumes__listings__item--${
+                          idx + 1 === SiteVolumes.length ? "is-active" : "is-inactive"
+                        } `}
+                      >
+                      
+                        <Link href={volume.link}>
+                          <a
+                            className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
+                          >
+                            {volume.number}
+                          </a>
+                        </Link>
+                      </li>
+                    </ThemeChanger>
+                  );
+                })}
+              </ul>
             </div>
-          </div>
 
-          {/* ______________________________________ */}
-          {/* Volume Listings */}
-          <div
-            ref={/*volumesRef*/""}
-            className={`${VolumesNavigationClassName}__volumes`}
-          >
-            {/* ________________________________________ */}
-            {/* Outlined text (the font has a weird apex) */}
-            <ul
-              className={`${VolumesNavigationClassName}__volumes__listings ${VolumesNavigationClassName}__volumes__listings--outline`}
-            >
-              {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
-                return (
-                  <ThemeChanger theme={volume.theme}>
-                    <li
-                      key={idx}
-                      className={`${VolumesNavigationClassName}__volumes__listings__item`}
-                    >
-                    
-                      <Link href={volume.link}>
-                        <a
-                          className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
-                        >
-                          {volume.number}
-                        </a>
-                      </Link>
-                    </li>
-                  </ThemeChanger>
-                );
-              })}
-            </ul>
-
-            {/* ________________________________________ */}
-            {/* Solid Text */}
-            <ul
-              className={`${VolumesNavigationClassName}__volumes__listings ${VolumesNavigationClassName}__volumes__listings--solid`}
-            >
-              {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
-                return (
-                  <ThemeChanger theme={volume.theme}>
-                    <li
-                      key={idx}
-                      onMouseOver={() => this.updateMarquee(volume.name)} 
-                      onMouseLeave={() => this.updateMarquee()} 
-                      className={`${VolumesNavigationClassName}__volumes__listings__item ${VolumesNavigationClassName}__volumes__listings__item--${
-                        idx + 1 === SiteVolumes.length ? "is-active" : "is-inactive"
-                      } `}
-                    >
-                    
-                      <Link href={volume.link}>
-                        <a
-                          className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
-                        >
-                          {volume.number}
-                        </a>
-                      </Link>
-                    </li>
-                  </ThemeChanger>
-                );
-              })}
-            </ul>
-          </div>
-
-          {/* ______________________________________ */}
-          {/* Bottom Text */}
-          <div className={`${VolumesNavigationClassName}__bottom-text`}>
-            <h2>Industries</h2>
+            {/* ______________________________________ */}
+            {/* Bottom Text */}
+            <h2 className={`${VolumesNavigationClassName}__bottom-text`}>
+              Industries
+            </h2>
           </div>
         </div>
       </VolumesNavigationStyle>
