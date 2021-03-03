@@ -218,7 +218,6 @@ export const NavigationStyle = styled.nav`
 
       &__col--center {
         position: fixed;
-        pointer-events: none;
         left: 0;
         top: ${Root.Nav.Size};
         height: calc(100vh - ${Root.Nav.Size});
@@ -255,6 +254,10 @@ export const NavigationStyle = styled.nav`
 
       font-size: 4vw;
       text-transform: uppercase;
+
+      @media (min-width: ${Base.Grid.SiteWidth + "px"}) {
+        font-size: 4rem;
+      }
     }
 
     //Industries menu itself styles
@@ -455,7 +458,6 @@ export const NavigationStyle = styled.nav`
           overflow: auto;
           background: ${Theme.Color.varBackground};
           transition: transform 1s ease 0.25s, background 0.25s;
-          pointer-events: all;
 
           .${NavigationClassName}__industries-btn {
             transform: translateY(0%) scale(0.55);
@@ -512,6 +514,7 @@ export const NavigationStyle = styled.nav`
       //Top nav styles
       .${NavigationClassName}__top {
         background-color: ${Theme.Color.varBackground};
+        align-items: stretch;
 
 
         //industry and menu buttons
@@ -519,6 +522,7 @@ export const NavigationStyle = styled.nav`
           transform: none;
           font-size: 0.7rem;
           transition: opacity .25s ease;
+          height: 100%;
         }
 
         .${NavigationClassName}__top__col--center {
@@ -528,6 +532,8 @@ export const NavigationStyle = styled.nav`
           transform: translateX(-50%);
 
           .${NavigationClassName}__link--branding {
+            width: 50vw;
+            
             .${NavigationClassName}__logotype {
               .${LogotypeClassName} {
                 height: calc(${Root.Nav.Size} * .5);
@@ -539,6 +545,8 @@ export const NavigationStyle = styled.nav`
 
       //Bottom nav styles
       .${NavigationClassName}__bottom {
+        pointer-events: none;
+
         &__col--center {
           transform: translateY( calc(100vh - ${Root.Nav.Size}));
           text-align: left;
@@ -735,8 +743,12 @@ export const NavigationStyle = styled.nav`
 
       //Styles changes when the industries menu is expanded
       &.__industries-expanded {
-        .${NavigationClassName}__bottom__col--center {
-          transition: none;
+        .${NavigationClassName}__bottom {
+          pointer-events: all;
+
+          &__col--center {
+            transition: none;
+          }
         }
       }
 
