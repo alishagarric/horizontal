@@ -68,8 +68,8 @@ export const NavigationStyle = styled.nav`
             opacity: 0;
 
             .${BrandmarkClassName} {
-              width: 60px;
-              height: 60px;
+              width: calc(${Root.Nav.Size} * .75);
+              height: calc(${Root.Nav.Size} * .75);
             }
           }
 
@@ -78,7 +78,7 @@ export const NavigationStyle = styled.nav`
             opacity: 1;
 
             .${LogotypeClassName} {
-              height: 60px;
+              height: calc(${Root.Nav.Size} * .75);
               width: 100%;
             }
           }
@@ -168,8 +168,8 @@ export const NavigationStyle = styled.nav`
           opacity: 1;
 
           .${BrandmarkClassName} {
-            width: 60px;
-            height: 60px;
+            width: calc(${Root.Nav.Size} * .75);
+            height: calc(${Root.Nav.Size} * .75);
           }
         }
 
@@ -178,7 +178,7 @@ export const NavigationStyle = styled.nav`
           opacity: 0;
 
           .${LogotypeClassName} {
-            height: 60px;
+            height: calc(${Root.Nav.Size} * .75);
             width: 100%;
           }
         }
@@ -218,6 +218,7 @@ export const NavigationStyle = styled.nav`
 
       &__col--center {
         position: fixed;
+        pointer-events: none;
         left: 0;
         top: ${Root.Nav.Size};
         height: calc(100vh - ${Root.Nav.Size});
@@ -454,6 +455,7 @@ export const NavigationStyle = styled.nav`
           overflow: auto;
           background: ${Theme.Color.varBackground};
           transition: transform 1s ease 0.25s, background 0.25s;
+          pointer-events: all;
 
           .${NavigationClassName}__industries-btn {
             transform: translateY(0%) scale(0.55);
@@ -495,7 +497,7 @@ export const NavigationStyle = styled.nav`
         display: none;
       }
 
-      //hide a bunch of desktop specific stuff
+      //hide a bunch of desktop specific pseudo items
       .${NavigationClassName}__bottom:before,
       .${NavigationClassName}__bottom:after {
         content: none;
@@ -520,17 +522,15 @@ export const NavigationStyle = styled.nav`
         }
 
         .${NavigationClassName}__top__col--center {
-          height: 100%;
+          position: fixed;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
 
           .${NavigationClassName}__link--branding {
-            height: 100%;
-            width: auto;
-
-            .${NavigationClassName}__logotype, .${NavigationClassName}__brandmark {
-              height: 100%;
-
-              .${LogotypeClassName}, .${BrandmarkClassName}  {
-                height: calc(${Root.Nav.Size} * .6);
+            .${NavigationClassName}__logotype {
+              .${LogotypeClassName} {
+                height: calc(${Root.Nav.Size} * .5);
               }
             }
           }
@@ -721,9 +721,11 @@ export const NavigationStyle = styled.nav`
         }
       }
 
+      //Special homepage navigation changes
       &:not(.${NavigationClassName}--route-is-home) {
         .${NavigationClassName}__top {
           .${NavigationClassName}__link--branding {
+
             .${NavigationClassName}__logotype {
               transform: translateY(-100%);
             }
