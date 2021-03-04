@@ -1,7 +1,15 @@
 {
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
+  "/about": "pages/about.html",
+  "/contact": "pages/contact.html",
+  "/": "pages/index.html",
+  "/los-angeles": "pages/los-angeles.html",
+  "/new-york-city": "pages/new-york-city.html",
+  "/volume-01": "pages/volume-01.html",
+  "/volume-02": "pages/volume-02.html",
+  "/volume-03": "pages/volume-03.html",
+  "/volume-04": "pages/volume-04.html",
   "/_error": "pages/_error.js",
-  "/next/dist/pages/_error": "pages/next/dist/pages/_error.js",
-  "/": "pages/index.js"
+  "/404": "pages/404.html"
 }

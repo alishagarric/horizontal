@@ -19,7 +19,7 @@ import { BrandmarkClassName } from "../_svg/Brandmark/Brandmark";
 import { LogotypeClassName } from "../_svg/Logotype/Logotype";
 import { CssUtils } from "../../constants/styles/CssUtils";
 import { Base } from "../../constants/styles/Base";
-import { dissapear, homepageExpand, homepageShrink, homepageSlideUp, reveal } from "../../constants/styles/Animation";
+import { dissapear, homepageExpand, homepageShrink, homepageSlideLeft, homepageSlideUp, reveal } from "../../constants/styles/Animation";
 import { VolumesNavigationClassName } from "../Sections/VolumesNavigation/styles.scss";
 
 // Begin Styles
@@ -812,24 +812,44 @@ export const NavigationStyle = styled.nav`
 
         .${VolumesNavigationClassName}__bottom-text {
           display: block;
+
           -webkit-animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
           -moz-animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
           -ms-animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
           -o-animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
           animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
+
+          @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+            -webkit-animation: ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeRevealDelay);
+            -moz-animation: ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeRevealDelay);
+            -ms-animation: ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeRevealDelay);
+            -o-animation: ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeRevealDelay);
+            animation: ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeRevealDelay);
+          }
         }
 
         .${VolumesNavigationClassName}__volumes {
-          height: 0;
           opacity: 0;
-          max-height: 0;
-        //  overflow: visible;
+          pointer-events: none;
+
+          &.__initial-state {
+            animation: ${(props: {volumesNavOffset: string}) => homepageSlideLeft(props.volumesNavOffset) } var(--homeSlideLeftDuration) forwards 1 var(--homeSlideLeftDelay), ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay) !important;
+            -moz-animation: ${(props: {volumesNavOffset: string}) => homepageSlideLeft(props.volumesNavOffset) } var(--homeSlideLeftDuration) forwards 1 var(--homeSlideLeftDelay), ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay) !important;
+            -ms-animation: ${(props: {volumesNavOffset: string}) => homepageSlideLeft(props.volumesNavOffset) } var(--homeSlideLeftDuration) forwards 1 var(--homeSlideLeftDelay), ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay) !important;
+            -o-animation: ${(props: {volumesNavOffset: string}) => homepageSlideLeft(props.volumesNavOffset) } var(--homeSlideLeftDuration) forwards 1 var(--homeSlideLeftDelay), ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay) !important;
+            animation: ${(props: {volumesNavOffset: string}) => homepageSlideLeft(props.volumesNavOffset) } var(--homeSlideLeftDuration) forwards 1 var(--homeSlideLeftDelay), ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay) !important;
+          }
+
+          &:not(.__initial-state){
+            left: ${(props: {volumesNavOffset: string}) => props.volumesNavOffset };
+          }
 
           -webkit-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
           -moz-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
           -ms-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
           -o-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
           animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
+
         }
       }
     }

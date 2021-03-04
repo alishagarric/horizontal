@@ -1,6 +1,6 @@
 // Core
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import {
   LMNTS_SiteVolume,
   SiteVolumes,
@@ -21,11 +21,13 @@ import {
 // __________________________________________________________________________________________
 
 export type LMNTS_VolumesNavigation = {
- // hasSidebar?: boolean;
+  children?: any;
 };
 
 export type LMNTS_VolumesNavigationState = {
   marquee: string | false;
+  offsetClass: string;
+  volumesNavOffset: number
 }
 
 /**
@@ -45,6 +47,8 @@ export class VolumesNavigation extends React.PureComponent<
 
     this.state = {
       marquee : false,
+      offsetClass: "__initial-state",
+      volumesNavOffset: 0,
     };
 
     this.updateMarquee = this.updateMarquee.bind(this);
@@ -56,16 +60,11 @@ export class VolumesNavigation extends React.PureComponent<
     });
   }
 
-
-
+  volumesRef: React.RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
 
   render() {
     let { marquee  } = this.state;
-    /*const volumesRef = useRef<HTMLDivElement>();
 
-    useEffect(() => {
-      volumesRef.current.scrollTo(10000, 0);
-    });*/
 
     return (
       <VolumesNavigationStyle
@@ -93,12 +92,15 @@ export class VolumesNavigation extends React.PureComponent<
             {/* Volume Listings */}
             <Draggable 
               axis="x" 
-              defaultPosition={{x: 0, y: 0}}
-              bounds={{right: 0}}
+              defaultPosition={{x: this.state.volumesNavOffset, y: 0}}
+              cancel={`.${VolumesNavigationClassName}__volumes__listings__item__el`}
+              onMouseDown={(e: MouseEvent) => {
+                this.setState({offsetClass: ""});
+              }}
             >
               <div
-                ref={/*volumesRef*/""}
-                className={`${VolumesNavigationClassName}__volumes`}
+                ref={this.volumesRef}
+                className={`${VolumesNavigationClassName}__volumes ${this.state.offsetClass}`}
               >
               
                 {/* ________________________________________ */}
@@ -109,7 +111,7 @@ export class VolumesNavigation extends React.PureComponent<
                   {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
                     return (
                       <ThemeChanger theme={volume.theme} key={idx}>
-                        <li
+                        <div
                           className={`${VolumesNavigationClassName}__volumes__listings__item`}
                         >
                         
@@ -120,7 +122,7 @@ export class VolumesNavigation extends React.PureComponent<
                               {volume.number}
                             </a>
                           </Link>
-                        </li>
+                        </div>
                       </ThemeChanger>
                     );
                   })}
@@ -134,7 +136,7 @@ export class VolumesNavigation extends React.PureComponent<
                   {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
                     return (
                       <ThemeChanger theme={volume.theme} key={idx}>
-                        <li
+                        <div
                           onMouseOver={() => this.updateMarquee(volume.name)} 
                           onMouseLeave={() => this.updateMarquee()} 
                           className={`${VolumesNavigationClassName}__volumes__listings__item ${VolumesNavigationClassName}__volumes__listings__item--${
@@ -149,7 +151,7 @@ export class VolumesNavigation extends React.PureComponent<
                               {volume.number}
                             </a>
                           </Link>
-                        </li>
+                        </div>
                       </ThemeChanger>
                     );
                   })}

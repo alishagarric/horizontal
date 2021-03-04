@@ -20,6 +20,7 @@ import { Logotype } from "../_svg/Logotype/Logotype";
 import { parseRouteToClassName } from "../../utils/parseRouteToClassName";
 import { LMNTS_SiteIndustry, SiteIndustries, SitePages, SiteVolumes } from "../../constants/site/Settings";
 import LazyImage from "../../utils/lazyImage";
+import { VolumesNavigationClassName } from "../Sections/VolumesNavigation/styles.scss";
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -32,6 +33,7 @@ export type LMNTS_Navigation = {
   industriesVisible: boolean;
   menuVisible: boolean;
   initialSiteLoad: boolean;
+  volumesNavOffset: number;
  }
  
  /**
@@ -53,6 +55,7 @@ export type LMNTS_Navigation = {
       industriesVisible: false,
       menuVisible: false,
       initialSiteLoad: true,
+      volumesNavOffset: -1,
      };
  
      this.setIndustriesVisible = this.setIndustriesVisible.bind(this);
@@ -78,8 +81,22 @@ export type LMNTS_Navigation = {
     });
   }
 
-  componentDidUpdate() {
-    this.setInitialSiteLoad(false);
+  componentDidUpdate(prevProps) {
+    if (prevProps.router.asPath != "/"){
+      this.setInitialSiteLoad(false);
+    }
+  }
+
+
+  componentDidMount(){
+    let el = document.getElementsByClassName(VolumesNavigationClassName + "__volumes__listings");
+    if ( el && el[0] && el[0].scrollWidth && el[0].clientWidth){
+      let offset = el[0].clientWidth - el[0].scrollWidth;
+
+      this.setState({
+        volumesNavOffset: offset < 0 ? offset : 0
+      });
+    }
   }
 
 
@@ -101,13 +118,14 @@ export type LMNTS_Navigation = {
 
     return (
       <NavigationStyle
-        className={`${NavigationClassName} ${NavigationClassName}--menu-is-${
-          industriesVisible ? "visible" : "not-visible"
-        } ${NavigationClassName}--route-is-${parseRouteToClassName(
-          router.pathname
-        )} ${industriesVisible ? "__industries-expanded" : ""}
-        ${menuVisible ? "__menu-expanded" : ""}
-        ${initialSiteLoad ? "__homepage-animation" : ""}`}
+        className={`
+          ${NavigationClassName} ${NavigationClassName}--menu-is-${industriesVisible ? "visible" : "not-visible"} 
+          ${NavigationClassName}--route-is-${parseRouteToClassName(router.pathname)} 
+          ${industriesVisible ? "__industries-expanded" : ""}
+          ${menuVisible ? "__menu-expanded" : ""}
+          ${initialSiteLoad ? "__homepage-animation" : ""}
+        `}
+        volumesNavOffset={this.state.volumesNavOffset + "px"}
       >
         {/* ____________________________________ */}
         {/* Navigation Top */}

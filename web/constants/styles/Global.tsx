@@ -122,6 +122,9 @@ html {
     --homeMarkDissapearDuration: 0s;
     --homeIndustriesDissapearDelay: calc(var(--homeIndustriesShrinkDelay) + var(--homeIndustriesShrinkDuration));
 
+    --homeSlideLeftDuration: 2s;
+    --homeSlideLeftDelay: var(--homeIndustriesDissapearDelay);
+
     /* overflow: hidden; */
   }
 

@@ -15,6 +15,7 @@ declare global {
 
 type LXLT_ThemeChanger = {
   theme: LXLT_ColorTheme;
+  className?: string;
 };
 
 type LXLT_ThemeChangerState = {
@@ -74,18 +75,19 @@ export class ThemeChanger extends React.PureComponent<
 
 
   render() {
-    let { children, theme } = this.props;
+    let { children, theme, className } = this.props;
     let { active  } = this.state;
     let HoverTheme = ColorUtils.SetThemeFromServer(theme);
 
     return (
-      <div           
+      <li           
         onMouseOver={() => this.addTheme()} 
         onMouseLeave={() => this.removeTheme()} 
+        className={`${className ? className : ""}`}
       >
         { active && <HoverTheme />}
         {children}
-      </div>
+      </li>
     );
   }
 };

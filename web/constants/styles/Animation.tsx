@@ -35,9 +35,11 @@ export const dissapear /* Safari and Chrome */ = keyframes`
 export const reveal /* Safari and Chrome */ = keyframes`
   from {
     opacity: 0;
+    pointer-events: none;
   }
   to {
     opacity: 1;
+    pointer-events: auto;
   }
 }`;
 
@@ -214,7 +216,7 @@ export const LoaderDot = keyframes`
 
 export const homepageSlideUp /* Safari and Chrome */ = keyframes`
   from {
-    -webkit-transform: translateY(50vh - 33.8vh);
+    -webkit-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0);
   }
@@ -231,8 +233,17 @@ export const homepageExpand /* Safari and Chrome */ = keyframes`
     overflow: hidden;
   }
   to {
-    height: 33.8vw;
+    height: 43.8vw;
     overflow: visible;
+  }
+}`;
+
+export const homepageSlideLeft = (offset) =>/* Safari and Chrome */ keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(${offset});
   }
 }`;
 
@@ -240,16 +251,19 @@ export const homepageShrink /* Safari and Chrome */ = keyframes`
   from {
     font-size: 12vw;
     height: 15vw;
-    -webkit-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0deg);
+    -webkit-transform: translateY(calc(29vw + 18.8vw));
+    -o-transform: translateY(calc(29vw + 18.8vw));
+    transform: translateY(calc(29vw + 18.8vw));
   }
   to {
     font-size: 4vw;
     height: ${Root.Nav.Size};
-    -webkit-transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));
+   /* -webkit-transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));
     -o-transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));
-    transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));
+    transform: translateY(calc(calc(calc(calc(100vh - 33.8vw) / 2) + calc(15vw - ${Root.Nav.Size})) - ${Theme.Base.Size.Sm}));*/
+    -webkit-transform: translateY( calc(calc(calc(calc(calc(calc(100vh - 43.8vw) / 2) + calc(29vw + 18.8vw)) + 25vw) - ${Root.Nav.Size}) - ${Theme.Base.Size.Sm}) );
+    -o-transform: translateY( calc(calc(calc(calc(calc(calc(100vh - 43.8vw) / 2) + calc(29vw + 18.8vw)) + 25vw) - ${Root.Nav.Size}) - ${Theme.Base.Size.Sm}) );
+    transform: translateY( calc(calc(calc(calc(calc(calc(100vh - 43.8vw) / 2) + calc(29vw + 18.8vw)) + 25vw) - ${Root.Nav.Size}) - ${Theme.Base.Size.Sm}) );
   }
 
   @media (min-width: ${Base.Grid.SiteWidth + "px"}) {

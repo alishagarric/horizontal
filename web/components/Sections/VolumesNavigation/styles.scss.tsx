@@ -15,6 +15,7 @@ import styled, { keyframes } from "styled-components";
 // Constants
 import { Root } from "../../../constants/Root";
 import { dissapear, reveal, rotating } from "../../../constants/styles/Animation";
+import { Base } from "../../../constants/styles/Base";
 import { Theme } from "../../../constants/Theme";
 import { hexToRGB } from "../../../utils/hexToRGB";
 import { BrandmarkClassName } from "../../_svg/Brandmark/Brandmark";
@@ -80,6 +81,10 @@ export const VolumesNavigationStyle = styled.section`
       }
     }
 
+    .${VolumesNavigationClassName}__animated-items-container {
+      position: relative;
+    }
+
     .${VolumesNavigationClassName}__bottom-text {
       //TODO: Make a global style to apply to both instances of "Industries"
       width: 100%;
@@ -90,7 +95,13 @@ export const VolumesNavigationStyle = styled.section`
       letter-spacing: normal;
       font-size: 12vw;
       text-align: center;
-      line-height: 1.15;   
+      line-height: 1.15;  
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateY(calc(29vw + 18.8vw));
+      pointer-events: none;
+
       display: none;     
     }
 
@@ -141,17 +152,12 @@ export const VolumesNavigationStyle = styled.section`
         &__item {
           font-weight: 500;
           font-size: 25vw;
+          height: 25vw;
           line-height: 0.8;
-
-          padding: 0.125em;
-
-          &:first-of-type {
-            padding-left: 0;
-          }
-
-          &:last-of-type {
-            padding-left: 0;
-          }
+          padding: 0 0.125em;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
 
 
           &__el {
@@ -159,6 +165,22 @@ export const VolumesNavigationStyle = styled.section`
 
             &:hover {
               text-decoration: none;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+      .${VolumesNavigationClassName}__branding {
+
+        //hide hover interaction on mobile
+        &__logotype-marquee {
+          .${MarqueeRowClassName} {
+            display: none;
+
+            ~ .${LogotypeClassName} {
+              opacity: 1;
             }
           }
         }
