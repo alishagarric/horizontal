@@ -490,7 +490,7 @@ export const NavigationStyle = styled.nav`
 
 
     //Screens smaller than small screen
-    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"})  {
 
       //hide a bunch of desktop specific stuff
       .${NavigationClassName}__bottom__col--left,
@@ -819,7 +819,7 @@ export const NavigationStyle = styled.nav`
           -o-animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
           animation: ${homepageShrink} var(--homeIndustriesShrinkDuration) forwards 1 var(--homeIndustriesShrinkDelay), ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeIndustriesDissapearDelay);
 
-          @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+          @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
             -webkit-animation: ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeRevealDelay);
             -moz-animation: ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeRevealDelay);
             -ms-animation: ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeRevealDelay);

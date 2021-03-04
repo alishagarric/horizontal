@@ -146,7 +146,7 @@ export const Typography = createGlobalStyle`
     @media (max-width: ${Base.Media.Width.Md + "px"}) {
       font-size: 4rem;
     }
-    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
       font-size: 3.5rem;
     }
   }

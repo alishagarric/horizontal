@@ -26,7 +26,7 @@ const TallOuterContainer = styled.div.attrs(({ dynamicHeight }) => ({
   position: relative;
   width: 100%;
 
-  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
     height: auto;
   }
 `;
@@ -41,7 +41,7 @@ const Scrollbar = styled.span.attrs(({ dynamicBarWidth, translateX }) => ({
   transform-origin: left center;
   display: block;
 
-  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
     width: auto;
     transform: none;
   }
@@ -58,7 +58,7 @@ const ScrollbarContainer = styled.span.attrs(({ dynamicBarContainerWidth }) => (
   z-index: 999;
   bottom: calc(${BottomNavMargin } + ${BottomNavSize} - var(--scrollBarHeight));
 
-  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
     display: none;
     transform: none;
   }
@@ -71,7 +71,7 @@ const StickyInnerContainer = styled.div`
   width: 100%;
   overflow-x: hidden;
 
-  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
     position: relative;
     height: auto;
     overflow-x: auto;
@@ -86,7 +86,7 @@ const HorizontalTranslateContainer = styled.div.attrs(({ translateX }) => ({
   transition: transform 0.5s ease-out;
   will-change: transform;
 
-  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
     position: relative;
     height: auto;
     will-change: none;
@@ -104,7 +104,7 @@ const ContentWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
 
-  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
     height: auto;
     display: block;
   }
@@ -115,7 +115,7 @@ const HorizontalSection = styled.section`
   width: 100%;
   min-height: 100vh;
 
-  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+  @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
     min-height: none;
   }
 `;

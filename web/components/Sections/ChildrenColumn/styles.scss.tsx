@@ -60,7 +60,7 @@ export const ChildrenColumnStyle = styled.section`
       justify-content: space-between;
     }
 
-    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
       padding-top: calc(${Root.ColumnGutter} * 3);
       padding-bottom: calc(${Root.ColumnGutter} * 3);
 

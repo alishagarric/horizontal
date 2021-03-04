@@ -97,7 +97,7 @@ export const VolumesArrowsNavigationStyle = styled.section`
       }
     }
 
-    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
       background-color: ${Theme.Color.varBackground};
 
       .${VolumesArrowsNavigationClassName}__inner {

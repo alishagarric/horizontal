@@ -106,7 +106,7 @@ export const GridColumnStyle = styled.section`
       }
     }
 
-    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
       grid-template-rows: auto;
       grid-template-columns: 50% 50%;
 
@@ -185,7 +185,7 @@ export const GridColumnStyle = styled.section`
   + section.${GridColumnClassName} {
     margin-left: 0;
 
-    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
       margin-left: ${Root.Grid.Gutter.Left};
       margin-bottom: 0;
     }
