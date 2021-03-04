@@ -29,7 +29,7 @@ export const MobileFooterStyle = styled.section`
     --mobileFooterArrowSize: 40px;
     display: none;
 
-    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
       display: block;
       position: relative;
 

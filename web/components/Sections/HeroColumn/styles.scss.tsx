@@ -65,7 +65,7 @@ export const HeroColumnStyle = styled.section`
       padding-right: 20%;
     }
 
-    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
       padding-bottom: calc(${Theme.Base.Size.Lg} * 2);
 
       .${HeroColumnClassName}__sub-header {

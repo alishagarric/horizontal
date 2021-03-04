@@ -36,7 +36,7 @@ export const ContactBlockStyle = styled.div`
       
     }
 
-    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
       > .__mobile-space {
         padding-bottom: calc(${Root.ColumnGutter} * 4);
       }

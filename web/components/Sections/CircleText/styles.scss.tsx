@@ -51,7 +51,7 @@ export const CircleTextStyle = styled.svg<{
       font-weight: 600;
     }
 
-    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
       top: calc(${(props) => props.diameter} / -2);
       left: calc(50% + calc(${(props) => props.diameter} / -2));
       -webkit-animation: ${rotatingAndShrink} 15s linear infinite;

@@ -40,7 +40,7 @@ export const LargeTextStyle = styled.section`
       line-height: 1;
     }
 
-    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
 
       &.width--medium, &.width--small {
         width: auto;

@@ -67,7 +67,7 @@ export const HorizontalScrollSectionStyle = styled.section<{
       }
     }
 
-    @media (max-width: ${Base.Media.Width.Sm + "px"}) {
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: portrait) {
       --horizontalScrollSectionTopBarHeight: calc(${Root.Nav.Size} * 0.75);
 
       &.${HorizontalScrollSectionClassName}--has-topbar {
