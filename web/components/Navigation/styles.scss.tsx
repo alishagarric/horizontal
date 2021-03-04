@@ -232,6 +232,17 @@ export const NavigationStyle = styled.nav`
       }
     }
 
+    //Industries menu button styles
+    .${NavigationClassName}__industries-btn {
+        transition: opacity .1s ease;
+        will-change: opacity;
+
+        &:hover {
+          opacity: 0.6;
+        }
+    }
+      
+
     //Industries and mobile menu button styles
     .${NavigationClassName}__menu-btn, .${NavigationClassName}__industries-btn {
       appearance: none;
@@ -346,30 +357,47 @@ export const NavigationStyle = styled.nav`
 
     //Nav link global styles
     .${NavigationClassName}__link {
+      --circleSize: ${Theme.Base.Size.Sm};
       color: ${Theme.Color.varForeground};
       text-transform: uppercase;
       display: block;
       will-change: transform, opacity;
       transition: transform .25s ease 1s, opacity .25s ease 1s;
+      position: relative;
 
-      &.__active {
-        position: relative;
+      &:after {
+        content: "";
+        width: calc(100% + var(--circleSize));
+        height: calc(100% + var(--circleSize));
+        border-radius: 50%;
+        border: 1px solid ${Theme.Color.varForeground};
+        left: calc(var(--circleSize) / -2);
+        top: calc(var(--circleSize) / -2);
+        position: absolute;
+        transition: opacity .1s ease;
+        opacity: 0;
+        will-change: opacity;
+      }
 
-        &:after {
-          --circleSize: ${Theme.Base.Size.Sm};
-          content: "";
-          width: calc(100% + var(--circleSize));
-          height: calc(100% + var(--circleSize));
-          border-radius: 50%;
-          border: 1px solid ${Theme.Color.varForeground};
-          left: calc(var(--circleSize) / -2);
-          top: calc(var(--circleSize) / -2);
-          position: absolute;
-        }
+      &:not(.${NavigationClassName}__link--branding):hover:after {
+        opacity: 0.6;
+      }
+
+      &.__active:after {
+        opacity: 1;
       }
 
       &:hover {
         text-decoration: none;
+      }
+
+      &.${NavigationClassName}__link--branding {
+        transition: opacity .1s ease;
+        will-change: opacity;
+
+        &:hover {
+          opacity: 0.6;
+        }
       }
     }
 

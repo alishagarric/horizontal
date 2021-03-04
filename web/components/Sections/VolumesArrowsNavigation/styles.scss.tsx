@@ -55,6 +55,11 @@ export const VolumesArrowsNavigationStyle = styled.section`
         a {
           color: ${Theme.Color.varForeground};
           padding: 0 calc(${Theme.Base.Size.Sm} / 4);
+
+          &:hover {
+            text-decoration: none;
+            opacity: 0.6;
+          }
         }
       }
 
