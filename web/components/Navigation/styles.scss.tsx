@@ -317,6 +317,13 @@ export const NavigationStyle = styled.nav`
       &__list {   
         padding-bottom: 25vh; 
 
+        &__intro {
+          padding-left: ${Root.Grid.Gutter.Left};
+          padding-right: ${Root.Grid.Gutter.Left};
+          max-width: 600px;
+          margin: 0 auto;
+        }
+
         &__item {
           text-align: center;
 
@@ -518,6 +525,7 @@ export const NavigationStyle = styled.nav`
 
       .${NavigationClassName}__bottom {
         &__col--center {
+          --clrForeground: ${Theme.Color.Text};
           transform: translateY(0);
           overflow: auto;
         //  background: ${Theme.Color.varBackground};

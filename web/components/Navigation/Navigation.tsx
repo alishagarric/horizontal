@@ -169,7 +169,10 @@ export type LMNTS_Navigation = {
               <Link href="/">
                 <a
                   className={`${NavigationClassName}__link ${NavigationClassName}__link--branding`}
-                  onClick={() => this.setIndustriesVisible(false)}  
+                  onClick={() => {
+                    this.setMenuVisible(false)
+                    this.setIndustriesVisible(false)
+                  }}  
                 >
                   <span className={`${NavigationClassName}__brandmark`}>
                     <Brandmark />
@@ -226,6 +229,13 @@ export type LMNTS_Navigation = {
             </button>
             <nav className={`${NavigationClassName}__menu-nav`}>
               <ul className={`${NavigationClassName}__menu-nav__list`}>
+
+                <li key={-1}>
+                  <p className={`${NavigationClassName}__menu-nav__list__intro`}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Qquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                </li>
+
                 {SiteIndustries && SiteIndustries.length > 0 &&
                   SiteIndustries.map((industry: LMNTS_SiteIndustry, idx: number) => {
                     return (
