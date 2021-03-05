@@ -33,6 +33,23 @@ export const NavigationStyle = styled.nav`
   &.${NavigationClassName} {
     position: relative;
     z-index: 800;
+
+    //top nav overlay when mobile menu and industries menu overlays are open
+    &:after {
+      content: "";
+      position: fixed;
+      top: 0;
+      height: ${Root.Nav.Size};
+      left: 0;
+      right: 0;
+      z-index: 801;
+      background: ${Theme.Color.Background};
+      mix-blend-mode: var(--overlayMode);
+      transform: translateY(-100%);
+      transition: transform .25s ease 0s;
+      will-change: transform;
+      pointer-events: none;
+    }
     
     //Special homepage navigation changes
     &:not(.${NavigationClassName}--route-is-home) {
@@ -229,6 +246,22 @@ export const NavigationStyle = styled.nav`
         z-index: 2;
         will-change: transform, overflow, background;
         transition: transform 1s, background .25s ease 1s;
+
+        //overlay for when industries and mobile menu overlays are open
+        &:before {
+          content: "";
+          background: ${Theme.Color.Background};
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 100vh;
+          pointer-events: none;
+          mix-blend-mode: overlay;
+          transform: translateY(calc(${BottomNavSize} + ${BottomNavMargin}));
+          transition: transform 1s ease 0s;
+          will-change: transform;
+        } 
       }
     }
 
@@ -278,7 +311,8 @@ export const NavigationStyle = styled.nav`
       position: relative;
       opacity: 0;
       will-change: opacity;
-      transition: opacity .25s ease 1s; 
+      transition: opacity .25s ease 1s;
+      color: ${Theme.Color.Primary};
 
       &__list {   
         padding-bottom: 25vh; 
@@ -486,8 +520,8 @@ export const NavigationStyle = styled.nav`
         &__col--center {
           transform: translateY(0);
           overflow: auto;
-          background: ${Theme.Color.varBackground};
-          transition: transform 1s ease 0.25s, background 0.25s;
+        //  background: ${Theme.Color.varBackground};
+          transition: transform 1s ease .25s/*, background 1s*/;
 
           .${NavigationClassName}__industries-btn {
             transform: translateY(0%) scale(0.55);
@@ -507,6 +541,17 @@ export const NavigationStyle = styled.nav`
 
     //Styles changes when either industries or overlay menu is expanded
     &.__industries-expanded, &.__menu-expanded {
+
+      &:after {
+        transform: translateY(0);
+        transition: transform 1s ease .5s;
+      }
+
+      .${NavigationClassName}__bottom__col--center:before {
+        transform: translateY(0);
+        transition: transform .25s linear;
+      }
+
       .${NavigationClassName}__menu-btn {
         opacity: 0;  
       }
@@ -539,6 +584,11 @@ export const NavigationStyle = styled.nav`
       .${NavigationClassName}__top__col--left .__mobile-link, 
       .${NavigationClassName}__top__col--right .__mobile-link {
         display: block;
+      }
+
+      //remove nav overlay used to recolor it when overlays are open
+      &:after {
+        content: none;
       }
 
       //Top nav styles
@@ -581,6 +631,10 @@ export const NavigationStyle = styled.nav`
           transform: translateY( calc(100vh - ${Root.Nav.Size}));
           text-align: left;
           transition: none;
+
+          &:before {
+            transition: none;
+          }
         }
 
         .${NavigationClassName}__menu-nav {
@@ -652,14 +706,14 @@ export const NavigationStyle = styled.nav`
         position: fixed;
         top: ${Root.Nav.Size};
         height: calc(100vh - ${Root.Nav.Size});
-        background: ${Theme.Color.varBackground};
-        color: ${Theme.Color.varForeground};
+        background: ${Theme.Color.Background};
+        color: ${Theme.Color.Text};
         padding: ${Root.Grid.Gutter.Left};
         transform: translateY(150vh);
         overflow: auto;
 
         a {
-          color: ${Theme.Color.varForeground};
+          color: ${Theme.Color.Text};
           display: block;
 
           &:hover, &:active {
@@ -675,7 +729,7 @@ export const NavigationStyle = styled.nav`
           content: "";
           height: 1vw;
           width: 100px;
-          background: ${Theme.Color.varForeground};
+          background: ${Theme.Color.Text};
           grid-column: 1 / 3;
           margin-top: calc(${Root.Size} * 3);
           margin-bottom: calc(${Root.Size} / 2);
@@ -708,7 +762,7 @@ export const NavigationStyle = styled.nav`
 
             &:after, &:before {
               content: "";
-              background: ${Theme.Color.varForeground};
+              background: ${Theme.Color.Text};
               opacity: 0.4;
               position: absolute; 
             }
@@ -775,6 +829,10 @@ export const NavigationStyle = styled.nav`
 
           &__col--center {
             transition: none;
+
+            &:before {
+              transition: none;
+            }
           }
         }
       }
@@ -783,6 +841,14 @@ export const NavigationStyle = styled.nav`
       &.__menu-expanded {
         .${NavigationClassName}__menu-overlay {
           transform: none;
+        }
+      }
+
+      //Styles changes when the overlay menu or industries menu is expanded
+      &.__industries-expanded, &.__menu-expanded {
+        .${NavigationClassName}__top, .${NavigationClassName}__menu-exit  {
+          background: ${Theme.Color.Background};
+          --clrForeground: ${Theme.Color.Text};
         }
       }
     }

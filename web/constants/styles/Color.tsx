@@ -21,6 +21,7 @@ export type LXLT_ColorTheme = {
   secondary: string;
   background: string;
   foreground: string;
+  overlayMode: string;
   setTheme?: (theme: LXLT_ColorTheme) => void;
 };
 
@@ -168,6 +169,7 @@ export class ColorUtils {
         --clrSecondary: ${serverTheme.secondary};
         --clrBackground: ${serverTheme.background};
         --clrForeground: ${serverTheme.foreground};
+        --overlayMode: ${serverTheme.overlayMode};
       }
     `;
   }

@@ -69,6 +69,7 @@ export const DefaultTheme: LXLT_ColorTheme = {
   secondary: Color.Primary,
   background: Color.Background,
   foreground: Color.Text,
+  overlayMode: "overlay",
 }
 
 export const FigTheme: LXLT_ColorTheme = {
@@ -77,6 +78,7 @@ export const FigTheme: LXLT_ColorTheme = {
   secondary: "#FFFDEB",
   background: "#000000",
   foreground: "#FFFDEB",
+  overlayMode: "difference",
 }
 
 export const LemonTheme: LXLT_ColorTheme = {
@@ -85,6 +87,7 @@ export const LemonTheme: LXLT_ColorTheme = {
   secondary: "#FFFDEB",
   background: "#e9d470",
   foreground: "#000000",
+  overlayMode: "overlay",
 }
 
 export const OysterTheme: LXLT_ColorTheme = {
@@ -93,6 +96,7 @@ export const OysterTheme: LXLT_ColorTheme = {
   secondary: "#FFFDEB",
   background: "#959595",
   foreground: "#000000",
+  overlayMode: "overlay",
 }
 
 export const SalmonTheme: LXLT_ColorTheme = {
@@ -101,6 +105,7 @@ export const SalmonTheme: LXLT_ColorTheme = {
   secondary: "#FFFDEB",
   background: "#f4b7a6",
   foreground: "#000000",
+  overlayMode: "overlay",
 }
 
 /**

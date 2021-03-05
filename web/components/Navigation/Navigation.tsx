@@ -18,9 +18,10 @@ import Link from "next/link";
 import { Brandmark } from "../_svg/Brandmark/Brandmark";
 import { Logotype } from "../_svg/Logotype/Logotype";
 import { parseRouteToClassName } from "../../utils/parseRouteToClassName";
-import { LMNTS_SiteIndustry, SiteIndustries, SitePages, SiteVolumes } from "../../constants/site/Settings";
+import { DefaultTheme, LMNTS_SiteIndustry, SiteIndustries, SitePages, SiteVolumes } from "../../constants/site/Settings";
 import LazyImage from "../../utils/lazyImage";
 import { VolumesNavigationClassName } from "../Sections/VolumesNavigation/styles.scss";
+import { ThemeChanger } from "../ThemeChanger";
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -146,16 +147,18 @@ export type LMNTS_Navigation = {
                   </a>
                 </Link>
               }
-  
-              <button 
-                className={`${NavigationClassName}__menu-btn __mobile-link`}
-                onClick={() => {
-                  industriesVisible ? this.setIndustriesVisible(false) : this.setIndustriesVisible(true);
-                  this.setMenuVisible(false);;
-                }}  
-              >
-                Industries
-              </button>
+
+              {/*<ThemeChanger theme={DefaultTheme}>*/}
+                <button 
+                  className={`${NavigationClassName}__menu-btn __mobile-link`}
+                  onClick={() => {
+                    industriesVisible ? this.setIndustriesVisible(false) : this.setIndustriesVisible(true);
+                    this.setMenuVisible(false);;
+                  }}  
+                >
+                  Industries
+                </button>
+              {/*</ThemeChanger>*/}
             </div>
 
           {/* ____________________________________ */}
