@@ -21,6 +21,7 @@ import { CssUtils } from "../../constants/styles/CssUtils";
 import { Base } from "../../constants/styles/Base";
 import { dissapear, homepageExpand, homepageShrink, homepageSlideLeft, homepageSlideUp, reveal } from "../../constants/styles/Animation";
 import { VolumesNavigationClassName } from "../Sections/VolumesNavigation/styles.scss";
+import { AccordionsListingClassName } from "../AccordionsListing/styles.scss";
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -315,46 +316,39 @@ export const NavigationStyle = styled.nav`
       color: ${Theme.Color.Primary};
 
       &__list {   
-        padding-bottom: 25vh; 
-
+        
         &__intro {
           padding-left: ${Root.Grid.Gutter.Left};
           padding-right: ${Root.Grid.Gutter.Left};
           max-width: 600px;
           margin: 0 auto;
+          text-align: center;
+
+          &:not(.__is-open){
+          //  max-height: 0px;
+          //  overflow: hidden;
+          }
         }
 
         &__item {
           text-align: center;
 
-          label h2 {
-            font-size: 10vw;
-            font-weight: 400;
-            padding-bottom: 0;
+          &:not(.${NavigationClassName}__menu-nav__list__intro){
+            background: ${Theme.Color.Background};
           }
 
-          label:hover {
-            opacity: 0.2;
-            cursor: pointer;
-          }
-
-          input[type=checkbox] {
-            display: none;
-          }
-
-          input[type=checkbox]:checked + .${NavigationClassName}__accordion {
-            padding: calc(${Root.ColumnGutter} * 4) calc(${Root.ColumnGutter} * 4) calc(${Root.ColumnGutter} * 8) calc(${Root.ColumnGutter} * 4);
-            max-height: 100000000px;
+          &:last-of-type {
+            padding-bottom: 25vh; 
           }
 
           //make the last image the biggest image in the accordion grid
-          &:nth-of-type(even) .${NavigationClassName}__accordion__image-container:nth-of-type(8) {
+          &:nth-of-type(even) .${AccordionsListingClassName}__accordion__image-container:nth-of-type(8) {
             grid-row: 2 / 4;
             grid-column: 2 / 4;
           }
 
           //make the last image the biggest image in the accordion grid
-          &:nth-of-type(odd) .${NavigationClassName}__accordion__image-container:nth-of-type(8) {
+          &:nth-of-type(odd) .${AccordionsListingClassName}__accordion__image-container:nth-of-type(8) {
             grid-row: 2 / 4;
             grid-column: 3 / 5;
           }
@@ -363,12 +357,21 @@ export const NavigationStyle = styled.nav`
     }
 
     //Industries menu accordion styles
-    .${NavigationClassName}__accordion {
+    .${AccordionsListingClassName}__accordion {
       display: grid;
       grid-template-columns: repeat(4,1fr);
       gap: calc(${Root.ColumnGutter} * 2);
       max-height: 0px;
       overflow: hidden;
+      will-change: max-height, overflow;
+      transition: max-height 1s ease;
+      margin: 0 calc(${Root.ColumnGutter} * 4);
+
+      //space that allows the max-height transition to look good
+      &:after {
+        content: "";
+        height: calc(${Root.ColumnGutter} * 8);
+      }
 
       &__image-container {
         padding-top: 100%;
@@ -647,45 +650,49 @@ export const NavigationStyle = styled.nav`
 
         .${NavigationClassName}__menu-nav {
           &__list {
-            padding-top: ${Root.Size};
 
             label h2 {
               font-size: 14vw;
             }
 
+            &__intro {
+              padding-top: ${Theme.Base.Size.Lg};
+              padding-bottom: ${Theme.Base.Size.Lg};
+            }
+
             &__item {
               //make the last image the biggest image in the accordion grid
-              &:nth-of-type(even) .${NavigationClassName}__accordion__image-container:nth-of-type(8) {
+              &:nth-of-type(even) .${AccordionsListingClassName}__accordion__image-container:nth-of-type(8) {
                 grid-row: 2 / 4;
                 grid-column: 1 / 3;
               }
 
               //make the last image the biggest image in the accordion grid
-              &:nth-of-type(odd) .${NavigationClassName}__accordion__image-container:nth-of-type(8) {
+              &:nth-of-type(odd) .${AccordionsListingClassName}__accordion__image-container:nth-of-type(8) {
                 grid-row: 2 / 4;
                 grid-column: 2 / 4;
               }
 
               //make another image the biggest image in the accordion grid
-              &:nth-of-type(even) .${NavigationClassName}__accordion__image-container:nth-of-type(5) {
+              &:nth-of-type(even) .${AccordionsListingClassName}__accordion__image-container:nth-of-type(5) {
                 grid-row: 5 / 7;
                 grid-column: 1 / 3;
               }
 
               //make another image the biggest image in the accordion grid
-              &:nth-of-type(odd) .${NavigationClassName}__accordion__image-container:nth-of-type(5) {
+              &:nth-of-type(odd) .${AccordionsListingClassName}__accordion__image-container:nth-of-type(5) {
                 grid-row: 5 / 7;
                 grid-column: 1 / 3;
               }
 
               //make an image tall
-              &:nth-of-type(even) .${NavigationClassName}__accordion__image-container:nth-of-type(4) {
+              &:nth-of-type(even) .${AccordionsListingClassName}__accordion__image-container:nth-of-type(4) {
                 grid-row: 3 / 5;
                 grid-column: 3 / 4;
               }
 
               //make an image tall
-              &:nth-of-type(odd) .${NavigationClassName}__accordion__image-container:nth-of-type(4) {
+              &:nth-of-type(odd) .${AccordionsListingClassName}__accordion__image-container:nth-of-type(4) {
                 grid-row: 3 / 5;
                 grid-column: 1 / 2;
               }
@@ -694,7 +701,7 @@ export const NavigationStyle = styled.nav`
           }
         }
 
-        .${NavigationClassName}__accordion {
+        .${AccordionsListingClassName}__accordion {
           gap: calc(${Root.ColumnGutter} * 1);
           grid-template-columns: repeat(3,1fr);
 

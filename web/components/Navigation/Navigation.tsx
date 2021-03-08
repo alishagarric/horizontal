@@ -22,6 +22,7 @@ import { DefaultTheme, LMNTS_SiteIndustry, SiteIndustries, SitePages, SiteVolume
 import LazyImage from "../../utils/lazyImage";
 import { VolumesNavigationClassName } from "../Sections/VolumesNavigation/styles.scss";
 import { ThemeChanger } from "../ThemeChanger";
+import { AccordionsListing } from "../AccordionsListing";
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -229,44 +230,8 @@ export type LMNTS_Navigation = {
             </button>
             <nav className={`${NavigationClassName}__menu-nav`}>
               <ul className={`${NavigationClassName}__menu-nav__list`}>
-
-                <li key={-1}>
-                  <p className={`${NavigationClassName}__menu-nav__list__intro`}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Qquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
-                </li>
-
                 {SiteIndustries && SiteIndustries.length > 0 &&
-                  SiteIndustries.map((industry: LMNTS_SiteIndustry, idx: number) => {
-                    return (
-                      <li
-                        key={idx}
-                        className={`${NavigationClassName}__menu-nav__list__item`}
-                      >
-                        <label htmlFor={industry.name}><h2>{industry.name}</h2></label>
-                        <input type="checkbox" id={industry.name} />
-                        <div className={`${NavigationClassName}__accordion`}>
-
-                          <p className={`${NavigationClassName}__accordion__text-container`}>
-                            {industry.description}
-                          </p>
-
-                          {industry.images && industry.images.length > 0 &&
-                            industry.images.map((image, idxx: number) => {
-                              return (
-                                <div className={`${NavigationClassName}__accordion__image-container`} key={idxx}>
-                                  <LazyImage
-                                    src={image.image}
-                                    alt={"Volume Industries"}
-                                  />
-                                </div>
-                              );
-                            })
-                          }
-                        </div>
-                      </li>
-                    );
-                  })
+                  <AccordionsListing listings={SiteIndustries} openState={industriesVisible} />
                 }
               </ul>
             </nav>
