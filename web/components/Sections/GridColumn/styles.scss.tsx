@@ -15,6 +15,7 @@ import { Root } from "../../../constants/Root";
 import { Base } from "../../../constants/styles/Base";
 import { Theme } from "../../../constants/Theme";
 import { hexToRGB } from "../../../utils/hexToRGB";
+import { GridDoubleColumnClassName } from "../GridDoubleColumn/styles.scss";
 
 // Constants
 
@@ -127,7 +128,7 @@ export const GridColumnStyle = styled.section`
 
         .${GridColumnClassName}__img-container {
           grid-column: 1 / 3;
-          height: calc(100vw - calc(${Root.Grid.Gutter.Left} * 2));
+          height: calc(100vw - calc(${Root.Grid.Gutter.Left} * 2)); 
         }
       }
 
@@ -182,7 +183,7 @@ export const GridColumnStyle = styled.section`
   }
 
   //Section kerning
-  + section.${GridColumnClassName} {
+  + section.${GridColumnClassName}, + section.grid-double-column {
     margin-left: 0;
 
     @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {

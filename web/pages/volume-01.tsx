@@ -13,6 +13,7 @@ import React from "react";
 import { BottomNavSize } from "../components/Navigation/styles.scss";
 import { CircleText } from "../components/Sections/CircleText";
 import { GridColumn } from "../components/Sections/GridColumn";
+import { GridDoubleColumn } from "../components/Sections/GridDoubleColumn";
 import { HeroColumn } from "../components/Sections/HeroColumn";
 import { HorizontalScrollSection } from "../components/Sections/HorizontalScrollSection";
 import { LargeText } from "../components/Sections/LargeText";
@@ -56,6 +57,14 @@ const Volume01: NextPage<LMNTS_Volume01> = () => {
           image="https://source.unsplash.com/600x1200/?building"
           secondaryImage="https://source.unsplash.com/600x1200/?city"
           altText="Volume Industries"
+        />
+        <GridDoubleColumn 
+          image="https://source.unsplash.com/600x1200/?building"
+        //  secondaryImage="https://source.unsplash.com/600x1200/?city"
+          altText="Volume Industries"
+          header="Lorem ipsum"
+          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+          reverse={true}
         />
         <GridColumn 
           image="https://source.unsplash.com/600x1200/?industrial"
