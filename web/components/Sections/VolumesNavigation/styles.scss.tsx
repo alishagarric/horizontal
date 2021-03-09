@@ -105,11 +105,66 @@ export const VolumesNavigationStyle = styled.section`
       display: none;     
     }
 
+    .${VolumesNavigationClassName}__instructions {
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      padding-left: ${Root.Grid.Gutter.Left};
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      span {
+        width: 15px;
+        display: inline-block;
+        position: relative;
+        height: 1px;
+        margin: 0 calc(${Theme.Base.Size.Sm} / 2);
+        background: ${Theme.Color.varForeground};
+
+        &:after, &:before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          display: block;
+          height: 0px;
+          width: 0px;
+          border-right: 3px solid ${Theme.Color.varForeground};
+          border-top: 3px solid transparent;
+          border-left: 3px solid transparent;
+          border-bottom: 3px solid transparent;
+        }
+
+        &:after {
+          right: 0;
+          transform: translate(100%, -50%) scale(-1);
+        }
+
+        &:before {
+          transform: translate(-100%, -50%);
+          left: 0;
+        }
+      }
+
+      &:after {
+        content: "";
+        height: 5px;
+        width: 5px;
+        background: ${Theme.Color.varForeground};
+        border: 1px solid ${Theme.Color.varBackground};
+        display: inline-block;
+        margin-left: calc(${Theme.Base.Size.Sm} / 2);
+      }
+    }
+
     .${VolumesNavigationClassName}__volumes {
       position: relative;
       z-index: 1;
       max-width: 100vw;
-      // overflow-x: auto;
+
+      &.__mobile {
+        display: none;
+        overflow-x: auto;
+      }
 
 
       &__listings--solid {
@@ -158,18 +213,38 @@ export const VolumesNavigationStyle = styled.section`
           display: flex;
           flex-direction: column;
           justify-content: center;
+          cursor: move;
 
 
           &__el {
             color: ${Theme.Color.varBackground};
+            cursor: url(select-cursor.png), auto;
 
             &:hover {
               text-decoration: none;
+              cursor: url(select-cursor.png), auto;
             }
           }
         }
       }
     }
+
+    @media (max-width: ${Base.Media.Width.Sm + "px"}), (max-width: ${Base.Media.Width.Md + "px"}) and (orientation: landscape) and (max-height: ${Base.Media.Height.Md + "px"}) {
+      .${VolumesNavigationClassName}__instructions {
+        display: none;
+      }
+
+      .${VolumesNavigationClassName}__volumes {
+        &.__mobile {
+          display: block;
+        }
+
+        &:not(.__mobile) {
+          display: none;
+        }
+      }
+    }
+
 
     @media (max-width: ${Base.Media.Width.Sm + "px"}) {
       .${VolumesNavigationClassName}__branding {

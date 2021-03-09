@@ -22,6 +22,7 @@ import { Base } from "../../constants/styles/Base";
 import { dissapear, homepageExpand, homepageShrink, homepageSlideLeft, homepageSlideUp, reveal } from "../../constants/styles/Animation";
 import { VolumesNavigationClassName } from "../Sections/VolumesNavigation/styles.scss";
 import { AccordionsListingClassName } from "../AccordionsListing/styles.scss";
+import { HorizontalScrollSectionClassName } from "../Sections/HorizontalScrollSection/styles.scss";
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -570,6 +571,15 @@ export const NavigationStyle = styled.nav`
       .${NavigationClassName}__menu-exit {
         transform: scale(0.8);
       }
+
+      //inhibit y-scroll when overylays are open
+      + main {
+        overflow: hidden;
+
+        .x-scroll, .x-scroll > div {
+          height: 100vh;
+        }
+      }
     }
 
 
@@ -935,6 +945,15 @@ export const NavigationStyle = styled.nav`
             -o-animation: ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeRevealDelay);
             animation: ${dissapear} var(--homeIndustriesDissapearDuration) forwards 1 var(--homeRevealDelay);
           }
+        }
+
+        .${VolumesNavigationClassName}__instructions {
+          opacity: 0;
+          -webkit-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
+          -moz-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
+          -ms-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
+          -o-animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
+          animation: ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay);
         }
 
         .${VolumesNavigationClassName}__volumes {

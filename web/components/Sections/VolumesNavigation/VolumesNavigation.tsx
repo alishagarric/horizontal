@@ -160,6 +160,74 @@ export class VolumesNavigation extends React.PureComponent<
             </Draggable>
 
             {/* ______________________________________ */}
+            {/* Mobile Volume Listings */}
+            <div
+              ref={this.volumesRef}
+              className={`${VolumesNavigationClassName}__volumes ${this.state.offsetClass} __mobile`}
+            >
+            
+              {/* ________________________________________ */}
+              {/* Outlined text (the font has a weird apex) */}
+              <ul
+                className={`${VolumesNavigationClassName}__volumes__listings ${VolumesNavigationClassName}__volumes__listings--outline`}
+              >
+                {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
+                  return (
+                    <ThemeChanger theme={volume.theme} key={idx}>
+                      <div
+                        className={`${VolumesNavigationClassName}__volumes__listings__item`}
+                      >
+                      
+                        <Link href={volume.link}>
+                          <a
+                            className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
+                          >
+                            {volume.number}
+                          </a>
+                        </Link>
+                      </div>
+                    </ThemeChanger>
+                  );
+                })}
+              </ul>
+
+              {/* ________________________________________ */}
+              {/* Solid Text */}
+              <ul
+                className={`${VolumesNavigationClassName}__volumes__listings ${VolumesNavigationClassName}__volumes__listings--solid`}
+              >
+                {SiteVolumes.map((volume: LMNTS_SiteVolume, idx: number) => {
+                  return (
+                    <ThemeChanger theme={volume.theme} key={idx}>
+                      <div
+                        onMouseOver={() => this.updateMarquee(volume.name)} 
+                        onMouseLeave={() => this.updateMarquee()} 
+                        className={`${VolumesNavigationClassName}__volumes__listings__item ${VolumesNavigationClassName}__volumes__listings__item--${
+                          idx + 1 === SiteVolumes.length ? "is-active" : "is-inactive"
+                        } `}
+                      >
+                      
+                        <Link href={volume.link}>
+                          <a
+                            className={`${VolumesNavigationClassName}__volumes__listings__item__el`}
+                          >
+                            {volume.number}
+                          </a>
+                        </Link>
+                      </div>
+                    </ThemeChanger>
+                  );
+                })}
+              </ul>
+            </div>
+
+            {/* ______________________________________ */}
+            {/* Instructions */}
+            <p className={`${VolumesNavigationClassName}__instructions`}>
+              Drag <span /> &amp; Select
+            </p>
+
+            {/* ______________________________________ */}
             {/* Bottom Text */}
             <h2 className={`${VolumesNavigationClassName}__bottom-text`}>
               Industries

@@ -19,6 +19,7 @@ import { Root } from "../../constants/Root";
  *
  */
 export const AccordionsListingClassName = "accordions-listing";
+//TODO: Get all the styles in Navigation.scss that belong here
 
 /**
  *
@@ -41,7 +42,7 @@ export const AccordionsListingStyle = styled.li`
 
   &.__is-open {
     .${AccordionsListingClassName}__accordion {
-      max-height: 100vh;
+      max-height: 100vh !important;
     }
   }
 `;
