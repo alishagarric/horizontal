@@ -960,6 +960,10 @@ export const NavigationStyle = styled.nav`
           opacity: 0;
           pointer-events: none;
 
+          &.__mobile {
+            overflow-x: auto;
+          }
+
           &.__initial-state {
             animation: ${(props: {volumesNavOffset: string}) => homepageSlideLeft(props.volumesNavOffset) } var(--homeSlideLeftDuration) forwards 1 var(--homeSlideLeftDelay), ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay) !important;
             -moz-animation: ${(props: {volumesNavOffset: string}) => homepageSlideLeft(props.volumesNavOffset) } var(--homeSlideLeftDuration) forwards 1 var(--homeSlideLeftDelay), ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay) !important;
@@ -968,7 +972,7 @@ export const NavigationStyle = styled.nav`
             animation: ${(props: {volumesNavOffset: string}) => homepageSlideLeft(props.volumesNavOffset) } var(--homeSlideLeftDuration) forwards 1 var(--homeSlideLeftDelay), ${reveal} var(--homeRevealDuration) forwards 1 var(--homeRevealDelay) !important;
           }
 
-          &:not(.__initial-state){
+          &:not(.__initial-state):not(.__mobile) {
             left: ${(props: {volumesNavOffset: string}) => props.volumesNavOffset };
           }
 
